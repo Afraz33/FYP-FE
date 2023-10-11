@@ -252,7 +252,7 @@ const ApplicationForm = () => {
           </div>
 
           <div className="col-span-2 flex justify-center mt-4">
-            <button className="bg-white text-black py-2 px-4 rounded-full font-DelaGothicOne border border-black">
+            <button className="bg-white text-black py-2 px-4 rounded-full font-DelaGothicOne border border-black hover:bg-black hover:text-white">
               Submit
             </button>
           </div>
