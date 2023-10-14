@@ -23,7 +23,7 @@ export default function ExpertLogin() {
 
         if (response.status === 200) {
           localStorage.setItem("email", response.data.user.email);
-          console.log(localStorage.getItem("email"));
+          window.location.href = "/expert-panel";
         }
       })
       .catch((error) => {
