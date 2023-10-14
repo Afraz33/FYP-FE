@@ -1,41 +1,43 @@
 import React, { useState } from "react";
 import registeration from "../../assets/images/registeration.png";
-function ProfileForm({ handleSignUpPageChange }) {
-  const [description, setDescription] = useState("");
-  const [expertise, setExpertise] = useState([]);
-  const [highestQualification, setHighestQualification] = useState();
+export default function Registeration({
+  description,
+  expertise,
+  highestQualification,
+  skills,
+  experience,
+  currentRole,
+  certifications,
+  city,
+  languages,
+  hourlyRate,
+  // Destructure the setter functions
+  setDescription,
+  setExpertise,
+  setHighestQualification,
+  setSkills,
+  setExperience,
+  setCurrentRole,
+  setCertifications,
+  setCity,
+  setLanguages,
+  setHourlyRate,
+  // Destructure the handler functions
+  handleSignUpPageChange,
+  handleHighestQualificationChange,
+  handleHourlyRateChange,
+  handleCityChange,
+  handleCurrentRoleChange,
+  handleDescriptionChange,
+  addCertifications,
+  addExperience,
+  addExpertise,
+  addLanguage,
+  addSkills,
 
-  const [skills, setSkills] = useState([]);
-  const [experience, setExperience] = useState([]);
-  const [currentRole, setCurrentRole] = useState("");
-  const [certifications, setCertifications] = useState([]);
-  const [city, setCity] = useState("");
-  const [languages, setLanguages] = useState([]);
-  const [hourlyRate, setHourlyRate] = useState("");
-  // ... You can replicate the above for other array fields ...
-
-  const addExpertise = () => {
-    setExpertise([...expertise, ""]);
-  };
-
-  const addSkills = () => {
-    setSkills([...skills, ""]);
-  };
-  const addExperience = () => {
-    setExperience([...experience, ""]);
-  };
-  const addCertifications = () => {
-    setCertifications([...certifications, ""]);
-  };
-  const addLanguage = () => {
-    setLanguages([...languages, ""]);
-  };
-  const handleHighestQualificationChange = (e) =>
-    setHighestQualification(e.target.value);
-  const handleHourlyRateChange = (e) => setHourlyRate(e.target.value);
-  const handleCityChange = (e) => setCity(e.target.value);
-  const handleCurrentRoleChange = (e) => setCurrentRole(e.target.value);
-  const handleDescriptionChange = (e) => setDescription(e.target.value);
+  //Register Function
+  registerExpert,
+}) {
   return (
     <div className="min-h-screen  flex justify-center items-center bg-[#FFD666]  mt-0  ">
       <div className="p-6 bg-white w-full max-w-2xl mx-auto mt-8 mb-8 shadow-md rounded-md">
@@ -240,7 +242,10 @@ function ProfileForm({ handleSignUpPageChange }) {
           >
             Back
           </button>
-          <button className="p-2 w-20  bg-blue-500 text-white rounded">
+          <button
+            className="p-2 w-20  bg-blue-500 text-white rounded"
+            onClick={registerExpert}
+          >
             Submit
           </button>
         </div>
@@ -248,5 +253,3 @@ function ProfileForm({ handleSignUpPageChange }) {
     </div>
   );
 }
-
-export default ProfileForm;

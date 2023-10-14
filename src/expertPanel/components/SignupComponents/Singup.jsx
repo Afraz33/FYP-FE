@@ -1,6 +1,25 @@
 import React from "react";
+import { useState } from "react";
 import profile_icon from "../../assets/images/profile_icon.png";
-export default function ProfileForm({ handleSignUpPageChange }) {
+export default function SignUp({
+  handleSignUpPageChange,
+  firstName,
+  lastName,
+  userName,
+  email,
+  phone,
+  gender,
+  password,
+  confirmPassword,
+  handleFirstNameChange,
+  handleLastNameChange,
+  handleUserNameChange,
+  handleEmailChange,
+  handlePhoneChange,
+  handleGenderChange,
+  handlePasswordChange,
+  handleConfirmPasswordChange,
+}) {
   return (
     <div className="min-h-screen  flex justify-center items-center bg-[#FFD666]  mt-0 py-5">
       <div className="bg-white p-8 rounded shadow-xl w-2/4">
@@ -25,6 +44,8 @@ export default function ProfileForm({ handleSignUpPageChange }) {
               className="w-full p-2 border rounded"
               type="text"
               id="first-name"
+              value={firstName}
+              onChange={handleFirstNameChange}
             />
           </div>
 
@@ -39,6 +60,8 @@ export default function ProfileForm({ handleSignUpPageChange }) {
               className="w-full p-2 border rounded"
               type="text"
               id="last-name"
+              value={lastName}
+              onChange={handleLastNameChange}
             />
           </div>
 
@@ -53,6 +76,8 @@ export default function ProfileForm({ handleSignUpPageChange }) {
               className="w-full p-2 border rounded"
               type="text"
               id="user-name"
+              value={userName}
+              onChange={handleUserNameChange}
             />
           </div>
 
@@ -64,6 +89,8 @@ export default function ProfileForm({ handleSignUpPageChange }) {
               className="w-full p-2 border rounded"
               type="email"
               id="email"
+              value={email}
+              onChange={handleEmailChange}
             />
           </div>
 
@@ -75,6 +102,8 @@ export default function ProfileForm({ handleSignUpPageChange }) {
               className="w-full p-2 border rounded"
               type="tel"
               id="phone"
+              value={phone}
+              onChange={handlePhoneChange}
             />
           </div>
 
@@ -89,6 +118,8 @@ export default function ProfileForm({ handleSignUpPageChange }) {
                   className="form-radio"
                   name="gender"
                   value="Male"
+                  checked={gender === "Male"} // Check if gender is "Male"
+                  onChange={handleGenderChange}
                 />
                 <span className="ml-2">Male</span>
               </label>
@@ -98,6 +129,8 @@ export default function ProfileForm({ handleSignUpPageChange }) {
                   className="form-radio"
                   name="gender"
                   value="Female"
+                  checked={gender === "Female"} // Check if gender is "Female"
+                  onChange={handleGenderChange}
                 />
                 <span className="ml-2">Female</span>
               </label>
@@ -107,6 +140,8 @@ export default function ProfileForm({ handleSignUpPageChange }) {
                   className="form-radio"
                   name="gender"
                   value="Other"
+                  checked={gender === "Other"} // Check if gender is "Other"
+                  onChange={handleGenderChange}
                 />
                 <span className="ml-2">Other</span>
               </label>
@@ -124,6 +159,8 @@ export default function ProfileForm({ handleSignUpPageChange }) {
               className="w-full p-2 border rounded"
               type="password"
               id="password"
+              value={password}
+              onChange={handlePasswordChange}
             />
           </div>
 
@@ -138,6 +175,8 @@ export default function ProfileForm({ handleSignUpPageChange }) {
               className="w-full p-2 border rounded"
               type="password"
               id="confirm-password"
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
             />
           </div>
 
