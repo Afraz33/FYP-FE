@@ -18,11 +18,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="bg-[#B2A1FE] h-screen flex flex-col items-center">
+    <div className="bg-[#B2A1FE] h-content flex flex-col items-center">
       <div className="flex space-x-4 mt-6">
         <button
           className={`${
-            activeButton === "expert" ? "bg-white rounded-full border-black border" : ""
+            activeButton === "expert"
+              ? "bg-white rounded-full border-black border"
+              : ""
           } px-4 py-2 font-DelaGothicOne`}
           onClick={() => {
             setSelectedForm("expert");
@@ -33,7 +35,9 @@ const LoginPage = () => {
         </button>
         <button
           className={`${
-            activeButton === "normal" ? "bg-white rounded-full border-black border" : ""
+            activeButton === "normal"
+              ? "bg-white rounded-full border-black border"
+              : ""
           } px-4 py-2 font-DelaGothicOne`}
           onClick={() => {
             setSelectedForm("normal");
@@ -44,7 +48,9 @@ const LoginPage = () => {
         </button>
         <button
           className={`${
-            activeButton === "focal" ? "bg-white rounded-full border-black border" : ""
+            activeButton === "focal"
+              ? "bg-white rounded-full border-black border"
+              : ""
           } px-4 py-2 font-DelaGothicOne`}
           onClick={() => {
             setSelectedForm("focal");
@@ -55,9 +61,7 @@ const LoginPage = () => {
         </button>
       </div>
 
-      <div className="flex flex-col items-center mt-6">
-        {renderSelectedForm()}
-      </div>
+      <div className="flex flex-col items-center">{renderSelectedForm()}</div>
     </div>
   );
 };

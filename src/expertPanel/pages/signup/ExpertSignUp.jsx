@@ -110,6 +110,11 @@ function ExpertSignUp() {
         expertData
       );
       console.log(response.data);
+      if (response.status === 200) {
+        console.log("Yes");
+        window.location.href = "/";
+      }
+
       // Handle successful registration (e.g., redirect, show message, etc.)
     } catch (error) {
       console.error(
