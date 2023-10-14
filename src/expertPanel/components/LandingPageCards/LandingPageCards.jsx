@@ -5,6 +5,10 @@ function Cards() {
     isolation: "auto",
     mixBlendMode: "normal",
   };
+
+  function handleNavigation() {
+    window.location.href = "/expert-panel/calendar";
+  }
   return (
     <div className="flex flex-col  p-10">
       <h1 className="text-3xl font-semibold mb-2 mt-6 w-fit mx-auto">
@@ -44,6 +48,7 @@ function Cards() {
 
       <div class="w-[80%] mx-auto grid grid-cols-3 gap-7 mt-10 ">
         <div
+          onClick={handleNavigation}
           id="view-jobs"
           class="transition ease-in-out delay-150 hover:text-green-400 hover:-translate-y-1 hover:scale-110 hover:bg-slate-700 duration-300 bg-slate-900 items-center text-white cursor-pointer flex flex-col gap-2 py-8 shadow-xl ... rounded-lg ..."
         >
