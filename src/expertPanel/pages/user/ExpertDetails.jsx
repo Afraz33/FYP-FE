@@ -1,9 +1,35 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import profile from "../../assets/images/profile.jpg";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ExpertDetails = () => {
-    const { id } = useParams();
+  const navigate = useNavigate();
+  const pathname = window.location.pathname;
+  const parts = pathname.split('/');
+  const expertId = parts[parts.length - 1]; // The last part of the URL
+  const [expert, setExpert] = useState(null);
+
+  useEffect(() => {
+    const apiUrl = `http://localhost:5000/api/experts/${expertId}`;
+    console.log("API URL:", apiUrl);
+    // Make an API call to fetch expert data
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        // Set the fetched expert data to the state
+        setExpert(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching expert data:', error);
+      });
+  }, [expertId]);
+
+  if (!expert) {
+    return <p>Loading expert data...</p>;
+  }
+
+  const handleBookMeeting = () => {
+    // Add the logic for booking a meeting with the expert
+  };
 
     return (
             <div className="p-10 bg-[#c4bcf8] h-screen items-center flex flex-col font-DelaGothicOne">
@@ -21,97 +47,104 @@ const ExpertDetails = () => {
             </div>
 
             <div className=" p-10 rounded-xl flex space-x-10 shadow-md mx-auto mt-4 items-start">
-            {/* Left Section */}
-                <div className="bg-white flex-none rounded-2xl w-1/4 mt-4 border border-black p-4 flex flex-col items-center"> 
-                    <img src={profile} alt="Ali" className="w-24 h-24 rounded-full mb-4" />
-                    <div className="w-full text-center mb-2">Saad</div>
-                    <div className="flex justify-between w-full mb-3">
-                        <strong>City: </strong>
-                        <span>Rawalpindi</span>
-                    </div>
-                    <div className="flex justify-between w-full mb-3">
-                        <strong>Languages: </strong>
-                        <span>English, Urdu</span>
-                    </div>
-                    <div className="flex justify-between w-full mb-3">
-                        <strong>Email: </strong>
-                        <span>ali.cs@gmail.com</span>
-                    </div>
-                    <div className="flex justify-between w-full mb-3">
-                        <strong>Area of expertise: </strong>
-                        <span>Computer Science</span>
-                    </div>
-                    <div className="flex justify-between w-full mb-3">
-                        <strong>Education: </strong>
-                        <span> BS Computer Science</span>
-                    </div>
-                    <div className="flex justify-between w-full mb-3">
-                        <strong>Highest Qualification: </strong>
-                        <span>MS Data Science</span>
-                    </div>
-                    <div className="flex justify-between w-full mb-3">
-                        <strong>Current Role: </strong>
-                        <span>Data Engineer</span>
-                    </div>
-                </div>
+           
+   
+                    {/* Left Section */}
+                    <div className="bg-white flex-none rounded-2xl w-1/4 mt-4 border border-black p-4 flex flex-col items-center">
+                        <div className="w-full text-center mb-2">{expert.firstName}</div>
+
+                        {/* Display other expert details here using the same format */}
+                        <div className="flex justify-between w-full mb-3">
+                            <strong>City: </strong>
+                            <span>{expert.city}</span>
+                        </div>
+                        <div className="flex justify-between w-full mb-3">
+                            <strong>Languages: </strong>
+                            <span>{expert.languages.join(', ')}</span>
+                        </div>
+                        <div className="flex justify-between w-full mb-3">
+                            <strong>Email: </strong>
+                            <span>{expert.email}</span>
+                        </div>
+                        <div className="flex justify-between w-full mb-3">
+                            <strong>Area of expertise: </strong>
+                            <span>{expert.areaOfExpertise}</span>
+                        </div>
+                        <div className="flex justify-between w-full mb-3">
+                            <strong>Education: </strong>
+                            <span>{expert.education}</span>
+                        </div>
+                        <div className="flex justify-between w-full mb-3">
+                            <strong>Highest Qualification: </strong>
+                            <span>{expert.highestQualification}</span>
+                        </div>
+                        <div className="flex justify-between w-full mb-3">
+                            <strong>Current Role: </strong>
+                            <span>{expert.currentRole}</span>
+                        </div>
+                        </div>
 
 
-                 {/* Middle Section */}
-                  <div className="flex-grow space-y-6">
-                    {/* For each inner div, I've added p-4 to give space between text and the border */}
-                    <div className="bg-white mt-4 rounded-2xl p-4 border border-black ">
+                            {/* Middle Section */}
+                    <div className="flex-grow space-y-6">
+                    <div className="bg-white mt-4 rounded-2xl p-4 border border-black">
                         <strong>Description:</strong>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
+                        <p>{expert.description}</p>
                     </div>
-                     {/* Skills and Certification Sections */}
-                <div className="flex space-x-4 mt-4"> {/* Added flex container */}
-                    {/* Certification Section */}
-                    <div className="bg-white w-1/2 rounded-2xl p-4 border border-black">
+                    <div className="flex space-x-4 mt-4">
+                        {/* Certification Section */}
+                        <div className="bg-white w-1/2 rounded-2xl p-4 border border-black">
                         <strong>Certification:</strong>
-                        <p>App Development by Udemy</p>
-                        <p>Web Development Methodologies by Coursera</p>
-                        <p>Data Analytics by Data Camp</p>
-                    </div>
+                        {expert.certifications.map((certification, index) => (
+                            <p key={index}>{certification}</p>
+                        ))}
+                        </div>
 
-                    {/* Skills Section */}
-                    <div className="bg-white w-1/2 rounded-2xl p-4 border border-black">
+                        {/* Skills Section */}
+                        <div className="bg-white w-1/2 rounded-2xl p-4 border border-black">
                         <strong>Skills:</strong>
                         <ul>
-                            <li>App Development</li>
-                            <li>Web Development</li>
-                            <li>Data Analytics</li>
-                            <li>Software Engineering</li>
+                            {expert.skills.map((skill, index) => (
+                            <li key={index}>{skill}</li>
+                            ))}
                         </ul>
+                        </div>
                     </div>
 
-                    <div className="bg-white w-1/2 rounded-2xl p-4 border border-black">
+                    {/* Experience Section */}
+                    <div className="bg-white mt-4 rounded-2xl p-4 border border-black">
                         <strong>Experience:</strong>
                         <ul>
-                            <li>1 year in Web Development</li>
-                            <li>1 year in App Development</li>
-                            <li>6 months in Data Analytics</li>
+                        {expert.experience.map((experience, index) => (
+                            <li key={index}>{experience}</li>
+                        ))}
                         </ul>
                     </div>
-                </div>
 
-                {/* Reviews Section */}
-                <div className="bg-white mt-4 rounded-2xl p-4 border border-black">
-                    <strong>Reviews(2):</strong>
-                        <div>
-                            <strong>Afraz:</strong> It was a great experience working with Saad, his commitment was excellent. His work was brilliant. Adios.
+                    {/* Reviews Section */}
+                    <div className="bg-white mt-4 rounded-2xl p-4 border border-black">
+                        <strong>Reviews:</strong>
+                        {Array.isArray(expert.reviews) && expert.reviews.length > 0 ? (
+                            expert.reviews.map((review, index) => (
+                            <div key={index}>
+                                <strong>{review.reviewer}:</strong> {review.comment}
+                            </div>
+                            ))
+                        ) : (
+                            <p>No reviews available.</p>
+                        )}
                         </div>
-                        <div>
-                            <strong>Umama:</strong> It was a great experience working with Saad, his commitment was excellent. His work was brilliant. Adios.
-                        </div>
+
+                    <button
+                        className="text-black bg-[#B2A1FE] px-4 py-1 rounded-full border border-black mt-2 transition duration-300 hover:bg-[#000000] hover:text-white"
+                        onClick={handleBookMeeting}
+                    >
+                        Book a Meeting
+                    </button>
                     </div>
-                    <button className="text-black bg-[#B2A1FE] px-4 py-1 rounded-full border border-black mt-2 transition duration-300 hover:bg-[#000000] hover:text-white">Book a Meeting</button>
                 </div>
-                
-            </div>
-        </div>
-    );
-}
+                </div>
+            );
+            }
 
 export default ExpertDetails;

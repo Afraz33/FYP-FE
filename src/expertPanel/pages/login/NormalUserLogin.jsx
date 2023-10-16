@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import loginUser from "../../assets/images/loginUser.png";
 import { Link, useNavigate } from 'react-router-dom'; // <- Add useNavigate here
+import axios from 'axios';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
@@ -16,11 +17,22 @@ function LoginForm() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     console.log(`Email: ${email}, Password: ${password}`);
-    
-    navigate('/userLandingPage');
+      
+    try {
+      const response = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      if (response.data.token) {
+        localStorage.setItem('jwt', response.data.token); // Store JWT token
+        navigate('/userLandingPage'); // Navigate to the landing page
+      } else {
+        console.error(response.data.Message);
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
   };
+  
 
   return (
     
