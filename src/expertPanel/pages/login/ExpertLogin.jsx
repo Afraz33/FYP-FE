@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import expert from "../../assets/images/expert.png";
-import { Link } from 'react-router-dom';
-
-function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+import React from "react";
+import axios from "axios";
+import { useState } from "react";
+export default function ExpertLogin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -15,53 +13,74 @@ function LoginForm() {
   };
 
   const handleLogin = () => {
-    console.log(`Email: ${email}, Password: ${password}`);
+    axios
+      .post("http://localhost:5000/api/experts/expert-Login", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        // Handle successful login (e.g., redirect to a new page)
+
+        if (response.status === 200) {
+          localStorage.setItem("email", response.data.user.email);
+          window.location.href = "/expert-panel";
+        }
+      })
+      .catch((error) => {
+        // Handle login error (e.g., display an error message)
+        console.error("Login failed:", error);
+      });
   };
-
   return (
-    
-    <div className="flex w-full items-center h-screen">
-      <img src={expert} alt="expert img" width="850" height="850"></img>
+    <div className="h-screen w-screen flex justify-center mt-20 bg-[#B2A1FE] ">
+      <div className="bg-white w-96 h-2/3 rounded-xl shadow-xl flex flex-col items-center justify-center p-8">
+        {/* Icon */}
+        <div className="bg-red-500 w-20 h-20 rounded-full mb-6 flex items-center justify-center">
+          <div className="bg-[#B2A1FE] w-14 h-14 rounded-full flex items-center justify-center">
+            <span className="text-white text-2xl font-semibold">👤</span>
+          </div>
+        </div>
 
-      <div className="w-1/2 p-10 text-center">
-      
-        <h1 className="text-base font-bold mb-9 font-DelaGothicOne">
-          {/* Many young students are waiting for you */}
-        </h1>
-      </div>
-      <div className="w-full h-[500px] p-100 flex justify-center">
-        <div className="bg-white p-8 rounded-3xl border-black border text-center">
-          <h1 className="text-xl font-bold mb-4 font-DelaGothicOne" >Expert Login </h1>
-          <p className="text-sm mb-7 font-DelaGothicOne" > Enter your credentials </p>
+        {/* Title */}
+        <h2 className="text-2xl font-semibold mb-6">Welcome!</h2>
+
+        {/* Username Input */}
+        <div className="mb-4 w-full flex items-center border rounded-md border-gray-300 p-2">
+          <span className="text-gray-400 mr-2">👤</span>
           <input
             type="text"
-            className="w-full p-2 rounded-full bg-white border border-black mb-4 font-DelaGothicOne"
-            placeholder="Email"
+            placeholder="Username/email"
             value={email}
             onChange={handleEmailChange}
+            className="flex-grow outline-none"
           />
+        </div>
+
+        {/* Password Input */}
+        <div className="mb-4 w-full flex items-center border rounded-md border-gray-300 p-2">
+          <span className="text-gray-400 mr-2">🔐</span>
           <input
             type="password"
-            className="w-full p-2 rounded-full bg-white border border-black mb-4 font-DelaGothicOne"
-            placeholder="Password"
             value={password}
             onChange={handlePasswordChange}
+            placeholder="Password"
+            className="flex-grow outline-none"
           />
-          <p className="text-sm font-DelaGothicOne mb-4 text-right" style={{ textDecoration: 'underline' }}>
-          Forgot Password? 
-          </p>
-          <button
-          className="bg-FFD666 text-black p-2 mb-7 w-full border-2 border-black rounded-full font-DelaGothicOne transition duration-300 hover:bg-black hover:text-white"
-          onClick={handleLogin} >
-          Login
-          </button>
-          <p className="text-sm  font-DelaGothicOne">
-          Don't have an account? <Link to="/signup" style={{ textDecoration: 'underline' }}>Sign Up</Link>
-        </p>
         </div>
+
+        {/* Login Button */}
+        <button
+          onClick={handleLogin}
+          className="bg-[#B2A1FE] hover:bg-black text-white rounded-md px-6 py-2 mb-4 border border-red-500"
+        >
+          LOGIN
+        </button>
+
+        {/* Forgot Password */}
+        <a href="#" className="text-sm text-gray-400 underline">
+          Forgot my password?
+        </a>
       </div>
     </div>
   );
 }
-
-export default LoginForm;
