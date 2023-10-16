@@ -6,7 +6,7 @@ import axios from "axios";
 function ExpertSignUp() {
   const [SignUpPage, setSignUpPage] = useState(true);
   const [description, setDescription] = useState("");
-  const [expertise, setExpertise] = useState([]);
+  const [expertise, setExpertise] = useState("");
   const [highestQualification, setHighestQualification] = useState();
   const [skills, setSkills] = useState([]);
   const [experience, setExperience] = useState([]);
@@ -58,6 +58,10 @@ function ExpertSignUp() {
 
   const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value);
+  };
+
+  const handleExpertiseChange = (event) => {
+    setExpertise(event.target.value);
   };
 
   const addExpertise = () => {
@@ -183,6 +187,7 @@ function ExpertSignUp() {
           addLanguage={addLanguage}
           addSkills={addSkills}
           registerExpert={registerExpert}
+          handleExpertiseChange = {handleExpertiseChange}
         />
       )}
     </div>

@@ -29,6 +29,7 @@ export default function Registeration({
   handleCityChange,
   handleCurrentRoleChange,
   handleDescriptionChange,
+  handleExpertiseChange,
   addCertifications,
   addExperience,
   addExpertise,
@@ -68,25 +69,15 @@ export default function Registeration({
             <label className="block text-sm font-medium mb-2">
               Area of Expertise
             </label>
-            {expertise.map((q, index) => (
-              <input
-                key={index}
-                type="text"
-                className="w-full p-2 border rounded mt-2"
-                value={q}
-                onChange={(e) => {
-                  const newExpertise = [...expertise];
-                  newExpertise[index] = e.target.value;
-                  setExpertise(newExpertise);
-                }}
-              />
-            ))}
-            <button
-              className="mt-2 p-1 w-10  bg-[#FFD666] hover:bg-black text-white rounded"
-              onClick={addExpertise}
-            >
-              +
-            </button>
+            <input
+              type="text"
+              value={expertise}
+              onChange={(e) => {
+                handleExpertiseChange(e);
+              }}
+              className="w-full p-2 border rounded"
+            />
+            
           </div>
           <div className="mb-4">
             <label className="block text-sm font-medium mb-2">Skills</label>
