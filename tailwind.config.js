@@ -6,7 +6,12 @@ module.exports = {
     extend: {
       fontFamily:{
         DelaGothicOne:['Dela Gothic One', 'cursive']
-      }
+      },
+      backgroundColor: {
+        'FD9841': '#FD9841',
+        'FFD666': '#FFD666',
+      },
+
     },
     fontSize: {
       sm: '0.8rem',
