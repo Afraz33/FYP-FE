@@ -1,12 +1,14 @@
-import React from 'react';
 import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
 
 const UserLandingPage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
 
-    const handleSearchClick = () => {
-      navigate("/search"); // Redirects to the SearchPage
-    };
+  const handleSearchClick = () => {
+    navigate(`/search?query=${searchQuery}`);
+  };
+
   return (
     <div className="bg-[#B2A1FE] items-center min-h-screen flex flex-col font-DelaGothicOne">
       {/* Navbar */}
@@ -27,13 +29,19 @@ const UserLandingPage = () => {
         <div className="text-3xl font-bold mb-9">Find the best experts for your consultation</div>
         <div className="text-xl mb-8">with just some clicks</div>
         <div className="relative w-full mb-6">
-            <input className="border border-black rounded-full w-full py-2 px-3" type="text" placeholder=" Search..." />
-            <button className="absolute right-0 top-0 mt-2 mr-2" onClick={handleSearchClick}>
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-6a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-            </button>
-         </div>
+          <input
+            className="border border-black rounded-full w-full py-2 px-3"
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+      <button className="absolute right-0 top-0 mt-2 mr-2" onClick={handleSearchClick}>
+        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-6a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+      </button>
+    </div>
         <div className="flex space-x-4">
           <button className=" text-black text-base px-4 py-2 ">Popular</button>
           <button className="bg-white text-black text-sm px-4 py-2 rounded-full border border-black">Computer Science</button>

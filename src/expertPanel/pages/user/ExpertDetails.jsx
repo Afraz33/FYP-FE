@@ -140,11 +140,7 @@ const ExpertDetails = () => {
           </div>
           <div className="flex justify-between w-full mb-3">
             <strong>Area of expertise:</strong>
-            <span>{expert.areaOfExpertise}</span>
-          </div>
-          <div className="flex justify-between w-full mb-3">
-            <strong>Education:</strong>
-            <span>{expert.education}</span>
+            <span>{expert.expertise}</span>
           </div>
           <div className="flex justify-between w-full mb-3">
             <strong>Highest Qualification:</strong>
