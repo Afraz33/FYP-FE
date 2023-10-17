@@ -3,15 +3,16 @@ import LandingPage from "../expertPanel/pages/LandingPage/LandingPage";
 import SignUpPage from "../expertPanel/pages/signup/SignUpPage";
 import Login from "../expertPanel/pages/login/LoginPage";
 import UserLandingPage from "../expertPanel/pages/LandingPage/UserLandingPage";
-import SearchPage from "../expertPanel/pages/user/searchExperts"; 
-import ExpertDetails from "../expertPanel/pages/user/ExpertDetails"; 
+import SearchPage from "../expertPanel/pages/user/searchExperts";
+import ExpertDetails from "../expertPanel/pages/user/ExpertDetails";
 import ExpertLandingPage from "../expertPanel/pages/ExpertLandingPage/ExpertLandingPage";
 import Calendar from "../expertPanel/pages/CalendarPage/CalendarPage";
+import LandingPage2 from "../expertPanel/pages/LandingPage/LandingPage2";
 
 function Routers() {
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />}></Route>
+      <Route path="/" element={<LandingPage2 />}></Route>
       <Route path="/login" element={<Login />}></Route>
 
       <Route path="/signup" element={<SignUpPage />}></Route>
