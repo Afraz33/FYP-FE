@@ -56,9 +56,7 @@ const NormalUserSignUp = () => {
             <h2 className="text-base font-bold mb-4 font-DelaGothicOne">
                 Please enter your details to Sign up as a User
             </h2>
-            <button className="text-gray-400 px-4 py-2 border rounded-lg font-DelaGothicOne">
-                Sign up with Google
-            </button>
+           
             <hr className="my-4" />
 
             <div className="grid grid-cols-2 gap-4">
