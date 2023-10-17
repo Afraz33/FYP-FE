@@ -16,14 +16,14 @@
 //   if (!expert) {
 //     return <p>Loading expert data...</p>;
 //   }
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ExpertDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [expert, setExpert] = useState(null);
- 
+
   useEffect(() => {
     console.log(id);
     const fetchExpertAndReviews = async () => {
@@ -33,24 +33,28 @@ const ExpertDetails = () => {
         const expertWithReviews = { ...expertData, reviews: reviewsData };
         setExpert(expertWithReviews);
       } catch (error) {
-        console.error('Error fetching expert and reviews:', error);
+        console.error("Error fetching expert and reviews:", error);
       }
     };
 
     const fetchExpertData = async () => {
-      const expertResponse = await fetch(`http://localhost:5000/api/experts/${id}`);
-        console.log("Extracted expertId:", id);
+      const expertResponse = await fetch(
+        `http://localhost:5000/api/experts/${id}`
+      );
+      console.log("Extracted expertId:", id);
 
       if (!expertResponse.ok) {
-        throw new Error('Network response for expert was not ok');
+        throw new Error("Network response for expert was not ok");
       }
       return expertResponse.json();
     };
 
     const fetchReviewsData = async (email) => {
-      const reviewsResponse = await fetch(`http://localhost:5000/api/experts/reviews/${email}`);
+      const reviewsResponse = await fetch(
+        `http://localhost:5000/api/experts/reviews/${email}`
+      );
       if (!reviewsResponse.ok) {
-        throw new Error('Network response for reviews was not ok');
+        throw new Error("Network response for reviews was not ok");
       }
       return reviewsResponse.json();
     };
@@ -62,36 +66,35 @@ const ExpertDetails = () => {
     return <p>Loading expert data...</p>;
   }
 
-//   useEffect(() => {
-//     const fetchExpertAndReviews = async () => {
-//       try {
-//         const apiUrl = `http://localhost:5000/api/experts/${expertId}`;
-//         const expertResponse = await fetch(apiUrl);
-  
-//         if (!expertResponse.ok) {
-//           throw new Error('Network response was not ok');
-//         }
-  
-//         const expertData = await expertResponse.json();
-  
-//         const reviewsResponse = await fetch(`http://localhost:5000/api/experts/reviews/${expertId}`);
-  
-//         if (!reviewsResponse.ok) {
-//           throw new Error('Network response for reviews was not ok');
-//         }
-  
-//         const reviewsData = await reviewsResponse.json();
-  
-//         expertData.reviews = reviewsData;
-//         setExpert(expertData);
-//       } catch (error) {
-//         console.error('Error fetching expert and reviews:', error);
-//       }
-//     };
-  
-//     fetchExpertAndReviews();
-//   }, [expertId]);
-  
+  //   useEffect(() => {
+  //     const fetchExpertAndReviews = async () => {
+  //       try {
+  //         const apiUrl = `http://localhost:5000/api/experts/${expertId}`;
+  //         const expertResponse = await fetch(apiUrl);
+
+  //         if (!expertResponse.ok) {
+  //           throw new Error('Network response was not ok');
+  //         }
+
+  //         const expertData = await expertResponse.json();
+
+  //         const reviewsResponse = await fetch(`http://localhost:5000/api/experts/reviews/${expertId}`);
+
+  //         if (!reviewsResponse.ok) {
+  //           throw new Error('Network response for reviews was not ok');
+  //         }
+
+  //         const reviewsData = await reviewsResponse.json();
+
+  //         expertData.reviews = reviewsData;
+  //         setExpert(expertData);
+  //       } catch (error) {
+  //         console.error('Error fetching expert and reviews:', error);
+  //       }
+  //     };
+
+  //     fetchExpertAndReviews();
+  //   }, [expertId]);
 
   const handleBookMeeting = () => {
     // Add the logic for booking a meeting with the expert
@@ -112,7 +115,9 @@ const ExpertDetails = () => {
           <button className="text-sm">University Ranking</button>
           <button className="text-sm">Merit Trends</button>
           <button className="text-sm">Expert Consultation</button>
-          <button className="text-black px-4 py-1 rounded-full border border-black">Umama</button>
+          <button className="text-black px-4 py-1 rounded-full border border-black">
+            Umama
+          </button>
         </div>
       </div>
 
@@ -127,7 +132,7 @@ const ExpertDetails = () => {
           </div>
           <div className="flex justify-between w-full mb-3">
             <strong>Languages:</strong>
-            <span>{expert.languages.join(', ')}</span>
+            <span>{expert.languages.join(", ")}</span>
           </div>
           <div className="flex justify-between w-full mb-3">
             <strong>Email:</strong>
@@ -199,7 +204,11 @@ const ExpertDetails = () => {
           </div>
           <button
             className="text-black bg-[#B2A1FE] px-4 py-1 rounded-full border border-black mt-2 transition duration-300 hover:bg-[#000000] hover:text-white"
-            onClick={handleBookMeeting}
+            onClick={() =>
+              navigate(`/meeting/${expert.userName}`, {
+                state: { calendlyLink: expert.calendlyLink },
+              })
+            }
           >
             Book a Meeting
           </button>

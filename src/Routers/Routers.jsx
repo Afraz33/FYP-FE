@@ -8,7 +8,7 @@ import ExpertDetails from "../expertPanel/pages/user/ExpertDetails";
 import ExpertLandingPage from "../expertPanel/pages/ExpertLandingPage/ExpertLandingPage";
 import Calendar from "../expertPanel/pages/CalendarPage/CalendarPage";
 import LandingPage2 from "../expertPanel/pages/LandingPage/LandingPage2";
-
+import MeetingPage from "../expertPanel/pages/MeetingPage/MeetingPage";
 function Routers() {
   return (
     <Routes>
@@ -23,6 +23,7 @@ function Routers() {
 
       <Route path="/expert-panel" element={<ExpertLandingPage />}></Route>
       <Route path="/expert-panel/calendar" element={<Calendar />}></Route>
+      <Route path="/meeting/:userName" element={<MeetingPage />} />
     </Routes>
   );
 }
