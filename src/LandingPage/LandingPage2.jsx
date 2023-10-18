@@ -93,7 +93,7 @@ const LandingPage = () => {
         </nav> */}
 
         <div className="bg-[#F1F0F4] p-4 px-10 shadow-md rounded-full flex justify-between items-center w-[95%] mx-auto">
-          <span className="font-bold text-3xl font-Onest">PaiSHA</span>
+          <span className="font-semibold text-3xl font-Onest">PaiSHA</span>
 
           <div className="flex gap-4">
             <button className="bg-black text-white rounded-full px-4 text-lg py-2 w-20 hover:bg-[#F1F0F4] hover:text-black font-Onest">
