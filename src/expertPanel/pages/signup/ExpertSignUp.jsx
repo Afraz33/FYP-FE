@@ -23,11 +23,17 @@ function ExpertSignUp() {
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [calendlyLink, setCalendlyLink] = useState("");
   const handleSignUpPageChange = () => {
     setSignUpPage((prevValue) => !prevValue);
   };
 
   // Create handler functions to update state when input values change
+
+  const handleCalendlyLinkChange = (event) => {
+    setCalendlyLink(event.target.value);
+  };
+
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
   };
@@ -106,6 +112,7 @@ function ExpertSignUp() {
       city,
       languages,
       hourlyRate,
+      calendlyLink,
     };
 
     try {
@@ -142,6 +149,7 @@ function ExpertSignUp() {
           phone={phone}
           gender={gender}
           password={password}
+          calendlyLink={calendlyLink}
           confirmPassword={confirmPassword}
           handleFirstNameChange={handleFirstNameChange}
           handleLastNameChange={handleLastNameChange}
@@ -151,6 +159,7 @@ function ExpertSignUp() {
           handleGenderChange={handleGenderChange}
           handlePasswordChange={handlePasswordChange}
           handleConfirmPasswordChange={handleConfirmPasswordChange}
+          handleCalendlyLinkChange={handleCalendlyLinkChange}
         />
       ) : (
         <ExpertRegisteration
@@ -187,7 +196,7 @@ function ExpertSignUp() {
           addLanguage={addLanguage}
           addSkills={addSkills}
           registerExpert={registerExpert}
-          handleExpertiseChange = {handleExpertiseChange}
+          handleExpertiseChange={handleExpertiseChange}
         />
       )}
     </div>
