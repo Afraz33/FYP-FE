@@ -6,32 +6,42 @@
         import React, { useEffect, useState } from "react";
         import { useNavigate, Link } from "react-router-dom";
         import profile from "../../assets/images/profile.jpg";
-        import { useLocation } from 'react-router-dom';
+        import { useLocation } from "react-router-dom";
         
         const SearchExperts = () => {
           const navigate = useNavigate();
           const [experts, setExperts] = useState([]);
           const location = useLocation();
           const searchParams = new URLSearchParams(location.search);
-          const searchQuery = searchParams.get('query');
-          
+          const searchQuery = searchParams.get("query");
+        
           useEffect(() => {
             const fetchExpertsAndReviews = async () => {
               try {
-                const expertsResponse = await fetch(`http://localhost:5000/api/experts?sort=sentimentScore`);
-                const expertsData = await expertsResponse.json();
-        
-                // Fetch reviews for each expert and update the expert's data
-                const expertsWithReviews = await Promise.all(
-                  expertsData.map(async (expert) => {
-                    const reviewsResponse = await fetch(`http://localhost:5000/api/experts/reviews/${expert.email}`);
-                    const reviewsData = await reviewsResponse.json();
-                    expert.reviews = reviewsData;
-                    return expert;
-                  })
+                // Fetch experts sorted by 'sentimentScore'
+                const expertsResponse = await fetch(
+                  `http://localhost:5000/api/experts/sort-by-sentiment`
                 );
+                if (expertsResponse.ok) {
+                  const expertsData = await expertsResponse.json();
         
-                setExperts(expertsWithReviews);
+                  // Fetch reviews for each expert and update the expert's data
+                  const expertsWithReviews = await Promise.all(
+                    expertsData.map(async (expert) => {
+                      const reviewsResponse = await fetch(
+                        `http://localhost:5000/api/experts/reviews/${expert.email}`
+                      );
+                      const reviewsData = await reviewsResponse.json();
+                      expert.reviews = reviewsData;
+                      return expert;
+                    })
+                  );
+        
+                  setExperts(expertsWithReviews);
+                } else {
+                  // Handle non-OK response (e.g., 404 or 500 error)
+                  console.error("API request failed:", expertsResponse.status);
+                }
               } catch (error) {
                 console.error("Error fetching data:", error);
               }
@@ -63,10 +73,18 @@
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
                 {experts.length > 0 ? (
                   experts.map((expert) => (
-                    <Link to={`/profile/${expert._id}`} className="text-decoration-none" key={expert._id}>
+                    <Link
+                      to={`/profile/${expert._id}`}
+                      className="text-decoration-none"
+                      key={expert._id}
+                    >
                       <div className="bg-[#efecfd] border border-black rounded-3xl shadow-md p-4 w-80 mb-6 hover:bg-[#c4bcf8] transition duration-300 hover:text-white">
                         <div className="flex items-center space-x-4 mb-4">
-                          <img src={profile} alt="Expert" className="h-16 w-16 rounded-full" />
+                          <img
+                            src={profile}
+                            alt="Expert"
+                            className="h-16 w-16 rounded-full"
+                          />
                           <div className="text-xl font-semibold">{expert.firstName}</div>
                         </div>
                         <div className="text-gray-600 mb-2">
