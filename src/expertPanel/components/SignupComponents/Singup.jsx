@@ -24,23 +24,23 @@ export default function SignUp({
 }) {
   return (
     <div className="min-h-screen  flex justify-center items-center bg-[#FFD666]  mt-0 py-5">
-      <div className="bg-white p-8 rounded shadow-xl w-2/4">
+      <div className="bg-white p-8  shadow-xl w-2/4 rounded-3xl border-black border">
         <div className="flex justify-center items-center mb-2">
-          <div className="bg-[#FFD666] w-20 h-20 rounded-full flex justify-center items-center">
+          {/* <div className="bg-[#FFD666] w-20 h-20 rounded-full flex justify-center items-center">
             <img src={profile_icon} alt="profile_icon"></img>
-          </div>
+          </div> */}
         </div>
-        <h2 className="text-2xl font-semibold text-center mb-4">
+        <h2 className="text-2xl font-bold text-center mb-4 font-Onest ">
           Your Profile
         </h2>
 
         <form>
           <div className="mb-4">
             <label
-              className="block text-sm font-medium mb-2"
+              className="block text-sm  mb-2 font-Onest font-semibold"
               htmlFor="first-name"
             >
-              First Name *
+              First Name 
             </label>
             <input
               className="w-full p-2 border rounded"
@@ -53,10 +53,10 @@ export default function SignUp({
 
           <div className="mb-4">
             <label
-              className="block text-sm font-medium mb-2"
+              className="block text-sm  mb-2 font-Onest font-semibold"
               htmlFor="last-name"
             >
-              Last Name *
+              Last Name 
             </label>
             <input
               className="w-full p-2 border rounded"
@@ -69,10 +69,10 @@ export default function SignUp({
 
           <div className="mb-4">
             <label
-              className="block text-sm font-medium mb-2"
+              className=" font-Onest font-semibold block text-sm  mb-2"
               htmlFor="user-name"
             >
-              User Name*
+              User Name
             </label>
             <input
               className="w-full p-2 border rounded"
@@ -84,8 +84,8 @@ export default function SignUp({
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor="email">
-              Email *
+            <label className="block text-sm font-Onest font-semibold mb-2" htmlFor="email">
+              Email 
             </label>
             <input
               className="w-full p-2 border rounded"
@@ -97,8 +97,8 @@ export default function SignUp({
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor="phone">
-              Phone Number *
+            <label className="block text-sm font-Onest font-semibold mb-2" htmlFor="phone">
+              Phone Number 
             </label>
             <input
               className="w-full p-2 border rounded"
@@ -110,8 +110,8 @@ export default function SignUp({
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor="gender">
-              Gender *
+            <label className="block text-sm font-Onest font-semibold mb-2" htmlFor="gender">
+              Gender 
             </label>
             <div className="space-x-4">
               <label className="inline-flex items-center">
@@ -123,7 +123,7 @@ export default function SignUp({
                   checked={gender === "Male"} // Check if gender is "Male"
                   onChange={handleGenderChange}
                 />
-                <span className="ml-2">Male</span>
+                <span className="ml-2 font-Onest font-medium">Male</span>
               </label>
               <label className="inline-flex items-center">
                 <input
@@ -134,7 +134,7 @@ export default function SignUp({
                   checked={gender === "Female"} // Check if gender is "Female"
                   onChange={handleGenderChange}
                 />
-                <span className="ml-2">Female</span>
+                <span className="ml-2 font-Onest font-medium">Female</span>
               </label>
               <label className="inline-flex items-center">
                 <input
@@ -145,13 +145,13 @@ export default function SignUp({
                   checked={gender === "Other"} // Check if gender is "Other"
                   onChange={handleGenderChange}
                 />
-                <span className="ml-2">Other</span>
+                <span className="ml-2 font-Onest font-medium">Other</span>
               </label>
             </div>
           </div>
           <div className="mb-4">
             <label
-              className="block text-sm font-medium mb-2"
+              className="block text-sm font-Onest font-semibold mb-2"
               htmlFor="last-name"
             >
               Calendly Link
@@ -167,10 +167,10 @@ export default function SignUp({
           </div>
           <div className="mb-4">
             <label
-              className="block text-sm font-medium mb-2"
+              className="block text-sm font-Onest font-semibold mb-2"
               htmlFor="password"
             >
-              Password *
+              Password 
             </label>
             <input
               className="w-full p-2 border rounded"
@@ -183,10 +183,10 @@ export default function SignUp({
 
           <div className="mb-4">
             <label
-              className="block text-sm font-medium mb-2"
+              className="block text-sm font-Onest font-semibold mb-2"
               htmlFor="confirm-password"
             >
-              Confirm Password *
+              Confirm Password 
             </label>
             <input
               className="w-full p-2 border rounded"
@@ -199,7 +199,7 @@ export default function SignUp({
 
           <div className="flex justify-center mt-6">
             <button
-              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              className="bg-[#222222] text-white py-2 px-4 rounded-xl font-Onest hover:bg-white hover:text-black transition duration-300 ease-in-out hover:border-black border"
               type="submit"
               onClick={handleSignUpPageChange}
             >

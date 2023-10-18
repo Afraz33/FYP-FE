@@ -51,9 +51,10 @@ const NormalUserSignUp = () => {
     }
 
     return (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }} className='bg-[#FFD666]'>
     <div className="bg-white p-8 rounded-3xl border-black border text-center">
         <div>
-            <h2 className="text-base font-bold mb-4 font-DelaGothicOne">
+            <h2 className="text-base font-bold mb-4 font-Onest">
                 Please enter your details to Sign up as a User
             </h2>
            
@@ -124,6 +125,7 @@ const NormalUserSignUp = () => {
                 Already have an account? <Link to="/login">Login</Link>
             </p>
         </div>
+    </div>
     </div>
     )
 }
