@@ -2,7 +2,9 @@ import React from "react";
 import { useState } from "react";
 import profile_icon from "../../assets/images/profile_icon.png";
 export default function SignUp({
+  handleCalendlyLinkChange,
   handleSignUpPageChange,
+  calendlyLink,
   firstName,
   lastName,
   userName,
@@ -147,7 +149,22 @@ export default function SignUp({
               </label>
             </div>
           </div>
-
+          <div className="mb-4">
+            <label
+              className="block text-sm font-medium mb-2"
+              htmlFor="last-name"
+            >
+              Calendly Link
+            </label>
+            <input
+              required
+              className="w-full p-2 border rounded"
+              type="text"
+              id="last-name"
+              value={calendlyLink}
+              onChange={handleCalendlyLinkChange}
+            />
+          </div>
           <div className="mb-4">
             <label
               className="block text-sm font-medium mb-2"
