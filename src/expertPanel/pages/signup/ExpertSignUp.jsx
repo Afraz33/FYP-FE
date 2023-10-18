@@ -15,15 +15,16 @@ function ExpertSignUp() {
   const [city, setCity] = useState("");
   const [languages, setLanguages] = useState([]);
   const [hourlyRate, setHourlyRate] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [gender, setGender] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [calendlyLink, setCalendlyLink] = useState("");
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [userName, setUserName] = useState();
+  const [email, setEmail] = useState();
+  const [phone, setPhone] = useState();
+  const [gender, setGender] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [calendlyLink, setCalendlyLink] = useState();
+  const [emailInUse, setEmailInUse] = useState(false);
   const handleSignUpPageChange = () => {
     setSignUpPage((prevValue) => !prevValue);
   };
@@ -124,6 +125,9 @@ function ExpertSignUp() {
       if (response.status === 200) {
         console.log("Yes");
         window.location.href = "/";
+      } else if (response.status === 230) {
+        console.log(400);
+        setEmailInUse(true);
       }
 
       // Handle successful registration (e.g., redirect, show message, etc.)
@@ -163,6 +167,7 @@ function ExpertSignUp() {
         />
       ) : (
         <ExpertRegisteration
+          emailInUse={emailInUse}
           description={description}
           expertise={expertise}
           highestQualification={highestQualification}
