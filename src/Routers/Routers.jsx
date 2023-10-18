@@ -7,7 +7,7 @@ import SearchPage from "../expertPanel/pages/user/searchExperts";
 import ExpertDetails from "../expertPanel/pages/user/ExpertDetails";
 import ExpertLandingPage from "../expertPanel/pages/ExpertLandingPage/ExpertLandingPage";
 import Calendar from "../expertPanel/pages/CalendarPage/CalendarPage";
-import LandingPage2 from "../expertPanel/pages/LandingPage/LandingPage2";
+import LandingPage2 from "../LandingPage/LandingPage2";
 import MeetingPage from "../expertPanel/pages/MeetingPage/MeetingPage";
 function Routers() {
   return (

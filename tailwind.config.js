@@ -5,7 +5,8 @@ module.exports = {
     
     extend: {
       fontFamily:{
-        DelaGothicOne:['Dela Gothic One', 'cursive']
+        DelaGothicOne:['Dela Gothic One', 'cursive'],
+        Onest:[ 'Onest', 'cursive'],
       },
       backgroundColor: {
         'FD9841': '#FD9841',
@@ -22,6 +23,19 @@ module.exports = {
       '4xl': '2.441rem',
       '5xl': '3.052rem',
     
+  },
+  theme: {
+    extend: {
+      keyframes: {
+        slideUp: {
+          '0%': { transform: 'translateY(30px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' }
+        },
+      },
+      animation: {
+        slideUp: 'slideUp 0.3s forwards',
+      },
+    },
   },
 },
   plugins: [],
