@@ -105,11 +105,11 @@ const ExpertDetails = () => {
   }
 
   return (
-    <div className="p-10 bg-[#c4bcf8] h-screen items-center flex flex-col font-DelaGothicOne">
+    <div className="p-10 bg-white h-screen items-center flex flex-col font-DelaGothicOne">
       {/* Navbar */}
-      <div className="bg-white rounded-full border border-black w-full max-w-screen-xl px-4 py-2 mt-0 mb-2 flex items-center justify-between">
-        <div className="text-xl font-bold">PaiSHA</div>
-        <div className="flex space-x-8">
+      <div className="bg-white rounded-full border-2 border-black w-full max-w-screen-xl px-4 py-2 mt-0 mb-2 flex items-center justify-between">
+        <div className="text-xl font-bold font-Onest">PaiSHA</div>
+        {/* <div className="flex space-x-8">
           <button className="text-sm">Explore Universities</button>
           <button className="text-sm">Career Advisor</button>
           <button className="text-sm">University Ranking</button>
@@ -118,58 +118,58 @@ const ExpertDetails = () => {
           <button className="text-black px-4 py-1 rounded-full border border-black">
             Umama
           </button>
-        </div>
+        </div> */}
       </div>
 
-      <div className="p-10 rounded-xl flex space-x-10 shadow-md mx-auto mt-4 items-start">
+      <div className=" bg-[#B2A1FE] p-10 rounded-xl flex space-x-10 shadow-md mx-auto mt-4 items-start border-2 border-black">
         {/* Left Section */}
-        <div className="bg-white flex-none rounded-2xl w-1/4 mt-4 border border-black p-4 flex flex-col items-center">
-          <div className="w-full text-center mb-2">{expert.firstName}</div>
+        <div className="bg-white flex-none rounded-2xl w-1/4 mt-4 border-2 border-black p-4 flex flex-col items-center">
+          <div className="w-full text-center mb-2 font-Onest font-extrabold">{expert.firstName}</div>
           {/* Display other expert details here using the same format */}
           <div className="flex justify-between w-full mb-3">
-            <strong>City:</strong>
-            <span>{expert.city}</span>
+            <strong className="font-Onest">City:</strong>
+            <span className="font-Onest">{expert.city}</span>
           </div>
           <div className="flex justify-between w-full mb-3">
-            <strong>Languages:</strong>
-            <span>{expert.languages.join(", ")}</span>
+            <strong className="font-Onest">Languages:</strong>
+            <span className="font-Onest">{expert.languages.join(", ")}</span>
           </div>
           <div className="flex justify-between w-full mb-3">
-            <strong>Email:</strong>
-            <span>{expert.email}</span>
+            <strong className="font-Onest">Email:</strong>
+            <span className="font-Onest">{expert.email}</span>
           </div>
           <div className="flex justify-between w-full mb-3">
-            <strong>Area of expertise:</strong>
-            <span>{expert.expertise}</span>
+            <strong className="font-Onest">Area of expertise:</strong>
+            <span className="font-Onest">{expert.expertise}</span>
           </div>
           <div className="flex justify-between w-full mb-3">
-            <strong>Highest Qualification:</strong>
-            <span>{expert.highestQualification}</span>
+            <strong className="font-Onest">Highest Qualification:</strong>
+            <span className="font-Onest">{expert.highestQualification}</span>
           </div>
           <div className="flex justify-between w-full mb-3">
-            <strong>Current Role:</strong>
-            <span>{expert.currentRole}</span>
+            <strong className="font-Onest">Current Role:</strong>
+            <span className="font-Onest">{expert.currentRole}</span>
           </div>
         </div>
 
         {/* Middle Section */}
         <div className="flex-grow space-y-6">
-          <div className="bg-white mt-4 rounded-2xl p-4 border border-black">
-            <strong>Description:</strong>
-            <p>{expert.description}</p>
+          <div className="bg-white mt-4 rounded-2xl p-4 border-2 border-black">
+            <strong className="font-Onest">Description:</strong>
+            <p className="font-Onest">{expert.description}</p>
           </div>
           <div className="flex space-x-4 mt-4">
             {/* Certification Section */}
-            <div className="bg-white w-1/2 rounded-2xl p-4 border border-black">
-              <strong>Certification:</strong>
+            <div className="bg-white w-1/2 rounded-2xl p-4 border-2 border-black">
+              <strong className="font-Onest">Certification:</strong>
               {expert.certifications.map((certification, index) => (
-                <p key={index}>{certification}</p>
+                <p className="font-Onest" key={index}>{certification}</p>
               ))}
             </div>
             {/* Skills Section */}
-            <div className="bg-white w-1/2 rounded-2xl p-4 border border-black">
-              <strong>Skills:</strong>
-              <ul>
+            <div className="bg-white w-1/2 rounded-2xl p-4 border-2 border-black">
+              <strong className="font-Onest">Skills:</strong>
+              <ul className="font-Onest">
                 {expert.skills.map((skill, index) => (
                   <li key={index}>{skill}</li>
                 ))}
@@ -177,21 +177,21 @@ const ExpertDetails = () => {
             </div>
           </div>
           {/* Experience Section */}
-          <div className="bg-white mt-4 rounded-2xl p-4 border border-black">
-            <strong>Experience:</strong>
-            <ul>
+          <div className="bg-white mt-4 rounded-2xl p-4 border-2 border-black">
+            <strong className="font-Onest">Experience:</strong>
+            <ul className="font-Onest">
               {expert.experience.map((experience, index) => (
                 <li key={index}>{experience}</li>
               ))}
             </ul>
           </div>
           {/* Reviews Section */}
-          <div className="bg-white mt-4 rounded-2xl p-4 border border-black">
-            <strong>Reviews:</strong>
+          <div className="bg-white mt-4 rounded-2xl p-4 border-2 border-black">
+            <strong className="font-Onest">Reviews:</strong>
             {Array.isArray(expert.reviews) && expert.reviews.length > 0 ? (
               expert.reviews.map((review, index) => (
-                <div key={index}>
-                  <strong>{review.userEmail}:</strong> {review.comment}
+                <div className="font-Onest" key={index}>
+                  <strong className="font-Onest">{review.userEmail}:</strong> {review.comment}
                 </div>
               ))
             ) : (
@@ -199,7 +199,7 @@ const ExpertDetails = () => {
             )}
           </div>
           <button
-            className="text-black bg-[#B2A1FE] px-4 py-1 rounded-full border border-black mt-2 transition duration-300 hover:bg-[#000000] hover:text-white"
+            className="text-white bg-black px-4 py-1 rounded-full border border-black mt-2 transition duration-300 hover:bg-white hover:text-black hover:border-black font-Onest hover:border-2"
             onClick={() =>
               navigate(`/meeting/${expert.userName}`, {
                 state: { calendlyLink: expert.calendlyLink },

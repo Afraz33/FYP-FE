@@ -54,11 +54,11 @@ const SearchExperts = () => {
   }, []);
 
   return (
-    <div className="bg-[#B2A1FE] items-center min-h-screen flex flex-col font-DelaGothicOne">
+    <div className="bg-white items-center min-h-screen flex flex-col font-DelaGothicOne">
       {/* Navbar */}
-      <div className="bg-white rounded-full border border-black w-full max-w-screen-xl px-4 py-2 mt-5 mb-2 flex items-center justify-between">
-        <div className="text-xl font-bold">PaiSHA</div>
-        <div className="flex space-x-8">
+      <div className="bg-white rounded-full border-2 border-black w-full  max-w-screen-xl px-4 py-2 mt-5 mb-24 flex items-center justify-between">
+        <div className="text-xl font-bold font-Onest">PaiSHA</div>
+        {/* <div className="flex space-x-8">
           <button className="text-sm">Explore Universities</button>
           <button className="text-sm">Career Advisor</button>
           <button className="text-sm">University Ranking</button>
@@ -67,7 +67,7 @@ const SearchExperts = () => {
           <button className=" text-black px-4 py-1 rounded-full border border-black">
             Umama
           </button>
-        </div>
+        </div> */}
       </div>
       {!noExperts ? (
         <div>
@@ -83,29 +83,29 @@ const SearchExperts = () => {
                   className="text-decoration-none"
                   key={expert._id}
                 >
-                  <div className="bg-[#efecfd] border border-black rounded-3xl shadow-md p-4 w-80 mb-6 hover:bg-[#c4bcf8] transition duration-300 hover:text-white">
+                  <div className="bg-[#efecfd] border-2 border-black rounded-3xl shadow-md p-4 w-80 mb-6 hover:bg-[#c4bcf8] transition duration-300 hover:text-white">
                     <div className="flex items-center space-x-4 mb-4">
-                      <img
+                      {/* <img
                         src={profile}
                         alt="Expert"
                         className="h-16 w-16 rounded-full"
-                      />
-                      <div className="text-xl font-semibold">
+                      /> */}
+                      <div className="text-xl font-DelaGothicOne">
                         {expert.firstName}
                       </div>
                     </div>
                     <div className="text-gray-600 mb-2">
-                      <div className="text-sm">{expert.description}</div>
+                      <div className="text-lg font-Onest">{expert.description}</div>
                     </div>
                     <div className="text-gray-600 mb-2">
-                      <div className="font-bold">Reviews :</div>
-                      {expert.reviews ? expert.reviews.length : 0}
+                      <div className="font-DelaGothicOne">Reviews :</div>
+                      <div className="text-lg font-Onest">{expert.reviews ? expert.reviews.length : 0}</div>
                     </div>
                     <div className="text-gray-600">
-                      <div className="font-bold">Hourly Rate:</div>
-                      {expert.hourlyRate}
+                      <div className="font-DelaGothicOne">Hourly Rate:</div>
+                      <div className="text-lg font-Onest">{expert.hourlyRate}</div>
                     </div>
-                    <button className="text-black bg-[#B2A1FE] px-4 py-1 rounded-full border border-black mt-2 transition duration-300 hover-bg-[#000000] hover:text-white">
+                    <button className="text-white bg-[#222222] px-4 py-1 rounded-full border-2 border-black mt-2 transition duration-300 hover-bg-[#000000] hover:text-white font-Onest">
                       Book a Meeting
                     </button>
                   </div>

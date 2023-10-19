@@ -84,36 +84,7 @@ const LandingPage = () => {
   return (
     <div className=" min-h-screen p-10">
       <header className="flex justify-between items-center mb-10">
-        {/* <div className="text-2xl font-bold">Sample</div> */}
-        {/* <nav>
-          <ul className="flex space-x-4">
-            <li>
-              <a href="#" className="text-gray-700 hover:text-gray-900">
-                Explore Universities
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-700 hover:text-gray-900">
-                Career Advisor
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-700 hover:text-gray-900">
-                Merit Trends
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-700 hover:text-gray-900">
-                Expert Consultation
-              </a>
-            </li>
-            <li>
-              <button className="bg-blue-500 text-white px-5 py-2 rounded">
-                Sign Up
-              </button>
-            </li>
-          </ul>
-        </nav> */}
+       
 
         <div className="bg-[#F1F0F4] p-4 px-10 shadow-md rounded-full flex justify-between items-center w-[95%] mx-auto">
           <span className="font-semibold text-3xl font-Onest">PaiSHA</span>
