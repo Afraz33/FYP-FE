@@ -61,27 +61,25 @@ export default function Registeration({
       !currentRole
     ) {
       setErrorMessage(true);
-      // You can show an error message or take some other action here
+      
     } else {
-      // Call the submit function if all required fields are filled
+      
       registerExpert();
     }
   };
   return (
     <div className="min-h-screen  flex justify-center items-center bg-[#FFD666]  mt-0  ">
-      <div className="p-6 bg-white w-full max-w-2xl mx-auto mt-8 mb-8 shadow-md rounded-md">
+      <div className="p-6 bg-white w-full max-w-2xl mx-auto mt-8 mb-8 shadow-md rounded-3xl border-black border-2">
         <div className="flex justify-center items-center mb-2">
-          <div className="bg-[#FFD666] w-20 h-20 rounded-full flex justify-center items-center">
-            <img src={registeration} alt="registeration"></img>
-          </div>
+          
         </div>
-        <h2 className="text-2xl font-semibold text-center mb-4">
-          Registeration Details
+        <h2 className="text-2xl  text-center mb-4 font-Onest font-semibold">
+        Registration Details
         </h2>
 
         <div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-Onest font-semibold mb-2">
               Description
             </label>
             <textarea
@@ -95,7 +93,7 @@ export default function Registeration({
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-Onest font-semibold mb-2">
               Area of Expertise
             </label>
             <input
@@ -109,7 +107,7 @@ export default function Registeration({
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Skills</label>
+            <label className="block text-sm font-Onest font-semibold mb-2">Skills</label>
             {skills.map((q, index) => (
               <input
                 key={index}
@@ -124,14 +122,14 @@ export default function Registeration({
               />
             ))}
             <button
-              className="mt-2 p-1 w-10  bg-[#FFD666] hover:bg-black text-white rounded"
+              className="mt-2 p-1 w-10  bg-[#222222] hover:bg-white text-white hover:text-black rounded hover:border-black border"
               onClick={addSkills}
             >
               +
             </button>
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Languages</label>
+            <label className="block text-sm font-Onest font-semibold mb-2">Languages</label>
             {languages.map((q, index) => (
               <input
                 required
@@ -147,14 +145,14 @@ export default function Registeration({
               />
             ))}
             <button
-              className="mt-2 p-1 w-10  bg-[#FFD666] hover:bg-black text-white rounded"
+              className="mt-2 p-1 w-10  bg-[#222222] hover:bg-white text-white hover:text-black rounded hover:border-black border"
               onClick={addLanguage}
             >
               +
             </button>
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-Onest font-semibold mb-2">
               Certifications
             </label>
             {certifications.map((q, index) => (
@@ -172,14 +170,14 @@ export default function Registeration({
               />
             ))}
             <button
-              className="mt-2 p-1 w-10  bg-[#FFD666] hover:bg-black text-white rounded"
+              className="mt-2 p-1 w-10  bg-[#222222] hover:bg-white text-white hover:text-black rounded hover:border-black border"
               onClick={addCertifications}
             >
               +
             </button>
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Experience</label>
+            <label className="block text-sm font-Onest font-semibold mb-2">Experience</label>
             {experience.map((q, index) => (
               <input
                 required
@@ -195,14 +193,14 @@ export default function Registeration({
               />
             ))}
             <button
-              className="mt-2 p-1 w-10  bg-[#FFD666] hover:bg-black text-white rounded"
+              className="mt-2 p-1 w-10  bg-[#222222] hover:bg-white text-white hover:text-black rounded hover:border-black border"
               onClick={addExperience}
             >
               +
             </button>
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-Onest font-semibold mb-2">
               Highest Qualification
             </label>
             <input
@@ -216,10 +214,10 @@ export default function Registeration({
             />
           </div>
         </div>
-        {/* You can replicate the above structure for 'Education', 'Skills', 'Experience', 'Certification', 'Languages' array fields. */}
+        
         <div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-Onest font-semibold mb-2">
               Current Role
             </label>
             <input
@@ -234,7 +232,7 @@ export default function Registeration({
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">City</label>
+            <label className="block text-sm font-Onest font-semibold mb-2">City</label>
             <input
               required
               type="text"
@@ -247,7 +245,7 @@ export default function Registeration({
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-Onest font-semibold mb-2">
               Hourly Rate
             </label>
             <input
@@ -265,12 +263,12 @@ export default function Registeration({
         <div className="flex justify-between px-10">
           <button
             onClick={handleSignUpPageChange}
-            className="p-2 w-20 bg-blue-500 text-white rounded"
+            className="bg-[#222222] text-white py-2 px-4 rounded-xl font-Onest hover:bg-white hover:text-black transition duration-300 ease-in-out hover:border-black border"
           >
             Back
           </button>
           <button
-            className="p-2 w-20  bg-blue-500 text-white rounded"
+            className="bg-[#222222] text-white py-2 px-4 rounded-xl font-Onest hover:bg-white hover:text-black transition duration-300 ease-in-out hover:border-black border"
             onClick={handleSubmit}
           >
             Submit

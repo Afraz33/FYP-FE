@@ -33,16 +33,12 @@ export default function ExpertLogin() {
   };
   return (
     <div className="h-screen w-screen flex justify-center mt-20 bg-[#B2A1FE] ">
-      <div className="bg-white w-96 h-2/3 rounded-xl shadow-xl flex flex-col items-center justify-center p-8">
+      <div className="bg-white w-96 h-2/3  shadow-xl flex flex-col items-center justify-center p-8 rounded-3xl border-2 border-black">
         {/* Icon */}
-        <div className="bg-red-500 w-20 h-20 rounded-full mb-6 flex items-center justify-center">
-          <div className="bg-[#B2A1FE] w-14 h-14 rounded-full flex items-center justify-center">
-            <span className="text-white text-2xl font-semibold">👤</span>
-          </div>
-        </div>
+       
 
         {/* Title */}
-        <h2 className="text-2xl font-semibold mb-6">Welcome!</h2>
+        <h2 className="text-2xl font-semibold mb-6 font-Onest">Welcome!</h2>
 
         {/* Username Input */}
         <div className="mb-4 w-full flex items-center border rounded-md border-gray-300 p-2">
@@ -52,7 +48,7 @@ export default function ExpertLogin() {
             placeholder="Username/email"
             value={email}
             onChange={handleEmailChange}
-            className="flex-grow outline-none"
+            className="flex-grow outline-none font-Onest"
           />
         </div>
 
@@ -64,20 +60,20 @@ export default function ExpertLogin() {
             value={password}
             onChange={handlePasswordChange}
             placeholder="Password"
-            className="flex-grow outline-none"
+            className="flex-grow outline-none font-Onest"
           />
         </div>
 
         {/* Login Button */}
         <button
           onClick={handleLogin}
-          className="bg-[#B2A1FE] hover:bg-black text-white rounded-md px-6 py-2 mb-4 border border-red-500"
+          className="bg-black text-white px-4 py-2 rounded-2xl my-4 font-Onest hover:bg-white hover:text-black transition duration-300 ease-in-out hover:border-black border"
         >
           LOGIN
         </button>
 
         {/* Forgot Password */}
-        <a href="#" className="text-sm text-gray-400 underline">
+        <a href="#" className="text-sm text-gray-400 underline font-Onest">
           Forgot my password?
         </a>
       </div>

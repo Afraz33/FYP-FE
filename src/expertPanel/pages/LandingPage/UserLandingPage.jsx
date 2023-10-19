@@ -10,31 +10,20 @@ const UserLandingPage = () => {
   };
 
   return (
-    <div className="bg-[#B2A1FE] items-center min-h-screen flex flex-col font-DelaGothicOne">
+    <div className="bg-[#B2A1FE] items-center min-h-screen flex flex-col ">
       {/* Navbar */}
-      <div className="bg-white rounded-full border border-black w-full max-w-screen-xl px-4 py-2 mt-6 mb-2 flex items-center justify-between">
-        <div className="text-xl font-bold">PaiSHA</div>
-        <div className="flex space-x-8">
-          <button className="text-sm">Explore Universities</button>
-          <button className="text-sm">Career Advisor</button>
-          <button className="text-sm">University Ranking</button>
-          <button className="text-sm">Merit Trends</button>
-          <button className="text-sm">Expert Consultation</button>
-          <button className=" text-black px-4 py-1 rounded-full border border-black">
-            Umama
-          </button>
-        </div>
+      <div className="bg-white rounded-full border-2 border-black w-full max-w-screen-xl px-4 py-2 mt-6 mb-2 flex items-center justify-between">
+        <div className="text-xl font-bold font-Onest">PaiSHA</div>
+        
       </div>
 
       {/* Centered content */}
       <div className="flex-grow flex flex-col items-center justify-center">
-        <div className="text-3xl font-bold mb-9">
-          Find the best experts for your consultation
-        </div>
-        <div className="text-xl mb-8">with just some clicks</div>
-        <div className="relative w-full mb-6">
+        <div className="text-3xl  mb-3 font-DelaGothicOne">Find the best experts for your consultation</div>
+        <div className="text-3xl mb-8 font-DelaGothicOne">with just some clicks</div>
+        <div className="relative w-full mb-6 ">
           <input
-            className="border border-black rounded-full w-full py-2 px-3"
+            className="border-2 border-black rounded-full w-full py-2 px-3 font-Onest"
             type="text"
             placeholder="Search..."
             value={searchQuery}
@@ -61,16 +50,10 @@ const UserLandingPage = () => {
           </button>
         </div>
         <div className="flex space-x-4">
-          <button className=" text-black text-base px-4 py-2 ">Popular</button>
-          <button className="bg-white text-black text-sm px-4 py-2 rounded-full border border-black">
-            Computer Science
-          </button>
-          <button className="bg-white text-black text-sm px-4 py-2 rounded-full border border-black">
-            Engineering
-          </button>
-          <button className="bg-white text-black text-sm px-4 py-2 rounded-full border border-black">
-            Medical
-          </button>
+          <button className=" text-black text-base px-4 py-2 font-Onest">Popular</button>
+          <button className="bg-white text-black text-sm px-4 py-2 rounded-full  border-black border-2">Computer Science</button>
+          <button className="bg-white text-black text-sm px-4 py-2 rounded-full border-2 font-Onest border-black">Engineering</button>
+          <button className="bg-white text-black text-sm px-4 py-2 rounded-full border-2 font-Onest border-black">Medical</button>
         </div>
       </div>
     </div>
