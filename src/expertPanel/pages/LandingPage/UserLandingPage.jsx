@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const UserLandingPage = () => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearchClick = () => {
     navigate(`/search?query=${searchQuery}`);
@@ -36,12 +36,26 @@ const UserLandingPage = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-      <button className="absolute right-0 top-0 mt-2 mr-2" onClick={handleSearchClick}>
-        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-6a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-        </svg>
-      </button>
-    </div>
+          <button
+            className="absolute right-0 top-0 mt-2 mr-2"
+            onClick={handleSearchClick}
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-6a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </button>
+        </div>
         <div className="flex space-x-4">
           <button className=" text-black text-base px-4 py-2 font-Onest">Popular</button>
           <button className="bg-white text-black text-sm px-4 py-2 rounded-full  border-black border-2">Computer Science</button>
@@ -51,6 +65,6 @@ const UserLandingPage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default UserLandingPage;
