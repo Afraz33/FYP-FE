@@ -52,7 +52,7 @@ const NormalUserSignUp = () => {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }} className='bg-[#FFD666]'>
-    <div className="bg-white p-8 rounded-3xl border-black border text-center">
+    <div className="bg-white p-8 rounded-3xl border-black border-2 text-center">
         <div>
             <h2 className="text-base font-bold mb-4 font-Onest">
                 Please enter your details to Sign up as a User
@@ -66,35 +66,35 @@ const NormalUserSignUp = () => {
                     value={firstName}
                     onChange={e => setFirstName(e.target.value)}
                     placeholder="First name"
-                    className="border-b p-2 font-DelaGothicOne"
+                    className="border-b p-2 font-Onest"
                 />
                 <input
                     type="text"
                     value={lastName}
                     onChange={e => setLastName(e.target.value)}
                     placeholder="Last name"
-                    className="border-b p-2 font-DelaGothicOne"
+                    className="border-b p-2 font-Onest"
                 />
                 <input
                     type="text"
                     value={userName}
                     onChange={e => setUserName(e.target.value)}
                     placeholder="Username"
-                    className="border-b p-2 font-DelaGothicOne"
+                    className="border-b p-2 font-Onest"
                 />
                 <input
                     type="text"
                     value={phoneNo}
                     onChange={e => setPhoneNo(e.target.value)}
                     placeholder="Phone number"
-                    className="border-b p-2 font-DelaGothicOne"
+                    className="border-b p-2 font-Onest"
                 />
                 <select
                     value={gender}
                     onChange={handleGenderChange}
-                    className="border-b p-2 font-DelaGothicOne"
+                    className="border-b p-2 font-Onest"
                 >
-                    <option value="" disabled className="font-DelaGothicOne">
+                    <option value="" disabled className="font-Onest">
                         Select Gender
                     </option>
                     <option value="Male">Male</option>
@@ -106,22 +106,22 @@ const NormalUserSignUp = () => {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="Password"
-                    className="border-b p-2 font-DelaGothicOne"
+                    className="border-b p-2 font-Onest"
                 />
                 <input
                     type="email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder="Email"
-                    className="border-b p-2 font-DelaGothicOne"
+                    className="border-b p-2 font-Onest"
                 />
             </div>
 
-            <button onClick={handleSignup} className="bg-black text-white px-4 py-2 rounded-full my-4 font-DelaGothicOne">
+            <button onClick={handleSignup} className="bg-black text-white px-4 py-2 rounded-2xl my-4 font-Onest hover:bg-white hover:text-black transition duration-300 ease-in-out hover:border-black border">
                 Sign up
             </button>
 
-            <p className="font-DelaGothicOne text-sm">
+            <p className="font-Onest text-sm">
                 Already have an account? <Link to="/login">Login</Link>
             </p>
         </div>

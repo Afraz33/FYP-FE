@@ -17,7 +17,7 @@ const CourseCard = ({ title, content, icon }) => {
   return (
     <div
       ref={ref}
-      className={`flex flex-col bg-white p-6 rounded-2xl shadow-md space-y-4 border-black border
+      className={`flex flex-col bg-white p-6 rounded-2xl shadow-md space-y-4 border-black border-2
                   ${inView ? "animate-slideUp" : "opacity-0"}`}
     >
       <div className="flex items-center space-x-3">
@@ -130,7 +130,7 @@ const LandingPage = () => {
       </header>
 
       <main className="text-center">
-        <h1 className="text-4xl font-bold mb-6 w-2/3 mx-auto font-DelaGothicOne">
+        <h1 className="text-4xl  mb-6 w-2/3 mx-auto font-DelaGothicOne">
           Talk to our AI chat bot Sarah to know about the career that suits your
           personality
         </h1>

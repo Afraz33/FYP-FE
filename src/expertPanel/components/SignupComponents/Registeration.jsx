@@ -38,17 +38,45 @@ export default function Registeration({
 
   //Register Function
   registerExpert,
+
+  emailInUse,
 }) {
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  const handleSubmit = (e) => {
+    // Prevent the form from submitting by default
+    e.preventDefault();
+
+    // Check if required fields are empty
+    if (
+      description.trim() === "" ||
+      expertise.trim() === "" ||
+      highestQualification.trim() === "" ||
+      skills.some((skill) => skill.trim() === "") ||
+      experience.some((exp) => exp.trim() === "") ||
+      certifications.some((cert) => cert.trim() === "") ||
+      city.trim() === "" ||
+      languages.some((lang) => lang.trim() === "") ||
+      hourlyRate.trim() === "" ||
+      !currentRole
+    ) {
+      setErrorMessage(true);
+      // You can show an error message or take some other action here
+    } else {
+      // Call the submit function if all required fields are filled
+      registerExpert();
+    }
+  };
   return (
     <div className="min-h-screen  flex justify-center items-center bg-[#FFD666]  mt-0  ">
-      <div className="p-6 bg-white w-full max-w-2xl mx-auto mt-8 mb-8 shadow-md rounded-3xl border-black border">
+      <div className="p-6 bg-white w-full max-w-2xl mx-auto mt-8 mb-8 shadow-md rounded-3xl border-black border-2">
         <div className="flex justify-center items-center mb-2">
           {/* <div className="bg-[#FFD666] w-20 h-20 rounded-full flex justify-center items-center">
             <img src={registeration} alt="registeration"></img>
           </div> */}
         </div>
         <h2 className="text-2xl  text-center mb-4 font-Onest font-semibold">
-          Registeration Details
+        Registration Details
         </h2>
 
         <div>
@@ -57,6 +85,7 @@ export default function Registeration({
               Description
             </label>
             <textarea
+              required
               value={description}
               onChange={(e) => {
                 handleDescriptionChange(e);
@@ -70,6 +99,7 @@ export default function Registeration({
               Area of Expertise
             </label>
             <input
+              required
               type="text"
               value={expertise}
               onChange={(e) => {
@@ -77,7 +107,6 @@ export default function Registeration({
               }}
               className="w-full p-2 border rounded"
             />
-            
           </div>
           <div className="mb-4">
             <label className="block text-sm font-Onest font-semibold mb-2">Skills</label>
@@ -105,6 +134,7 @@ export default function Registeration({
             <label className="block text-sm font-Onest font-semibold mb-2">Languages</label>
             {languages.map((q, index) => (
               <input
+                required
                 key={index}
                 type="text"
                 className="w-full p-2 border rounded mt-2"
@@ -129,6 +159,7 @@ export default function Registeration({
             </label>
             {certifications.map((q, index) => (
               <input
+                required
                 key={index}
                 type="text"
                 className="w-full p-2 border rounded mt-2"
@@ -151,6 +182,7 @@ export default function Registeration({
             <label className="block text-sm font-Onest font-semibold mb-2">Experience</label>
             {experience.map((q, index) => (
               <input
+                required
                 key={index}
                 type="text"
                 className="w-full p-2 border rounded mt-2"
@@ -174,6 +206,7 @@ export default function Registeration({
               Highest Qualification
             </label>
             <input
+              required
               type="text"
               value={highestQualification}
               onChange={(e) => {
@@ -190,6 +223,7 @@ export default function Registeration({
               Current Role
             </label>
             <input
+              required
               type="text"
               value={currentRole}
               onChange={(e) => {
@@ -202,6 +236,7 @@ export default function Registeration({
           <div className="mb-4">
             <label className="block text-sm font-Onest font-semibold mb-2">City</label>
             <input
+              required
               type="text"
               value={city}
               onChange={(e) => {
@@ -216,6 +251,7 @@ export default function Registeration({
               Hourly Rate
             </label>
             <input
+              required
               type="text"
               value={hourlyRate}
               onChange={(e) => {
@@ -235,11 +271,21 @@ export default function Registeration({
           </button>
           <button
             className="bg-[#222222] text-white py-2 px-4 rounded-xl font-Onest hover:bg-white hover:text-black transition duration-300 ease-in-out hover:border-black border"
-            onClick={registerExpert}
+            onClick={handleSubmit}
           >
             Submit
           </button>
         </div>
+        {errorMessage && (
+          <div className="text-red-500 mt-4 mx-auto w-fit">
+            Please fill in all required fields.
+          </div>
+        )}
+        {emailInUse && (
+          <div className="text-red-500 mt-4 mx-auto w-fit">
+            Email Already in use!
+          </div>
+        )}
       </div>
     </div>
   );

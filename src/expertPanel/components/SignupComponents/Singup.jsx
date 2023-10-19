@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import profile_icon from "../../assets/images/profile_icon.png";
 export default function SignUp({
   handleCalendlyLinkChange,
@@ -22,9 +22,36 @@ export default function SignUp({
   handlePasswordChange,
   handleConfirmPasswordChange,
 }) {
+  const [isAnyFieldMissing, setIsAnyFieldMissing] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
+  // Function to check if any required field is missing
+  const checkRequiredFields = () => {
+    if (
+      !firstName ||
+      !lastName ||
+      !userName ||
+      !email ||
+      !phone ||
+      !gender ||
+      !password ||
+      !confirmPassword ||
+      !calendlyLink
+    ) {
+      setIsAnyFieldMissing(true);
+    } else {
+      setIsAnyFieldMissing(false);
+    }
+  };
+
+  // Check for missing fields on initial render
+  useEffect(() => {
+    checkRequiredFields();
+  }, []);
+  // Check for missing fields on initial render
+  // checkRequiredFields();
   return (
     <div className="min-h-screen  flex justify-center items-center bg-[#FFD666]  mt-0 py-5">
-      <div className="bg-white p-8  shadow-xl w-2/4 rounded-3xl border-black border">
+      <div className="bg-white p-8  shadow-xl w-2/4 rounded-3xl border-black border-2">
         <div className="flex justify-center items-center mb-2">
           {/* <div className="bg-[#FFD666] w-20 h-20 rounded-full flex justify-center items-center">
             <img src={profile_icon} alt="profile_icon"></img>
@@ -40,9 +67,10 @@ export default function SignUp({
               className="block text-sm  mb-2 font-Onest font-semibold"
               htmlFor="first-name"
             >
-              First Name 
+              First Name
             </label>
             <input
+              required
               className="w-full p-2 border rounded"
               type="text"
               id="first-name"
@@ -56,9 +84,10 @@ export default function SignUp({
               className="block text-sm  mb-2 font-Onest font-semibold"
               htmlFor="last-name"
             >
-              Last Name 
+              Last Name
             </label>
             <input
+              required
               className="w-full p-2 border rounded"
               type="text"
               id="last-name"
@@ -75,6 +104,7 @@ export default function SignUp({
               User Name
             </label>
             <input
+              required
               className="w-full p-2 border rounded"
               type="text"
               id="user-name"
@@ -84,10 +114,11 @@ export default function SignUp({
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-Onest font-semibold mb-2" htmlFor="email">
-              Email 
+            <label className="block text-sm font-medium mb-2" htmlFor="email">
+              Email
             </label>
             <input
+              required
               className="w-full p-2 border rounded"
               type="email"
               id="email"
@@ -97,10 +128,11 @@ export default function SignUp({
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-Onest font-semibold mb-2" htmlFor="phone">
-              Phone Number 
+            <label className="block text-sm font-medium mb-2" htmlFor="phone">
+              Phone Number
             </label>
             <input
+              required
               className="w-full p-2 border rounded"
               type="tel"
               id="phone"
@@ -110,12 +142,13 @@ export default function SignUp({
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-Onest font-semibold mb-2" htmlFor="gender">
-              Gender 
+            <label className="block text-sm font-medium mb-2" htmlFor="gender">
+              Gender
             </label>
             <div className="space-x-4">
               <label className="inline-flex items-center">
                 <input
+                  required
                   type="radio"
                   className="form-radio"
                   name="gender"
@@ -170,9 +203,10 @@ export default function SignUp({
               className="block text-sm font-Onest font-semibold mb-2"
               htmlFor="password"
             >
-              Password 
+              Password
             </label>
             <input
+              required
               className="w-full p-2 border rounded"
               type="password"
               id="password"
@@ -186,9 +220,10 @@ export default function SignUp({
               className="block text-sm font-Onest font-semibold mb-2"
               htmlFor="confirm-password"
             >
-              Confirm Password 
+              Confirm Password
             </label>
             <input
+              required
               className="w-full p-2 border rounded"
               type="password"
               id="confirm-password"
@@ -201,12 +236,25 @@ export default function SignUp({
             <button
               className="bg-[#222222] text-white py-2 px-4 rounded-xl font-Onest hover:bg-white hover:text-black transition duration-300 ease-in-out hover:border-black border"
               type="submit"
-              onClick={handleSignUpPageChange}
+              onClick={(e) => {
+                e.preventDefault();
+                checkRequiredFields(); // Check for missing fields before proceeding
+                if (!isAnyFieldMissing) {
+                  handleSignUpPageChange();
+                } else {
+                  setErrorMessage(true);
+                }
+              }}
             >
               Next Step
             </button>
           </div>
         </form>
+        {isAnyFieldMissing && errorMessage && (
+          <div className="text-red-500 mt-4 mx-auto w-fit">
+            Please fill in all required fields.
+          </div>
+        )}
       </div>
     </div>
   );
