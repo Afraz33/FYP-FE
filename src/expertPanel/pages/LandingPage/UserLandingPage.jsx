@@ -14,14 +14,7 @@ const UserLandingPage = () => {
       {/* Navbar */}
       <div className="bg-white rounded-full border-2 border-black w-full max-w-screen-xl px-4 py-2 mt-6 mb-2 flex items-center justify-between">
         <div className="text-xl font-bold font-Onest">PaiSHA</div>
-        {/* <div className="flex space-x-8">
-          <button className="text-sm">Explore Universities</button>
-          <button className="text-sm">Career Advisor</button>
-          <button className="text-sm">University Ranking</button>
-          <button className="text-sm">Merit Trends</button>
-          <button className="text-sm">Expert Consultation</button>
-          <button className=" text-black px-4 py-1 rounded-full border border-black">Umama</button>
-        </div> */}
+        
       </div>
 
       {/* Centered content */}

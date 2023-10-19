@@ -61,9 +61,9 @@ export default function Registeration({
       !currentRole
     ) {
       setErrorMessage(true);
-      // You can show an error message or take some other action here
+      
     } else {
-      // Call the submit function if all required fields are filled
+      
       registerExpert();
     }
   };
@@ -71,9 +71,7 @@ export default function Registeration({
     <div className="min-h-screen  flex justify-center items-center bg-[#FFD666]  mt-0  ">
       <div className="p-6 bg-white w-full max-w-2xl mx-auto mt-8 mb-8 shadow-md rounded-3xl border-black border-2">
         <div className="flex justify-center items-center mb-2">
-          {/* <div className="bg-[#FFD666] w-20 h-20 rounded-full flex justify-center items-center">
-            <img src={registeration} alt="registeration"></img>
-          </div> */}
+          
         </div>
         <h2 className="text-2xl  text-center mb-4 font-Onest font-semibold">
         Registration Details
@@ -216,7 +214,7 @@ export default function Registeration({
             />
           </div>
         </div>
-        {/* You can replicate the above structure for 'Education', 'Skills', 'Experience', 'Certification', 'Languages' array fields. */}
+        
         <div>
           <div className="mb-4">
             <label className="block text-sm font-Onest font-semibold mb-2">

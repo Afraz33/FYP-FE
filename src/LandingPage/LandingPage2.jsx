@@ -78,7 +78,7 @@ const LandingPage = () => {
       question: "How is PaiSHA helpful for Pakistani students?",
       answer: "We have stored all inofrmation of Pakistani universities and career recommendation for high school graduates so that they can take informed decision based on their personality",
   },
-    // ... add more questions and answers as needed
+    
 ];
 
   return (
@@ -232,12 +232,12 @@ const LandingPage = () => {
             <div className="bg-[#222222] text-gray-400 p-10 rounded-3xl">
             <div className="max-w-screen-xl mx-auto flex justify-between">
 
-                {/* Logo */}
+                
                 <div className="text-white text-xl font-bold mb-4 font-Onest">
                     PaiSHA
                 </div>
 
-                {/* Links */}
+              
                 <div className="space-y-2 font-Onest">
                     <h2 className="text-white font-semibold mb-2 ">Features</h2>
                     <ul>
@@ -259,29 +259,14 @@ const LandingPage = () => {
                     <h2 className="text-white font-semibold mb-2">Legal</h2>
                     <ul>
                         <li>Terms & Conditions</li>
-                        {/* <li>Shipping & Return</li> */}
+                        
                         <li>Privacy Policy</li>
                     </ul>
                 </div>
-                {/* <div className="space-y-2">
-                    <h2 className="text-white font-semibold mb-2">Social</h2>
-                    <ul className="flex space-x-4">
-                        <li>
-                            <a href="#" className="text-white">
-                               
-                                F
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="text-white">
-                                I
-                            </a>
-                        </li>
-                    </ul>
-                </div> */}
+                
             </div>
 
-            {/* Copyright */}
+           
             <div className="mt-10 text-center text-white font-Onest">
                 © PaiSHA 2023
             </div>
@@ -291,9 +276,7 @@ const LandingPage = () => {
 
       </main>
 
-      {/* <footer className="mt-20 text-center text-gray-700">
-        © 2023 Sample. All rights reserved.
-      </footer> */}
+      
     </div>
   );
 };

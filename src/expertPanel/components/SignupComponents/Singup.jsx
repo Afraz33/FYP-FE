@@ -53,9 +53,7 @@ export default function SignUp({
     <div className="min-h-screen  flex justify-center items-center bg-[#FFD666]  mt-0 py-5">
       <div className="bg-white p-8  shadow-xl w-2/4 rounded-3xl border-black border-2">
         <div className="flex justify-center items-center mb-2">
-          {/* <div className="bg-[#FFD666] w-20 h-20 rounded-full flex justify-center items-center">
-            <img src={profile_icon} alt="profile_icon"></img>
-          </div> */}
+         
         </div>
         <h2 className="text-2xl font-bold text-center mb-4 font-Onest ">
           Your Profile

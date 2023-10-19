@@ -35,11 +35,7 @@ export default function ExpertLogin() {
     <div className="h-screen w-screen flex justify-center mt-20 bg-[#B2A1FE] ">
       <div className="bg-white w-96 h-2/3  shadow-xl flex flex-col items-center justify-center p-8 rounded-3xl border-2 border-black">
         {/* Icon */}
-        {/* <div className="bg-[#222222] w-20 h-20 rounded-full mb-6 flex items-center justify-center">
-          <div className="bg-[#B2A1FE] w-14 h-14 rounded-full flex items-center justify-center">
-            <span className="text-white text-2xl font-semibold">👤</span>
-          </div>
-        </div> */}
+       
 
         {/* Title */}
         <h2 className="text-2xl font-semibold mb-6 font-Onest">Welcome!</h2>
