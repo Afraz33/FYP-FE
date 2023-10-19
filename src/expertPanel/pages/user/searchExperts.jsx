@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import profile from "../../assets/images/profile.jpg";
 import { useLocation } from "react-router-dom";
-
+import Loader from "../../components/loader/Loader";
 const SearchExperts = () => {
   const navigate = useNavigate();
   const [experts, setExperts] = useState([]);
@@ -112,7 +112,9 @@ const SearchExperts = () => {
                 </Link>
               ))
             ) : (
-              <p>Loading expert data...</p>
+              <div className="mx-auto" style={{ marginTop: "100px" }}>
+                <Loader />
+              </div>
             )}
           </div>
         </div>
