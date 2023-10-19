@@ -108,7 +108,7 @@ const ExpertDetails = () => {
     <div className="p-10 bg-[#c4bcf8] h-screen items-center flex flex-col font-DelaGothicOne">
       {/* Navbar */}
       <div className="bg-white rounded-full border border-black w-full max-w-screen-xl px-4 py-2 mt-0 mb-2 flex items-center justify-between">
-        <div className="text-xl font-bold">Sample</div>
+        <div className="text-xl font-bold">PaiSHA</div>
         <div className="flex space-x-8">
           <button className="text-sm">Explore Universities</button>
           <button className="text-sm">Career Advisor</button>
