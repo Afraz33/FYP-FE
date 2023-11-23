@@ -9,6 +9,8 @@ import ExpertLandingPage from "../expertPanel/pages/ExpertLandingPage/ExpertLand
 import Calendar from "../expertPanel/pages/CalendarPage/CalendarPage";
 import LandingPage2 from "../LandingPage/LandingPage2";
 import MeetingPage from "../expertPanel/pages/MeetingPage/MeetingPage";
+import ChatbotPage from "../CareerchatbotPanel/pages/ChatbotPage";
+import RecommendedUniversities from "../CareerchatbotPanel/pages/RecommendedUniversitiesPage";
 function Routers() {
   return (
     <Routes>
@@ -24,6 +26,11 @@ function Routers() {
       <Route path="/expert-panel" element={<ExpertLandingPage />}></Route>
       <Route path="/expert-panel/calendar" element={<Calendar />}></Route>
       <Route path="/meeting/:userName" element={<MeetingPage />} />
+      <Route path="/chatbot" element={<ChatbotPage />} />
+      <Route
+        path="/recommendedUniversities/:career"
+        element={<RecommendedUniversities />}
+      />
     </Routes>
   );
 }

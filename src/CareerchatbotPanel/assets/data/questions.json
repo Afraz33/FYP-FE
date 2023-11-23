@@ -1,0 +1,242 @@
+[
+  {
+    "Question": "How do you feel like testing the quality of parts before shipment?",
+    "Tag": "R1",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like laying brick or tile?",
+    "Tag": "R2",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like working on an offshore oil-drilling rig?",
+    "Tag": "R3",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like assembling electronic parts?",
+    "Tag": "R4",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like operating a grinding machine in a factory?",
+    "Tag": "R5",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like fixing a broken faucet?",
+    "Tag": "R6",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like assembling products in a factory?",
+    "Tag": "R7",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like installing flooring in houses?",
+    "Tag": "R8",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like studying the structure of the human body?",
+    "Tag": "I1",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like studying animal behavior?",
+    "Tag": "I2",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like doing research on plants or animals?",
+    "Tag": "I3",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like developing a new medical treatment or procedure?",
+    "Tag": "I4",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like conducting biological research?",
+    "Tag": "I5",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like studying whales and other types of marine life?",
+    "Tag": "I6",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like working in a biology lab?",
+    "Tag": "I7",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like making a map of the bottom of an ocean?",
+    "Tag": "I8",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like conducting a musical choir?",
+    "Tag": "A1",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like directing a play?",
+    "Tag": "A2",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like designing artwork for magazines?",
+    "Tag": "A3",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like writing a song?",
+    "Tag": "A4",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like writing books or plays?",
+    "Tag": "A5",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like playing a musical instrument?",
+    "Tag": "A6",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like performing stunts for a movie or television show?",
+    "Tag": "A7",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like designing sets for plays?",
+    "Tag": "A8",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like giving career guidance to people?",
+    "Tag": "S1",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like doing volunteer work at a non-profit organization?",
+    "Tag": "S2",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like helping people who have problems with drugs or alcohol?",
+    "Tag": "S3",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like teaching an individual an exercise routine?",
+    "Tag": "S4",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like helping people with family-related problems?",
+    "Tag": "S5",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like supervising the activities of children at a camp?",
+    "Tag": "S6",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like teaching children how to read?",
+    "Tag": "S7",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like helping elderly people with their daily activities?",
+    "Tag": "S8",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like selling restaurant franchises to individuals?",
+    "Tag": "E1",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like selling merchandise at a department store?",
+    "Tag": "E2",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like managing the operations of a hotel?",
+    "Tag": "E3",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like operating a beauty salon or barber shop?",
+    "Tag": "E4",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like managing a department within a large company?",
+    "Tag": "E5",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like managing a clothing store?",
+    "Tag": "E6",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like selling houses?",
+    "Tag": "E7",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like running a toy store?",
+    "Tag": "E8",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like generating the monthly payroll checks for an office?",
+    "Tag": "C1",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like inventorying supplies using a hand-held computer?",
+    "Tag": "C2",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like using a computer program to generate customer bills?",
+    "Tag": "C3",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like maintaining employee records?",
+    "Tag": "C4",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like computing and recording statistical and other numerical data?",
+    "Tag": "C5",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like operating a calculator?",
+    "Tag": "C6",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like handling customers' bank transactions?",
+    "Tag": "C7",
+    "Score": 0
+  },
+  {
+    "Question": "How do you feel like keeping shipping and receiving records?",
+    "Tag": "C8",
+    "Score": 0
+  }
+]
