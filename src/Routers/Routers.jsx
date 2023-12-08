@@ -11,14 +11,16 @@ import LandingPage2 from "../LandingPage/LandingPage2";
 import MeetingPage from "../expertPanel/pages/MeetingPage/MeetingPage";
 import ChatbotPage from "../CareerchatbotPanel/pages/ChatbotPage";
 import RecommendedUniversities from "../CareerchatbotPanel/pages/RecommendedUniversitiesPage";
+import StudentLogin from "../studentPanel/pages/StudentLogin";
+import StudentLandingPage from "../studentPanel/pages/StudentLandingPage";
 function Routers() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage2 />}></Route>
-      <Route path="/login" element={<Login />}></Route>
+      <Route path="/student-login" element={<StudentLogin />}></Route>
 
       <Route path="/signup" element={<SignUpPage />}></Route>
-      <Route path="/userLandingPage" element={<UserLandingPage />} />
+      <Route path="/userLandingPage" element={<StudentLandingPage />} />
 
       <Route path="/search" element={<SearchPage />} />
       <Route path="/profile/:id" element={<ExpertDetails />} />
