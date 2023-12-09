@@ -140,7 +140,7 @@ const StudentLandingPage = () => {
               </p>
               <div className="flex gap-x-4">
                 <button className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-16 text-white px-4 py-0  ">
-                  View Experts
+                  Explore More
                   <ArrowForwardIcon
                     sx={{ color: "white", marginLeft: "6px" }}
                   />

@@ -13,6 +13,8 @@ import ChatbotPage from "../CareerchatbotPanel/pages/ChatbotPage";
 import RecommendedUniversities from "../CareerchatbotPanel/pages/RecommendedUniversitiesPage";
 import StudentLogin from "../studentPanel/pages/StudentLogin";
 import StudentLandingPage from "../studentPanel/pages/StudentLandingPage";
+import StudentSignUp from "../studentPanel/pages/StudentSignup";
+import SearchExperts from "../studentPanel/pages/SearchExpert";
 function Routers() {
   return (
     <Routes>
@@ -33,6 +35,8 @@ function Routers() {
         path="/recommendedUniversities/:career"
         element={<RecommendedUniversities />}
       />
+      <Route path="/student-signup" element={<StudentSignUp />}></Route>
+      <Route path="/search-experts" element={<SearchExperts />}></Route>
     </Routes>
   );
 }
