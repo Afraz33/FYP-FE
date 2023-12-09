@@ -14,3 +14,30 @@
     opacity: 0;
   }
   
+  @keyframes text-reveal {
+    from {
+      clip-path: inset(0 100% 0 0);
+      opacity: 0;
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+      opacity: 1;
+    }
+  }
+  
+  .reveal-effect {
+    animation: text-reveal 2s ease-in-out forwards;
+  }
+  
+  .reveal-delay-1 {
+    animation-delay: 0.5s;
+  }
+  
+  .reveal-delay-2 {
+    animation-delay: 1s;
+  }
+  
+  .reveal-delay-3 {
+    animation-delay: 1.5s;
+  }
+  

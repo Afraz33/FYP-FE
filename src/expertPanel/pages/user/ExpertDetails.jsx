@@ -16,8 +16,11 @@
 //   if (!expert) {
 //     return <p>Loading expert data...</p>;
 //   }
+
+
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../../components/loader/Loader";
 
 const ExpertDetails = () => {
   const navigate = useNavigate();
@@ -63,7 +66,8 @@ const ExpertDetails = () => {
   }, [id]);
 
   if (!expert) {
-    return <p>Loading expert data...</p>;
+    return <div className="flex justify-center items-center h-screen"> <Loader /></div>
+   
   }
 
   //   useEffect(() => {

@@ -10,7 +10,7 @@ function ConversationFlow({ setPersonality, setViewCareers }) {
       Question:
         "How do you feel like testing the quality of parts before shipment? ",
       Tag: "R",
-      Score: 0,
+      Score: 10,
       Answer: "",
     },
     {
@@ -314,7 +314,7 @@ function ConversationFlow({ setPersonality, setViewCareers }) {
       Answer: "",
     },
   ];
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(47);
   const [questions, setQuestions] = useState(initialQuestions);
 
   console.log(questions);

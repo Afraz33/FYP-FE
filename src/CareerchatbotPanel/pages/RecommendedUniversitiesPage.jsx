@@ -16,7 +16,7 @@ function RecommendedUniversities() {
   );
 
   return (
-    <div className="bg-[#eeebe7] min-h-screen max-h-fit container mx-auto p-8">
+    <div className="bg-[#eeebe7] min-h-screen max-h-fit container mx-auto p-8 font-Onest">
       <h2 className="text-2xl font-semibold w-fit mx-auto mb-10">
         Universities Related to
         <span className="text-3xl italic text-gray-700 ">"{career}"</span>

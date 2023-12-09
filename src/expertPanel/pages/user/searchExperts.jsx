@@ -112,7 +112,7 @@ const SearchExperts = () => {
                 </Link>
               ))
             ) : (
-              <div className="mx-auto" style={{ marginTop: "100px" }}>
+              <div className="flex justify-center items-center h-screen" >
                 <Loader />
               </div>
             )}

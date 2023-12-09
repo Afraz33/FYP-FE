@@ -194,10 +194,10 @@ function Navbar() {
   //   );
 
   return (
-    <nav className="bg-gray-300 border-gray-200 dark:bg-gray-900">
+    <nav className="bg-white border-gray-200 dark:bg-gray-900 shadow-2xl">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a
-          href="https://flowbite.com/"
+          // href="https://flowbite.com/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           {/* <img
@@ -205,23 +205,23 @@ function Navbar() {
             className="h-8"
             alt="Flowbite Logo"
           /> */}
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center text-2xl font-semibold font-Onest whitespace-nowrap dark:text-white">
             PaiSHA
           </span>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-10 rtl:space-x-reverse ">
           <Link
             to="/student-login"
-            className="text-white hover:text-[#ee4a62] border-2 flex items-center justify-center border-[#ee4a62] px-4"
+            className=" font-semibold text-white w-24 h-10  border-2 flex items-center justify-center bg-[#1ab69d] px-4 font-Onest hover:border-white  rounded-lg hover:bg-[#ee4a62]"
           >
-            Login as a Student
+            Login 
           </Link>
-          <button
+          {/* <button
             type="button"
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Provide Consultation
-          </button>
+          </button> */}
 
           <button
             data-collapse-toggle="navbar-cta"
@@ -252,11 +252,11 @@ function Navbar() {
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-cta"
         >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex font-Onest font-semibold flex-col  p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-300 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent text-white  md:hover:text-[#ee4a62] md:dark:hover:text-[#ee4a62]"
+                className="block py-2 px-3 md:p-0  rounded md:bg-transparent text-gray-900  md:hover:text-[#1ab69d] md:dark:hover:text-[#1ab69d]"
                 aria-current="page"
               >
                 Home
@@ -265,7 +265,7 @@ function Navbar() {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:[bg-gray-100] md:hover:bg-transparent md:hover:text-[#ee4a62] md:dark:hover:text-[#ee4a62] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:[bg-gray-100] md:hover:bg-transparent md:hover:text-[#1ab69d] md:dark:hover:text-[#1ab69d] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 About
               </a>
@@ -277,7 +277,7 @@ function Navbar() {
                 }}
                 id="mega-menu-full-dropdown-button"
                 data-collapse-toggle="mega-menu-full-dropdown"
-                className="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded md:w-auto hover:text-[#ee4a62] md:hover:bg-transparent md:border-0  md:p-0 dark:text-white  dark:hover:bg-gray-700 md:dark:hover:bg-transparent dark:border-gray-700"
+                className="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded md:w-auto hover:text-[#1ab69d] md:hover:bg-transparent md:border-0  md:p-0 dark:text-white  dark:hover:bg-gray-700 md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Student Module{" "}
                 <svg
@@ -300,7 +300,7 @@ function Navbar() {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-[#ee4a62] dark:text-white dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-[#1ab69d] dark:text-white dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Contact
               </a>
@@ -320,9 +320,9 @@ function Navbar() {
                   href="afraz"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Online Stores</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Connect with third-party tools that you're already using.
+                  <div className="font-Onest font-semibold">Login Sign Up</div>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                    Join us by creating an account and find experts to help you
                   </span>
                 </a>
               </li>
@@ -331,9 +331,9 @@ function Navbar() {
                   href="#"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Segmentation</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Connect with third-party tools that you're already using.
+                  <div className="font-Onest font-semibold">Personality Analysis</div>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                    Analyze your personality and find your interests with the help of Artificial Intelligence
                   </span>
                 </a>
               </li>
@@ -342,9 +342,9 @@ function Navbar() {
                   href="#"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Marketing CRM</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Connect with third-party tools that you're already using.
+                  <div className="font-Onest font-semibold">Career Prediction</div>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                    Get to know what career best suits you
                   </span>
                 </a>
               </li>
@@ -355,9 +355,9 @@ function Navbar() {
                   href="#"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Online Stores</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Connect with third-party tools that you're already using.
+                  <div className="font-Onest font-semibold">Universities for you</div>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                    Get universities in Pakistan that match your interests
                   </span>
                 </a>
               </li>
@@ -366,23 +366,23 @@ function Navbar() {
                   href="#"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Segmentation</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Connect with third-party tools that you're already using.
+                  <div className="font-Onest font-semibold">University Information</div>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                    Find the answers to your questions about universities
                   </span>
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a
                   href="#"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Marketing CRM</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                  <div className="font-Onest font-semibold"></div>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
                     Connect with third-party tools that you're already using.
                   </span>
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

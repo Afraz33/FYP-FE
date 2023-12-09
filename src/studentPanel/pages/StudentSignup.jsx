@@ -42,7 +42,7 @@ const StudentSignUp = () => {
   };
 
   return (
-    <div className="bg-gray-200">
+    <div className="bg-gray-200 font-Onest">
       <header className="flex h-screen">
         <div className="mt-10 my-auto w-[50%] h-[90%] mx-auto bg-white flex flex-row rounded-lg shadow-2xl shadow-green-950">
           <div className="flex flex-col gap-4 bg-slate-900 w-[40%] justify-center">

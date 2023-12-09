@@ -95,7 +95,7 @@ function StudentLogin() {
             </svg>
           </div>
           <div className="flex justify-center mb-6">
-            <h1 className="font-bold text-white text-3xl">Login to PaiSHA</h1>
+            <h1 className="font-bold text-white text-3xl font-Onest">Login to PaiSHA</h1>
           </div>
           <div className="w-[70%] mx-auto flex flex-col justify-center">
             <h1 id="error" className="text-red-500 text-center">
@@ -103,8 +103,8 @@ function StudentLogin() {
             </h1>
           </div>
 
-          <div className="mb-2 w-[70%] mx-auto flex flex-col justify-center">
-            <label className="block text-white font-bold mb-2" htmlFor="email">
+          <div className="mb-2 w-[70%] mx-auto flex flex-col justify-center font-Onest">
+            <label className="block text-white font-bold mb-2 " htmlFor="email">
               Email
             </label>
             <input
@@ -118,7 +118,7 @@ function StudentLogin() {
             />
           </div>
 
-          <div className="w-[70%] mx-auto flex flex-col justify-center">
+          <div className="w-[70%] mx-auto flex flex-col justify-center font-Onest">
             <label
               className="block text-white font-bold mb-2"
               htmlFor="password"
@@ -138,20 +138,20 @@ function StudentLogin() {
 
           {/* ... Other form elements ... */}
 
-          <div className="flex flex-col w-[70%] mx-auto flex items-center">
+          <div className="flex flex-col w-[70%] mx-auto flex items-center font-Onest">
             <button
               onClick={handleLogin}
-              className="mt-6 hover:bg-white bg-green-600 text-white hover:text-green-600 font-semibold py-2 px-4 border border-green-600 rounded shadow w-70"
+              className="mt-6 hover:bg-white bg-[#1ab69d] text-white hover:text-green-600 font-semibold py-2 px-4 border border-green-600 rounded shadow w-70"
             >
               Log in
             </button>
           </div>
 
-          <div className="mt-6 w-[70%] mx-auto flex flex-col items-center">
+          <div className="mt-6 w-[70%] mx-auto flex flex-col items-center font-Onest">
             <h1 className="text-white">Don't have an account?</h1>
             <button
               id="create-account"
-              className="my-button inline-flex w-26 h-6 text-green-400 border-transparent ml-1 inline-block hover:text-green-500"
+              className="my-button inline-flex w-26 h-6 text-[#1ab69d] border-transparent ml-1 inline-block hover:text-green-500"
             >
               <Link
                 to="/student-signup"
