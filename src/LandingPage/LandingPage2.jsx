@@ -21,7 +21,7 @@ const CourseCard = ({ title, content, icon }) => {
   return (
     <div
       ref={ref}
-      className={`flex flex-col bg-white p-6 rounded-2xl shadow-md space-y-4 border-black border-2
+      className={`flex flex-col  p-6 rounded-2xl shadow-4xl bg-[#1ab69d] hover:bg-[#ee4a62] cursor-pointer  space-y-4 border-black border-2
                   ${inView ? "animate-slideUp" : "opacity-0"}`}
     >
       <div className="flex items-center space-x-3">
@@ -150,13 +150,13 @@ const LandingPage = () => {
             <img className="mt-20" src={MainHeader} alt="mainImage"></img>
           </div>
         </div>
-        <section className="Features">
-          <div className="bg-[#B2A1FE] p-8 rounded-3xl mt-60">
-            <h1 className="text-4xl font-bold font-DelaGothicOne mb-20 ">
+        <section className="Features py-8 ">
+          <div className=" p-8  ">
+            <h1 className="text-4xl font-bold font-Onest mb-10 w-[60%] mx-auto ">
               We offer various innovative features to help you make the right
               decision
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-24 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4  ">
               {cardData.map((card, index) => (
                 <CourseCard
                   key={index}
@@ -169,24 +169,24 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section className="3rdSection">
-          <div className="flex flex-col items-center justify-center py-16 rounded-3xl mt-20 mb-20">
-            <h1 className="text-5xl font-bold mb-4 font-DelaGothicOne">
+        <section className="3rdSection bg-gray-100 mt-10 ">
+          <div className="flex flex-col items-center justify-center py-8  ">
+            <h1 className="text-5xl font-bold mb-4 font-Onest">
               We believe <span className="text-purple-500">🌼💛</span> that
               everyone
             </h1>
-            <h2 className="text-5xl font-bold mb-4  font-DelaGothicOne">
+            <h2 className="text-5xl font-bold mb-4  font-Onest">
               should take informed decision{" "}
               <span className="text-yellow-400">⭐</span>
             </h2>
-            <h3 className="text-5xl font-bold font-DelaGothicOne">
+            <h3 className="text-5xl font-bold font-Onest">
               for
-              <span className="text-[#B2A1FE]"> quality education </span>{" "}
+              <span className="text-[#1ab69d]"> quality education </span>{" "}
               without any doubts.
             </h3>
           </div>
         </section>
-        <section className="Expert">
+        {/* <section className="Expert">
           <div className="flex bg-[#FFD666] p-12 rounded-xl mt-20 mb-20">
             <img
               src={expertImage}
@@ -209,11 +209,11 @@ const LandingPage = () => {
               </button>
             </div>
           </div>
-        </section>
-        <section className="Expert">
+        </section> */}
+        {/* <section className="Expert">
           <div className="flex bg-white p-12 rounded-xl mt-20 mb-20">
             <div className="flex flex-col justify-center">
-              <h2 className="text-4xl font-bold mb-4 text-left  font-DelaGothicOne">
+              <h2 className="text-4xl font-bold mb-4 text-left  font-Onest">
                 Our Story
               </h2>
               <p className="text-lg mb-6 text-left font-Onest">
@@ -236,10 +236,12 @@ const LandingPage = () => {
               className="w-1/2 rounded-xl mr-10 mt-10 mb-10 ml-20 object-contain h-96 "
             />
           </div>
-        </section>
-        <section className="FAQ">
-          <div className="p-8  mt-10 mb-20">
-            <h1 className="text-4xl mb-6 font-DelaGothicOne ">FAQ</h1>
+        </section> */}
+        <section className="FAQ mt-10">
+          <div className="p-8   mb-20">
+            <h1 className="text-4xl  mb-6 font-bold font-Onest ">
+              Frequently Asked Questions
+            </h1>
             <div className=" p-6 rounded-lg shadow-md font-Onest font-semibold">
               {questions.map((item, index) => (
                 <div key={index} className="mb-4">
@@ -247,13 +249,13 @@ const LandingPage = () => {
                     onClick={() =>
                       setOpenQuestion(openQuestion === index ? null : index)
                     }
-                    className="flex justify-between items-center w-full bg-[#FFD666] p-4 rounded-2xl"
+                    className="flex justify-between items-center w-full bg-[#1ab69d] p-4 rounded-2xl"
                   >
                     {item.question}
                     <span>{openQuestion === index ? "−" : "+"}</span>
                   </button>
                   {openQuestion === index && (
-                    <div className="mt-2 bg-yellow-100 p-4  rounded-2xl">
+                    <div className="mt-2 bg-[#ee4a62] p-4  rounded-2xl">
                       {item.answer}
                     </div>
                   )}
@@ -265,7 +267,7 @@ const LandingPage = () => {
 
         <section>
           <footer>
-            <div className="bg-[#222222] text-gray-400 p-10 rounded-3xl">
+            <div className="bg-gray-900 text-gray-400 p-10 ">
               <div className="max-w-screen-xl mx-auto flex justify-between">
                 <div className="text-white text-xl font-bold mb-4 font-Onest">
                   PaiSHA
