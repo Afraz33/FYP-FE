@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 function StudentLogin() {
   const [email, setEmail] = useState("");
@@ -152,9 +153,13 @@ function StudentLogin() {
               id="create-account"
               className="my-button inline-flex w-26 h-6 text-green-400 border-transparent ml-1 inline-block hover:text-green-500"
             >
-              <a className="w-full h-full inline-block" href="adminSignup.html">
+              <Link
+                to="/student-signup"
+                className="w-full h-full inline-block"
+                href="adminSignup.html"
+              >
                 Create Account
-              </a>
+              </Link>
             </button>
           </div>
         </div>

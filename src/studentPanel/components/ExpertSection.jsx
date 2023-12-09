@@ -1,6 +1,7 @@
 import React from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import person1 from "../assets/person1.webp";
+import { useNavigate } from "react-router-dom";
 const TestimonialCard = ({ name, role, testimonial, rating }) => {
   // Assuming rating is a number from 1 to 5
   const stars = Array(rating).fill(0);
@@ -29,6 +30,7 @@ const TestimonialCard = ({ name, role, testimonial, rating }) => {
 };
 
 const ExpertSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="bg-gray-100 py-20">
       <div className="container mx-auto flex flex-row gap-8 w-[80%]">
@@ -47,7 +49,12 @@ const ExpertSection = () => {
             provide immediate consultations.
           </p>
           <div className="flex gap-x-4 mt-10">
-            <button className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-14 text-white px-4 py-0  ">
+            <button
+              onClick={() => {
+                navigate("/search-experts");
+              }}
+              className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-14 text-white px-4 py-0  "
+            >
               View Experts
               <ArrowForwardIcon sx={{ color: "white", marginLeft: "6px" }} />
             </button>
