@@ -51,7 +51,7 @@ const ExpertSection = () => {
           <div className="flex gap-x-4 mt-10">
             <button
               onClick={() => {
-                navigate("/search-experts");
+                navigate("/search");
               }}
               className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-14 text-white px-4 py-0  "
             >

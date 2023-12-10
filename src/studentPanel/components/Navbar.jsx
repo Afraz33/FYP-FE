@@ -298,12 +298,25 @@ function Navbar() {
               </button>
             </li>
             <li>
+            
               <a
-                href="#"
+               
+               
                 className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-[#1ab69d] dark:text-white dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Contact
               </a>
+              
+            </li>
+            <li>
+            <Link to="/search">
+              <a
+                
+                className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-[#1ab69d] dark:text-white dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
+              >
+                View Experts
+              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -327,8 +340,9 @@ function Navbar() {
                 </a>
               </li>
               <li>
+                <Link to="/chatbot">
                 <a
-                  href="#"
+                  
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <div className="font-Onest font-semibold">Personality Analysis</div>
@@ -336,6 +350,7 @@ function Navbar() {
                     Analyze your personality and find your interests with the help of Artificial Intelligence
                   </span>
                 </a>
+                </Link>
               </li>
               <li>
                 <a

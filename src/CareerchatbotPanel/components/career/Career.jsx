@@ -129,11 +129,11 @@ function Career({ Personality }) {
                     <li
                       onClick={() => handleClick(career)}
                       key={index}
-                      className="mx-auto w-[50%] pl-3  pr-4 py-3 flex items-center justify-between text-sm hover:bg-gray-200 hover:cursor-pointer"
+                      className="mx-auto w-[50%] pl-3   pr-4 py-3 flex items-center justify-between text-sm hover:bg-gray-200 hover:cursor-pointer"
                     >
                       <label
                         for="job-1"
-                        class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500"
+                        class="inline-flex  items-center bg-gray-600 justify-between w-full p-5 text-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500"
                       >
                         <div class="block">
                           <div class="w-full text-lg font-semibold">

@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import Navbar from "../../layout/Navbar/Navbar";
+import Navbar from "../../../studentPanel/components/Navbar";
 export default function MeetingPage() {
   const location = useLocation();
   const calendlyLink = location.state?.calendlyLink;
