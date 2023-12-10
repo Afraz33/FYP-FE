@@ -39,11 +39,11 @@ const { expertEmail } = useParams();
       console.log('Review submitted:', result);
       // Reset the form state and handle the successful submission here
       setFormData({ userEmail: '', comment: '' });
-      alert('Review submitted successfully!');
+      
     } catch (error) {
       console.error('Error submitting review:', error);
       // Handle the error state here
-      alert('Failed to submit review.');
+     
     }
   };
 

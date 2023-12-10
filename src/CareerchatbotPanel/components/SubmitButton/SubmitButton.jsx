@@ -32,7 +32,7 @@ function SubmitButton({
   return (
     <button
       onClick={handleButtonClick}
-      className=" hover:bg-black text-white w-fit bg-[#1ab69d]  fixed bottom-12 right-1/2 rounded-2xl p-4 mx-auto   gap-4"
+      className=" hover:bg-black text-white w-fit bg-[#ee4a62]  fixed bottom-12 right-1/2 rounded-2xl p-4 mx-auto font-Onest  gap-4"
     >
       {children}
     </button>

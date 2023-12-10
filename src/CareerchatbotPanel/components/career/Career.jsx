@@ -104,10 +104,10 @@ function Career({ Personality }) {
     navigate(`/recommendedUniversities/${encodeURIComponent(career)}`);
   };
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 font-Onest">
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="px-4 py-5 sm:p-6">
-          <h2 className="text-2xl mx-auto w-fit leading-6 font-medium text-gray-900">{`Personality Type: ${name}`}</h2>
+          <h2 className="text-2xl mx-auto w-fit leading-6  text-gray-900 font-semibold">{`Personality Type: ${name}`}</h2>
           <p className="mt-1 mx-auto max-w-2xl text-sm w-fit text-gray-500">
             {description}
           </p>
@@ -116,7 +116,7 @@ function Career({ Personality }) {
           <dl>
             <div className="bg-gray-50 px-4 py-5 md:flex md:flex-col md:justify-center items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <div>
-                <dt className="text-2xl mx-auto  w-fit font-medium text-gray-700">
+                <dt className="text-2xl mx-auto  w-fit font-semibold text-gray-700">
                   Associated Careers
                 </dt>
                 <p className=" mx-auto max-w-2xl text-sm w-fit text-gray-500">
@@ -129,11 +129,11 @@ function Career({ Personality }) {
                     <li
                       onClick={() => handleClick(career)}
                       key={index}
-                      className="mx-auto w-[50%] pl-3  pr-4 py-3 flex items-center justify-between text-sm hover:bg-gray-200 hover:cursor-pointer"
+                      className="mx-auto w-[50%] pl-3   pr-4 py-3 flex items-center justify-between text-sm hover:bg-gray-200 hover:cursor-pointer"
                     >
                       <label
                         for="job-1"
-                        class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500"
+                        class="inline-flex  items-center bg-gray-600 justify-between w-full p-5 text-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500"
                       >
                         <div class="block">
                           <div class="w-full text-lg font-semibold">

@@ -32,7 +32,7 @@ const TestimonialCard = ({ name, role, testimonial, rating }) => {
 const ExpertSection = () => {
   const navigate = useNavigate();
   return (
-    <section className="bg-gray-100 py-20">
+    <section className="bg-gray-100 py-20 font-Onest">
       <div className="container mx-auto flex flex-row gap-8 w-[80%]">
         <div className="text-left mb-8 w-[90%] ">
           <h2 className="text-4xl font-bold leading-10">
@@ -51,7 +51,7 @@ const ExpertSection = () => {
           <div className="flex gap-x-4 mt-10">
             <button
               onClick={() => {
-                navigate("/search-experts");
+                navigate("/search");
               }}
               className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-14 text-white px-4 py-0  "
             >
@@ -62,15 +62,15 @@ const ExpertSection = () => {
         </div>
         <div className="flex justify-center space-x-8 px-4 ">
           <TestimonialCard
-            name="Amber Page"
-            role="Developer"
-            testimonial="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor enim minim veniam quis nostrud exercitation."
+            name="Ali"
+            role="Software Engineer"
+            testimonial="A Software Engineer with 5 years of experience in the field of web development. I have worked with many startups and helped them build their products from scratch."
             rating={5}
           />
           <TestimonialCard
-            name="Robert Tapp"
-            role="Content Creator"
-            testimonial="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor enim minim veniam quis nostrud exercitation."
+            name="Ahmed"
+            role="Architect"
+            testimonial="An Architect with experience of 10 years in the field of architecture. I have worked with many startups and helped them build their products from scratch."
             rating={5}
           />
         </div>

@@ -9,7 +9,8 @@ import ExpertSection from "../components/ExpertSection";
 import { useInView } from "react-intersection-observer";
 
 import header_bg from "../assets/header_bg.webp";
-import MainHeader from "../assets/MainHeader.webp";
+import MainHeader from "../assets/student-hero.png";
+import student from "../assets/student.png";
 
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 const CourseCard = ({ title, content, icon }) => {
@@ -107,6 +108,7 @@ const StudentLandingPage = () => {
       <Navbar />
 
       <main className="text-center">
+       
         <div
           className="bg-gray-200"
           style={{ backgroundImage: `url(${header_bg})` }}
@@ -114,32 +116,36 @@ const StudentLandingPage = () => {
           <div className="flex  w-[80%]   mx-auto   ">
             <div className="flex flex-col gap-y-9">
               <h1
-                className="mt-40 font-semibold text-left  font-Onest h-fit "
+                className="mt-40 font-semibold text-left font-Onest h-fit reveal-effect"
                 style={{ fontSize: "50px", lineHeight: "55px" }}
               >
-                Find your dream{" "}
+                Find your dream
                 <span
-                  className="italic font-bolWd"
+                  className=" font-bold reveal-delay-1"
                   style={{ color: "#ee4a62" }}
                 >
-                  Careers{" "}
+                  Careers
                 </span>
                 , suitable
-                <span className="italic font-bold" style={{ color: "#ee4a62" }}>
+                <span
+                  className=" font-bold reveal-delay-2"
+                  style={{ color: "#ee4a62" }}
+                >
                   Universities
                 </span>{" "}
-                through our{" "}
-                <span style={{ color: "#1ab69d" }}>
+                through our
+                <span className="reveal-delay-3" style={{ color: "#1ab69d" }}>
                   Personalized Recommendations
-                </span>{" "}
+                </span>
               </h1>
-              <p className="text-xl text-left h-fit">
+
+              <p className="text-xl text-left h-fit reveal-effect reveal-delay-1 font-Onest">
                 At PaiSHA, we believe everyone deserves a personalized
                 recommendation according to their needs and personality when it
                 comes to choosing your academic life.
               </p>
               <div className="flex gap-x-4">
-                <button className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-16 text-white px-4 py-0  ">
+                <button className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-16 text-white px-4 py-0 font-Onest ">
                   Explore More
                   <ArrowForwardIcon
                     sx={{ color: "white", marginLeft: "6px" }}
@@ -150,13 +156,14 @@ const StudentLandingPage = () => {
             <img className="mt-20" src={MainHeader} alt="mainImage"></img>
           </div>
         </div>
+
         <div className="flex flex-col items-center font-Onest bg-gray-100 px-4 py-12">
           <div className=" p-8 rounded-lg  text-center  w-[70%] mx-auto">
             <h1 className="text-5xl leading-tight font-bold mb-4 w-[80%] mx-auto">
               Talk to our AI chat bot Sarah to know about the career that suits
               your personality
             </h1>
-            <p className="mb-4 leading-4 w-[62%] mx-auto">
+            <p className="mb-4 leading-4 w-[62%] mx-auto py-10">
               Get deep analysis of your personality by talking to our chat bot
               and get to know about the best career that suits your personality.
               Our system is specifically designed to help you making a decision
@@ -166,7 +173,7 @@ const StudentLandingPage = () => {
               onClick={() => {
                 navigate("/chatbot");
               }}
-              className="bg-black hover:bg-[#ee4a62] rounded-lg w-40 h-14 text-white px-4 py-0  "
+              className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-14 text-white px-4 py-0  "
             >
               Talk to Sarah
               <ArrowForwardIcon sx={{ color: "white", marginLeft: "6px" }} />
@@ -174,6 +181,47 @@ const StudentLandingPage = () => {
           </div>
         </div>
         <ExpertSection></ExpertSection>
+
+        <section className="flex flex-wrap justify-center items-center bg-white p-8 font-Onest mt-24 ">
+      <div className="w-full md:w-1/2 p-4 flex justify-center">
+        <img
+          src={student}
+          alt="Learning"
+          className="rounded-lg shadow-lg"
+        />
+        {/* Placeholder for video thumbnail or player */}
+        {/* <div className="absolute w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center -mt-20 ml-20">
+          <span className="text-2xl font-bold">Play</span>
+        </div> */}
+      </div>
+      <div className="w-full md:w-1/2 p-4">
+        <div className="mb-6">
+          <h2 className="text-4xl font-bold text-gray-800 mb-2">
+            Learn & Grow Your Skills
+          </h2>
+          <p className="text-gray-600 text-lg">
+            Grow tour skills by learning from the experts and by getting to know about your personality.
+            See your personality and career recommendations in your profile and suitable universities for you.
+          </p>
+        </div>
+        <ul className="list-none space-y-4">
+          <li className="flex items-center">
+            <span className="text-[#1ab69d] mr-2">✓</span> Expert Consultancy
+          </li>
+          <li className="flex items-center">
+            <span className="text-[#1ab69d] mr-2">✓</span> Career Recommendation
+          </li>
+          <li className="flex items-center">
+            <span className="text-[#1ab69d] mr-2">✓</span> University Information
+          </li>
+        </ul>
+        <div className="mt-6">
+          {/* <div className="inline-block text-sm text-gray-600 bg-gray-100 px-4 py-2 rounded-full shadow-sm">
+            29+ Wonderful Awards
+          </div> */}
+        </div>
+      </div>
+    </section>
 
         <section className="FAQ">
           <div className="p-8  mt-10 mb-20">
@@ -191,7 +239,7 @@ const StudentLandingPage = () => {
                     <span>{openQuestion === index ? "−" : "+"}</span>
                   </button>
                   {openQuestion === index && (
-                    <div className="mt-2 bg-[#ee4a62] p-4  rounded-2xl">
+                    <div className="mt-2 bg-gray-200 p-4  rounded-2xl">
                       {item.answer}
                     </div>
                   )}

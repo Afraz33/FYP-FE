@@ -14,7 +14,7 @@ function ChatbotPage() {
         setModalVisible={setModalVisible}
       />
       {!modalVisible && (
-        <div className="bg-[#eeebe7] min-h-screen max-h-fit p-8">
+        <div className="bg-white min-h-screen max-h-fit p-8">
           {viewCareers === false ? (
             <ConversationFlow
               setPersonality={setPersonality}

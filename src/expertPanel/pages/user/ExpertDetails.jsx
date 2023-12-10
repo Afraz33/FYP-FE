@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import defaultProfileImage from '../../assets/images/imgg.jpg'; 
+import defaultProfileImage from '../../assets/images/imgg.jpg';
+import Navbar from '../../../studentPanel/components/Navbar'; 
 
 const ExpertDetails = () => {
   const navigate = useNavigate();
@@ -47,6 +48,36 @@ const ExpertDetails = () => {
     return <p>Loading expert data...</p>;
   }
 
+  //   useEffect(() => {
+  //     const fetchExpertAndReviews = async () => {
+  //       try {
+  //         const apiUrl = `http://localhost:5000/api/experts/${expertId}`;
+  //         const expertResponse = await fetch(apiUrl);
+
+  //         if (!expertResponse.ok) {
+  //           throw new Error('Network response was not ok');
+  //         }
+
+  //         const expertData = await expertResponse.json();
+
+  //         const reviewsResponse = await fetch(`http://localhost:5000/api/experts/reviews/${expertId}`);
+
+  //         if (!reviewsResponse.ok) {
+  //           throw new Error('Network response for reviews was not ok');
+  //         }
+
+  //         const reviewsData = await reviewsResponse.json();
+
+  //         expertData.reviews = reviewsData;
+  //         setExpert(expertData);
+  //       } catch (error) {
+  //         console.error('Error fetching expert and reviews:', error);
+  //       }
+  //     };
+
+  //     fetchExpertAndReviews();
+  //   }, [expertId]);
+
   const handleBookMeeting = () => {
     navigate(`/meeting/${expert.userName}`, {
       state: { calendlyLink: expert.calendlyLink },
@@ -59,6 +90,7 @@ const ExpertDetails = () => {
 
   return (
     <div className="font-Onest">
+      <Navbar />
       {/* Hero section */}
       <div className="bg-teal-500 text-white text-center py-10">
         <h1 className="text-5xl font-bold">Expert Details</h1>

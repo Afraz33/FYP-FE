@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import defaultProfileImage from '../../assets/images/imgg.jpg'; // The default image for all profiles
 import { motion } from 'framer-motion';
+import Navbar from '../../../studentPanel/components/Navbar'; 
 
 const Header = () => {
   return (
@@ -115,7 +116,7 @@ function Profile() {
 
   return (
     <>
-      <Header />
+      <Navbar />
       <HeroSection />
       <div className="container mx-auto p-4 font-Onest">
        <form onSubmit={handleSearch} className="flex justify-center mb-6">

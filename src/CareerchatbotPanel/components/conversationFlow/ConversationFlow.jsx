@@ -34,7 +34,7 @@ const initialQuestions = [
     Question: "How do you feel like laying brick or tile?",
     Tag: "R",
     Score: 0,
-    Answer: "No",
+    Answer: "",
   },
   {
     Question: "How do you feel like working on an offshore oil-drilling rig?",
@@ -329,7 +329,7 @@ const initialQuestions = [
   },
 ];
 function ConversationFlow({ setPersonality, setViewCareers }) {
-  const [index, setIndex] = useState(46);
+  const [index, setIndex] = useState(47);
   const [responding, setResponding] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [processingMessage, setProcessingMessage] = useState("");
@@ -519,7 +519,7 @@ function ConversationFlow({ setPersonality, setViewCareers }) {
               variant="h5"
               component="h2"
             >
-              <div style={{ color: "white" }}>{processingMessage}</div>
+              <div className="font-Onest" style={{ color: "white" }}>{processingMessage}</div>
 
               <div style={{ marginLeft: "8px" }} class={Styles.spinner_2}></div>
             </Typography>

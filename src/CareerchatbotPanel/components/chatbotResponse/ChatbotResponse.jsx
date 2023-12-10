@@ -3,9 +3,9 @@ import Styles from "./ChatbotResponse.module.css";
 function ChatbotResponse({ text, index, responding }) {
   return (
     <>
-      <div className="self-start p-4 max-w-xl mx-auto bg-gray-100 rounded-lg shadow flex">
+      <div className="self-start p-4 max-w-xl mx-auto bg-[#1ab69d] rounded-lg shadow flex">
         <SmartToyIcon />
-        <p className="text-gray-800 ml-2">{text}</p>
+        <p className="text-white ml-2 font-Onest">{text}</p>
       </div>
     </>
   );

@@ -6,9 +6,9 @@ import { FaUniversity } from "react-icons/fa";
 import { FaRocketchat, FaChessKing, FaCircleInfo } from "react-icons/fa6";
 import "./animations.css";
 import { useInView } from "react-intersection-observer";
-import expertImage from "../expertPanel/assets/images/expertImage.jpg";
+import expertImage from "../expertPanel/assets/images/expertNew.png";
 import mission from "../expertPanel/assets/images/mission.jpg";
-import MainHeader from "../LandingPage/assets/girl.webp";
+import MainHeader from "../LandingPage/assets/hero-section-main.png";
 
 import header_bg from "../LandingPage/assets/header_bg.webp";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -21,16 +21,18 @@ const CourseCard = ({ title, content, icon }) => {
   return (
     <div
       ref={ref}
-      className={`flex flex-col  p-6 rounded-2xl shadow-4xl bg-[#1ab69d] hover:bg-[#ee4a62] cursor-pointer  space-y-4 border-black border-2
+      className={`flex flex-col  p-6 rounded-2xl shadow-4xl bg-[#1ab69d] hover:bg-gray-200 cursor-pointer  space-y-4 border-black border-2
                   ${inView ? "animate-slideUp" : "opacity-0"}`}
     >
       <div className="flex items-center space-x-3">
         <div className="bg-gray-300 p-3 rounded-full">
           <span className="text-xl font-bold">{icon}</span>
         </div>
-        <h2 className="text-xl font-bold font-Onest">{title}</h2>
+        <h2 className="text-xl font-bold text-black font-Onest hover:text-black">
+          {title}
+        </h2>
       </div>
-      <p className="font-Onest">{content}</p>
+      <p className="font-Onest text-black">{content}</p>
     </div>
   );
 };
@@ -114,32 +116,36 @@ const LandingPage = () => {
           <div className="flex  w-[80%]   mx-auto   ">
             <div className="flex flex-col gap-y-9">
               <h1
-                className="mt-40 font-semibold text-left  font-Onest h-fit "
+                className="mt-40 font-semibold text-left font-Onest h-fit reveal-effect"
                 style={{ fontSize: "50px", lineHeight: "55px" }}
               >
-                Find your dream{" "}
+                Find your dream
                 <span
-                  className="italic font-bolWd"
+                  className=" font-bold reveal-delay-1"
                   style={{ color: "#ee4a62" }}
                 >
-                  Careers{" "}
+                  Careers
                 </span>
                 , suitable
-                <span className="italic font-bold" style={{ color: "#ee4a62" }}>
+                <span
+                  className=" font-bold reveal-delay-2"
+                  style={{ color: "#ee4a62" }}
+                >
                   Universities
                 </span>{" "}
-                through our{" "}
-                <span style={{ color: "#1ab69d" }}>
+                through our
+                <span className="reveal-delay-3" style={{ color: "#1ab69d" }}>
                   Personalized Recommendations
-                </span>{" "}
+                </span>
               </h1>
-              <p className="text-xl text-left h-fit">
+
+              <p className="text-xl text-left h-fit reveal-effect reveal-delay-1 font-Onest">
                 At PaiSHA, we believe everyone deserves a personalized
                 recommendation according to their needs and personality when it
                 comes to choosing your academic life.
               </p>
               <div className="flex gap-x-4">
-                <button className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-16 text-white px-4 py-0  ">
+                <button className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-16 text-white px-4 py-0 font-Onest ">
                   Explore More
                   <ArrowForwardIcon
                     sx={{ color: "white", marginLeft: "6px" }}
@@ -156,20 +162,23 @@ const LandingPage = () => {
               We offer various innovative features to help you make the right
               decision
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4  ">
+            <div className="flex flex-wrap justify-center items-stretch gap-4">
               {cardData.map((card, index) => (
-                <CourseCard
-                  key={index}
-                  title={card.title}
-                  content={card.content}
-                  icon={card.icon}
-                />
+                <div className="w-full md:w-1/2" key={index}>
+                  {" "}
+                  {/* This ensures that on medium devices and larger, only two cards will be 50% width each, thus making two per row */}
+                  <CourseCard
+                    title={card.title}
+                    content={card.content}
+                    icon={card.icon}
+                  />
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="3rdSection bg-gray-100 mt-10 ">
+        <section className="3rdSection  mt-10 ">
           <div className="flex flex-col items-center justify-center py-8  ">
             <h1 className="text-5xl font-bold mb-4 font-Onest">
               We believe <span className="text-purple-500">🌼💛</span> that
@@ -186,8 +195,8 @@ const LandingPage = () => {
             </h3>
           </div>
         </section>
-        {/* <section className="Expert">
-          <div className="flex bg-[#FFD666] p-12 rounded-xl mt-20 mb-20">
+        <section className="Expert">
+          <div className="flex bg-[#1ab69d] p-12  mt-20 mb-20">
             <img
               src={expertImage}
               alt="Professional Guidance"
@@ -204,13 +213,13 @@ const LandingPage = () => {
                 passions. You can also connect with industry experts for
                 professional guidance and insights.
               </p>
-              <button className="bg-black text-white px-6 py-2 rounded-full w-40 hover:text-black hover:bg-white font-Onest hover:border-black hover:border">
+              <button className="bg-[#ee4a62] text-white font-semibold px-6 py-2 rounded-full w-40 hover:text-black hover:bg-gray-200 font-Onest hover:border-black hover:border">
                 <Link to="/signup">Consult Now</Link>
               </button>
             </div>
           </div>
-        </section> */}
-        {/* <section className="Expert">
+        </section>
+        <section className="Expert">
           <div className="flex bg-white p-12 rounded-xl mt-20 mb-20">
             <div className="flex flex-col justify-center">
               <h2 className="text-4xl font-bold mb-4 text-left  font-Onest">
@@ -236,7 +245,7 @@ const LandingPage = () => {
               className="w-1/2 rounded-xl mr-10 mt-10 mb-10 ml-20 object-contain h-96 "
             />
           </div>
-        </section> */}
+        </section>
         <section className="FAQ mt-10">
           <div className="p-8   mb-20">
             <h1 className="text-4xl  mb-6 font-bold font-Onest ">
@@ -255,7 +264,7 @@ const LandingPage = () => {
                     <span>{openQuestion === index ? "−" : "+"}</span>
                   </button>
                   {openQuestion === index && (
-                    <div className="mt-2 bg-[#ee4a62] p-4  rounded-2xl">
+                    <div className="mt-2 bg-gray-200 p-4  rounded-2xl">
                       {item.answer}
                     </div>
                   )}
