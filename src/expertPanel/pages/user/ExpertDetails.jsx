@@ -1,23 +1,6 @@
-//   useEffect(() => {
-//     const apiUrl = `http://localhost:5000/api/experts/${expertId}`;
-//     console.log("API URL:", apiUrl);
-//     // Make an API call to fetch expert data
-//     fetch(apiUrl)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         // Set the fetched expert data to the state
-//         setExpert(data);
-//       })
-//       .catch((error) => {
-//         console.error('Error fetching expert data:', error);
-//       });
-//   }, [expertId]);
-
-//   if (!expert) {
-//     return <p>Loading expert data...</p>;
-//   }
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import defaultProfileImage from '../../assets/images/imgg.jpg'; 
 
 const ExpertDetails = () => {
   const navigate = useNavigate();
@@ -25,7 +8,6 @@ const ExpertDetails = () => {
   const [expert, setExpert] = useState(null);
 
   useEffect(() => {
-    console.log(id);
     const fetchExpertAndReviews = async () => {
       try {
         const expertData = await fetchExpertData();
@@ -41,7 +23,6 @@ const ExpertDetails = () => {
       const expertResponse = await fetch(
         `http://localhost:5000/api/experts/${id}`
       );
-      console.log("Extracted expertId:", id);
 
       if (!expertResponse.ok) {
         throw new Error("Network response for expert was not ok");
@@ -66,148 +47,106 @@ const ExpertDetails = () => {
     return <p>Loading expert data...</p>;
   }
 
-  //   useEffect(() => {
-  //     const fetchExpertAndReviews = async () => {
-  //       try {
-  //         const apiUrl = `http://localhost:5000/api/experts/${expertId}`;
-  //         const expertResponse = await fetch(apiUrl);
-
-  //         if (!expertResponse.ok) {
-  //           throw new Error('Network response was not ok');
-  //         }
-
-  //         const expertData = await expertResponse.json();
-
-  //         const reviewsResponse = await fetch(`http://localhost:5000/api/experts/reviews/${expertId}`);
-
-  //         if (!reviewsResponse.ok) {
-  //           throw new Error('Network response for reviews was not ok');
-  //         }
-
-  //         const reviewsData = await reviewsResponse.json();
-
-  //         expertData.reviews = reviewsData;
-  //         setExpert(expertData);
-  //       } catch (error) {
-  //         console.error('Error fetching expert and reviews:', error);
-  //       }
-  //     };
-
-  //     fetchExpertAndReviews();
-  //   }, [expertId]);
-
   const handleBookMeeting = () => {
-    // Add the logic for booking a meeting with the expert
+    navigate(`/meeting/${expert.userName}`, {
+      state: { calendlyLink: expert.calendlyLink },
+    });
   };
 
-  if (!expert) {
-    return <p>Loading expert data...</p>;
-  }
+  const handleGiveReview = () => {
+    navigate(`/review/${expert.email}`);
+  };
 
   return (
-    <div className="p-10 bg-white h-screen items-center flex flex-col font-DelaGothicOne">
-      {/* Navbar */}
-      <div className="bg-white rounded-full border-2 border-black w-full max-w-screen-xl px-4 py-2 mt-0 mb-2 flex items-center justify-between">
-        <div className="text-xl font-bold font-Onest">PaiSHA</div>
-        {/* <div className="flex space-x-8">
-          <button className="text-sm">Explore Universities</button>
-          <button className="text-sm">Career Advisor</button>
-          <button className="text-sm">University Ranking</button>
-          <button className="text-sm">Merit Trends</button>
-          <button className="text-sm">Expert Consultation</button>
-          <button className="text-black px-4 py-1 rounded-full border border-black">
-            Umama
-          </button>
-        </div> */}
+    <div className="font-Onest">
+      {/* Hero section */}
+      <div className="bg-teal-500 text-white text-center py-10">
+        <h1 className="text-5xl font-bold">Expert Details</h1>
       </div>
 
-      <div className=" bg-[#B2A1FE] p-10 rounded-xl flex space-x-10 shadow-md mx-auto mt-4 items-start border-2 border-black">
-        {/* Left Section */}
-        <div className="bg-white flex-none rounded-2xl w-1/4 mt-4 border-2 border-black p-4 flex flex-col items-center">
-          <div className="w-full text-center mb-2 font-Onest font-extrabold">{expert.firstName}</div>
-          {/* Display other expert details here using the same format */}
-          <div className="flex justify-between w-full mb-3">
-            <strong className="font-Onest">City:</strong>
-            <span className="font-Onest">{expert.city}</span>
-          </div>
-          <div className="flex justify-between w-full mb-3">
-            <strong className="font-Onest">Languages:</strong>
-            <span className="font-Onest">{expert.languages.join(", ")}</span>
-          </div>
-          <div className="flex justify-between w-full mb-3">
-            <strong className="font-Onest">Email:</strong>
-            <span className="font-Onest">{expert.email}</span>
-          </div>
-          <div className="flex justify-between w-full mb-3">
-            <strong className="font-Onest">Area of expertise:</strong>
-            <span className="font-Onest">{expert.expertise}</span>
-          </div>
-          <div className="flex justify-between w-full mb-3">
-            <strong className="font-Onest">Highest Qualification:</strong>
-            <span className="font-Onest">{expert.highestQualification}</span>
-          </div>
-          <div className="flex justify-between w-full mb-3">
-            <strong className="font-Onest">Current Role:</strong>
-            <span className="font-Onest">{expert.currentRole}</span>
-          </div>
+      {/* Profile Section */}
+      <div className="container mx-auto p-12 flex flex-wrap items-start">
+        {/* Profile Image */}
+        <div className="w-full md:w-1/3 flex justify-center md:justify-start">
+          <img
+            src={defaultProfileImage} 
+            alt="Expert"
+            className="rounded-full border-4 border-white h-96 w-96" // Increased size
+          />
         </div>
 
-        {/* Middle Section */}
-        <div className="flex-grow space-y-6">
-          <div className="bg-white mt-4 rounded-2xl p-4 border-2 border-black">
-            <strong className="font-Onest">Description:</strong>
-            <p className="font-Onest">{expert.description}</p>
-          </div>
-          <div className="flex space-x-4 mt-4">
-            {/* Certification Section */}
-            <div className="bg-white w-1/2 rounded-2xl p-4 border-2 border-black">
-              <strong className="font-Onest">Certification:</strong>
-              {expert.certifications.map((certification, index) => (
-                <p className="font-Onest" key={index}>{certification}</p>
-              ))}
-            </div>
-            {/* Skills Section */}
-            <div className="bg-white w-1/2 rounded-2xl p-4 border-2 border-black">
-              <strong className="font-Onest">Skills:</strong>
-              <ul className="font-Onest">
+        {/* Details Section */}
+        <div className="w-full md:w-2/3 md:pl-8">
+          <h2 className="text-5xl font-bold mb-4">{expert.firstName} {expert.lastName}</h2>
+          <p className="text-md text-gray-600 mb-1">{expert.expertise}</p>
+
+          {/* Grid container */}
+          <div className="md:grid md:grid-cols-2 md:gap-8">
+            
+            {/* First Column */}
+            <div>
+              {/* About Me */}
+              <div className="text-xl font-semibold mb-2">About Me</div>
+              <p className="text-lg text-gray-600 mb-4">{expert.description}</p>
+
+              {/* Skills */}
+              <div className="text-xl font-semibold mb-2">Skills</div>
+              <ul className="list-disc list-inside text-gray-600 mb-4">
                 {expert.skills.map((skill, index) => (
                   <li key={index}>{skill}</li>
                 ))}
               </ul>
+
+              {/* Experience */}
+              <div className="text-xl font-semibold mb-2">Experience</div>
+              <ul className="list-disc list-inside text-gray-600 mb-4">
+                {expert.experience.map((experience, index) => (
+                  <li key={index}>{experience}</li>
+                ))}
+              </ul>
+
+              {/* Highest Qualification */}
+              <div className="text-xl font-semibold mb-2">Highest Qualification</div>
+              <p className="text-gray-600 mb-4">{expert.highestQualification}</p>
             </div>
+
+            {/* Second Column */}
+            <div>
+              {/* Contact Me */}
+              <div className="text-xl font-semibold mb-2">Contact Me</div>
+              <p className="text-lg text-gray-600 mb-4">Email: {expert.email}</p>
+              <p className="text-lg text-gray-600 mb-4">Phone: {expert.phone}</p>
+
+              {/* Hourly Rate */}
+              <div className="text-xl font-semibold mb-2">Hourly Rate</div>
+              <p className="text-lg text-gray-600 mb-4">${expert.hourlyRate}/hr</p>
+
+             {/* Language */}
+          <div className="text-xl font-semibold mb-2">Languages</div>
+          <ul className="list-disc list-inside text-gray-600 mb-4">
+            {expert.languages.map((language, index) => (
+              <li key={index} className="text-lg">{language}</li>
+            ))}
+          </ul>
+
           </div>
-          {/* Experience Section */}
-          <div className="bg-white mt-4 rounded-2xl p-4 border-2 border-black">
-            <strong className="font-Onest">Experience:</strong>
-            <ul className="font-Onest">
-              {expert.experience.map((experience, index) => (
-                <li key={index}>{experience}</li>
-              ))}
-            </ul>
+
+          {/* Action Buttons */}
+          <div className="text-center mt-8">
+            <button
+              className="text-white bg-black px-4 py-2 rounded-full border border-black mr-4 transition duration-300 hover:bg-white hover:text-black"
+              onClick={handleBookMeeting}
+            >
+              Book a Meeting
+            </button>
+            <button
+              className="text-teal-600 underline px-4 py-2 transition duration-300 hover:text-black"
+              onClick={handleGiveReview}
+            >
+              Give Review
+            </button>
           </div>
-          {/* Reviews Section */}
-          <div className="bg-white mt-4 rounded-2xl p-4 border-2 border-black">
-            <strong className="font-Onest">Reviews:</strong>
-            {Array.isArray(expert.reviews) && expert.reviews.length > 0 ? (
-              expert.reviews.map((review, index) => (
-                <div className="font-Onest" key={index}>
-                  <strong className="font-Onest">{review.userEmail}:</strong> {review.comment}
-                </div>
-              ))
-            ) : (
-              <p>No reviews available.</p>
-            )}
-          </div>
-          <button
-            className="text-white bg-black px-4 py-1 rounded-full border border-black mt-2 transition duration-300 hover:bg-white hover:text-black hover:border-black font-Onest hover:border-2"
-            onClick={() =>
-              navigate(`/meeting/${expert.userName}`, {
-                state: { calendlyLink: expert.calendlyLink },
-              })
-            }
-          >
-            Book a Meeting
-          </button>
+        </div>
         </div>
       </div>
     </div>
@@ -215,3 +154,4 @@ const ExpertDetails = () => {
 };
 
 export default ExpertDetails;
+ 
