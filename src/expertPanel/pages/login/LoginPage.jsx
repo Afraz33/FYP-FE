@@ -18,7 +18,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="bg-[#B2A1FE] h-content flex flex-col items-center">
+    <div className="bg-[#B2A1FE] h-screen flex flex-col items-center">
       <div className="flex space-x-4 mt-6">
         <button
           className={`${
