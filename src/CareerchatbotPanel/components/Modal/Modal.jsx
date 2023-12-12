@@ -73,6 +73,9 @@ const ChatbotModal = ({ modalVisible, setModalVisible }) => {
                   cognitive processes, and accurate results depend on truthful
                   responses.
                 </li>
+                <li className="text-base leading-relaxed text-gray-700 ">
+                  To be precise tell us if you will like to do asked thing or not
+                </li>
               </ol>
               {/* Modal footer */}
               <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">

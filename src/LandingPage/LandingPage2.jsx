@@ -214,7 +214,7 @@ const LandingPage = () => {
                 professional guidance and insights.
               </p>
               <button className="bg-[#ee4a62] text-white font-semibold px-6 py-2 rounded-full w-40 hover:text-black hover:bg-gray-200 font-Onest hover:border-black hover:border">
-                <Link to="/signup">Consult Now</Link>
+                <Link to="/student-login">Consult Now</Link>
               </button>
             </div>
           </div>

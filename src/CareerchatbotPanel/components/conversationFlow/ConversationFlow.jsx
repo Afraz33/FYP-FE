@@ -329,7 +329,7 @@ const initialQuestions = [
   },
 ];
 function ConversationFlow({ setPersonality, setViewCareers }) {
-  const [index, setIndex] = useState(47);
+  const [index, setIndex] = useState(0);
   const [responding, setResponding] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [processingMessage, setProcessingMessage] = useState("");
@@ -344,7 +344,7 @@ function ConversationFlow({ setPersonality, setViewCareers }) {
     "Generating Insights",
     // Add more messages as needed
   ];
-
+  
   // Recursive function to handle message display
   const displayNextMessage = (index) => {
     if (index < processingMessages.length) {
@@ -371,6 +371,7 @@ function ConversationFlow({ setPersonality, setViewCareers }) {
   ]);
   const [questions, setQuestions] = useState(initialQuestions);
   const [isFollowUp, setIsFollowUp] = useState(-1);
+  console.log(questions)
   const handleUserAnswer = async (answer) => {
     const updatedQuestions = [...questions];
     updatedQuestions[index].Answer = answer;
