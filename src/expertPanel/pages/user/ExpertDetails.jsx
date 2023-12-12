@@ -140,6 +140,21 @@ const ExpertDetails = () => {
               {/* Highest Qualification */}
               <div className="text-xl font-semibold mb-2">Highest Qualification</div>
               <p className="text-gray-600 mb-4">{expert.highestQualification}</p>
+
+            <div className="text-xl font-semibold mb-2 w-full">Reviews</div>
+            {Array.isArray(expert.reviews) && expert.reviews.length > 0 ? (
+              <ul className="list-disc list-inside text-gray-600 mb-4">
+                {expert.reviews.map((review, index) => (
+                  <li key={index} className="font-Onest">
+                    <strong className="font-Onest">{review.userEmail}:</strong> {review.comment}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="font-Onest">No reviews available.</p>
+            )}
+
+
             </div>
 
             {/* Second Column */}
