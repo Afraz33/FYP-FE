@@ -5,6 +5,7 @@ function SubmitButton({
   setViewCareers,
   setProcessing,
   startProcessing,
+  setStudentPersonality,
 }) {
   const calculatePersonality = () => {
     const personalityScores = { R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 };
@@ -24,7 +25,9 @@ function SubmitButton({
 
   const handleButtonClick = () => {
     const personality = calculatePersonality();
+
     setPersonality(personality);
+    setStudentPersonality(personality);
     //setViewCareers(true);
     setProcessing(true);
     startProcessing();

@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-
+import { useNavigate } from "react-router-dom";
 const style = {
   position: "absolute",
   top: "50%",
@@ -328,13 +328,14 @@ const initialQuestions = [
     Answer: "",
   },
 ];
-function ConversationFlow({ setPersonality, setViewCareers }) {
-  const [index, setIndex] = useState(0);
+function ConversationFlow({ setPersonality, setViewCareers, Personality }) {
+  const [index, setIndex] = useState(46);
   const [responding, setResponding] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [processingMessage, setProcessingMessage] = useState("");
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-
+  const [studentPersonality, setStudentPersonality] = useState("");
+  const navigate = useNavigate();
   // Array of messages to display
   const processingMessages = [
     "Analyzing Personality",
@@ -344,7 +345,7 @@ function ConversationFlow({ setPersonality, setViewCareers }) {
     "Generating Insights",
     // Add more messages as needed
   ];
-  
+
   // Recursive function to handle message display
   const displayNextMessage = (index) => {
     if (index < processingMessages.length) {
@@ -353,6 +354,7 @@ function ConversationFlow({ setPersonality, setViewCareers }) {
     } else {
       setProcessing(false);
       setViewCareers(true);
+
       // Here you can proceed to show results or next steps
     }
   };
@@ -371,7 +373,7 @@ function ConversationFlow({ setPersonality, setViewCareers }) {
   ]);
   const [questions, setQuestions] = useState(initialQuestions);
   const [isFollowUp, setIsFollowUp] = useState(-1);
-  console.log(questions)
+  console.log(questions);
   const handleUserAnswer = async (answer) => {
     const updatedQuestions = [...questions];
     updatedQuestions[index].Answer = answer;
@@ -482,6 +484,7 @@ function ConversationFlow({ setPersonality, setViewCareers }) {
         <UserDialougeBox handleUserAnswer={handleUserAnswer} />
       ) : (
         <SubmitButton
+          setStudentPersonality={setStudentPersonality}
           setProcessing={setProcessing}
           setViewCareers={setViewCareers}
           setPersonality={setPersonality}
@@ -520,7 +523,9 @@ function ConversationFlow({ setPersonality, setViewCareers }) {
               variant="h5"
               component="h2"
             >
-              <div className="font-Onest" style={{ color: "white" }}>{processingMessage}</div>
+              <div className="font-Onest" style={{ color: "white" }}>
+                {processingMessage}
+              </div>
 
               <div style={{ marginLeft: "8px" }} class={Styles.spinner_2}></div>
             </Typography>

@@ -16,6 +16,7 @@ import StudentLogin from "../studentPanel/pages/StudentLogin";
 import StudentLandingPage from "../studentPanel/pages/StudentLandingPage";
 import StudentSignUp from "../studentPanel/pages/StudentSignup";
 import SearchExperts from "../studentPanel/pages/SearchExpert";
+import PersonalityPage from "../CareerchatbotPanel/pages/PersonalityPage";
 function Routers() {
   return (
     <Routes>
@@ -28,7 +29,7 @@ function Routers() {
       <Route path="/search" element={<SearchPage />} />
       <Route path="/profile/:id" element={<ExpertDetails />} />
       <Route path="/review/:expertEmail" element={<ReviewPage />} />
-      
+
       <Route path="/expert-panel" element={<ExpertLandingPage />}></Route>
       <Route path="/expert-panel/calendar" element={<Calendar />}></Route>
       <Route path="/meeting/:userName" element={<MeetingPage />} />
@@ -37,6 +38,7 @@ function Routers() {
         path="/recommendedUniversities/:career"
         element={<RecommendedUniversities />}
       />
+      <Route path="/personality/:Personality" element={<PersonalityPage />} />
       <Route path="/student-signup" element={<StudentSignUp />}></Route>
       <Route path="/search-experts" element={<SearchExperts />}></Route>
     </Routes>
