@@ -46,14 +46,14 @@ const ProfileCard = ({ name, description, reviews, expertise, hourlyRate }) => {
 
   return (
     <motion.div
-      className="bg-white rounded-lg overflow-hidden shadow-md w-96"
-      style={{ height: '20rem' }}
+      className="bg-white rounded-lg overflow-hidden shadow-md w-96 "
+      style={{ height: '25rem' }}
       variants={cardVariants}
       initial="initial"
       animate="enter"
       whileHover="hover"
     >
-    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration- items-center transform hover:scale-105 w-96 " style={{ height: '20rem' }}>
+    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration- items-center transform hover:scale-105 w-96 h-full" >
       {/* Header with pattern */}
       <div className="bg-teal-500 p-4 relative w-96" style={{ height: '7rem' }}> 
         {/* Include the background pattern here */}
@@ -86,34 +86,53 @@ function Profile() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  
   useEffect(() => {
     const fetchExperts = async () => {
       setIsLoading(true);
       const query = new URLSearchParams(location.search).get('query');
       setSearchTerm(query || '');
+  
       try {
         const response = await fetch(
           `http://localhost:5000/api/experts${query ? `/sort-by-sentiment/${query}` : ''}`
         );
+  
         if (!response.ok) {
-          throw new Error('Failed to fetch experts.');
+          throw new Error('No Experts Found');
         }
-        const data = await response.json();
-        setExperts(data);
+  
+        const expertsData = await response.json();
+        const expertsWithReviews = await Promise.all(
+          expertsData.map(async (expert) => {
+            const reviewsResponse = await fetch(
+              `http://localhost:5000/api/experts/reviews/${expert.email}`
+            );
+            if (!reviewsResponse.ok) {
+              throw new Error('Failed to fetch reviews.');
+            }
+            const reviewsData = await reviewsResponse.json();
+            return { ...expert, reviews: reviewsData };
+          })
+        );
+  
+        setExperts(expertsWithReviews);
       } catch (error) {
         setError(error.message);
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
-
+  
     fetchExperts();
   }, [location.search]);
-
+  
     const handleSearch = (e) => {
     e.preventDefault();
     navigate(searchTerm ? `?query=${searchTerm}` : '');
   };
 
+  
   return (
     <>
       <Navbar />
