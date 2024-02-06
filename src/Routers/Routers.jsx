@@ -17,6 +17,7 @@ import StudentLandingPage from "../studentPanel/pages/StudentLandingPage";
 import StudentSignUp from "../studentPanel/pages/StudentSignup";
 import SearchExperts from "../studentPanel/pages/SearchExpert";
 import PersonalityPage from "../CareerchatbotPanel/pages/PersonalityPage";
+import UniChatbotPage from "../UniChatbotPanel/pages/UniChatbotPage";
 function Routers() {
   return (
     <Routes>
@@ -41,6 +42,7 @@ function Routers() {
       <Route path="/personality/:Personality" element={<PersonalityPage />} />
       <Route path="/student-signup" element={<StudentSignUp />}></Route>
       <Route path="/search-experts" element={<SearchExperts />}></Route>
+      <Route path="university-chatbot" element={<UniChatbotPage />}></Route>
     </Routes>
   );
 }
