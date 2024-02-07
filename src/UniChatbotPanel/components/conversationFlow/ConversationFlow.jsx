@@ -4,7 +4,7 @@ import ChatbotResponse from "../chatbotResponse/ChatbotResponse";
 import UserAnswer from "../userAnswer/userAnswer";
 import Styles from "./ConversationFlow.module.css";
 
-function ConversationFlow() {
+function ConversationFlow({ answer, setAnswer }) {
   // Define conversation flow as an array of objects
   const [conversationFlow, setConversationFlow] = useState([]);
   const [responding, setResponding] = useState(false);
@@ -41,9 +41,9 @@ function ConversationFlow() {
   };
   return (
     <div className="w-[75%] h-[86vh] bg-[#ffffff] flex flex-col gap-y-12 content-between  rounded-3xl">
-      <div className="flex w-full h-max-[86vh] flex-col justify-between gap-10 px-20 overflow-y-auto py-16">
+      <div className="flex w-full h-max-[86vh] flex-col justify-between gap-10 px-20 overflow-y-auto py-16 pb-20">
         {conversationFlow.map((item, index) => (
-          <div className="self-start w-fit h-full" key={index}>
+          <div className="self-start w-fit h-full " key={index}>
             {item.type === "userQuery" ? (
               <UserAnswer text={item.text} />
             ) : (
@@ -54,7 +54,11 @@ function ConversationFlow() {
           </div>
         ))}
       </div>
-      <UserDialougeBox handleUserAnswer={handleUserAnswer} />
+      <UserDialougeBox
+        handleUserAnswer={handleUserAnswer}
+        answer={answer}
+        setAnswer={setAnswer}
+      />
     </div>
   );
 }

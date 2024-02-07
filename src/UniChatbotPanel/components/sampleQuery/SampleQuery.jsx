@@ -1,9 +1,14 @@
 import MessageIcon from "@mui/icons-material/Message";
 import messageIcon from "../../assets/message.png";
-function SampleQuery() {
+function SampleQuery({ question, setAnswer }) {
   return (
-    <div className="flex flex-row gap-1 bg-[#f0faf9] rounded-2xl p-3 font-Onest">
-      <div className=" rounded-full  h-10 w-28 flex justify-center items-center bg-white">
+    <div
+      onClick={() => {
+        setAnswer(question);
+      }}
+      className="flex flex-row gap-1 bg-[#f0faf9] hover:bg-slate-200 hover:cursor-pointer rounded-2xl p-3 font-Onest"
+    >
+      <div className=" rounded-full  h-10 w-[20%] flex justify-center items-center bg-white">
         <img
           style={{ width: "79px", height: "60px" }}
           src={messageIcon}
@@ -11,10 +16,7 @@ function SampleQuery() {
         ></img>
       </div>
 
-      <p className="text-black ">
-        "Give me a list of computer Science Universities that have merit higher
-        than 40%".
-      </p>
+      <p className="text-black w-[100%] ">{question}</p>
     </div>
   );
 }

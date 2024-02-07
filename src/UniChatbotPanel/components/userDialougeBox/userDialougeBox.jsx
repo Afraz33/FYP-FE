@@ -1,16 +1,14 @@
 import { IoSendSharp } from "react-icons/io5";
 import { useState } from "react";
 
-function UserDialougeBox({ handleUserAnswer }) {
-  const [answer, setAnswer] = useState("");
-
+function UserDialougeBox({ handleUserAnswer, answer, setAnswer }) {
   const handleInput = (answer) => {
     handleUserAnswer(answer);
 
     setAnswer("");
   };
   return (
-    <div className="flex items-center w-[50%] fixed bottom-20 left-40 gap-4">
+    <div className="flex items-center w-[50%] fixed bottom-16 left-40 gap-4">
       <input
         value={answer}
         onChange={(e) => setAnswer(e.target.value)}
