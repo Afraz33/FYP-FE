@@ -9,11 +9,7 @@ function UserAnswer({ text }) {
         src={userIcon}
         alt="userIcon"
       ></img>
-      <p className="text-black mr-2 font-Onest">
-        Show me some universities in rawalpindi Show me some universities in
-        rawalpindi Show me some universities in rawalpindi Show me some
-        universities in rawalpindi Show me some universities in rawalpindi
-      </p>
+      <p className="text-black mr-2 font-Onest">{text}</p>
     </div>
   );
 }
