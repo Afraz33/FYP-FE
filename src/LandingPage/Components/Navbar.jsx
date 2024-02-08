@@ -364,6 +364,7 @@ function Navbar() {
                 </a>
               </li>
               <li>
+              <Link to="/university-chatbot">
                 <a
                   href="#"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -373,7 +374,9 @@ function Navbar() {
                     Find the answers to your questions about universities
                   </span>
                 </a>
+                </Link>
               </li>
+              
               {/* <li>
                 <a
                   href="#"
