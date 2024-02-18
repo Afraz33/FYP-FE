@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import loginUser from "../../assets/images/loginUser.png";
-import { Link, useNavigate } from 'react-router-dom'; // <- Add useNavigate here
+import { Link, useNavigate , Route} from 'react-router-dom'; // <- Add useNavigate here
 import axios from 'axios';
 
 function LoginForm() {
@@ -9,6 +9,7 @@ function LoginForm() {
 
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
+  
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -64,13 +65,14 @@ function LoginForm() {
             onChange={handlePasswordChange}
           />
           <p className="text-sm font-Onest mb-4 text-right" style={{ textDecoration: 'underline' }}>
-          Forgot Password? 
-          </p>
+       
+         </p>
           <button
           className="bg-black text-white px-4 py-2 rounded-2xl my-4 font-Onest hover:bg-white hover:text-black transition duration-300 ease-in-out hover:border-black border"
           onClick={handleLogin} >
           Login
         </button>
+
           <p className="text-sm  font-Onest">
           Don't have an account? <Link to="/signup" style={{ textDecoration: 'underline' }}>Sign Up</Link>
         </p>
