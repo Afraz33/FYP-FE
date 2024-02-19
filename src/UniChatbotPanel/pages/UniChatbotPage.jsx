@@ -1,6 +1,8 @@
 import { useState } from "react";
 import ConversationFlow from "../components/conversationFlow/ConversationFlow";
 import SampleQuery from "../components/sampleQuery/SampleQuery";
+import Navbar from "../../studentPanel/components/Navbar";
+import Footer from "../../studentPanel/components/Footer";
 const questions = [
   "What degree programs does FAST National University offer?",
   "What is the semester fee of FAST National University?",
@@ -19,19 +21,22 @@ const questions = [
 function UniChatbotPage() {
   const [answer, setAnswer] = useState("");
   return (
-    <div className="bg-white  min-h-screen max-h-fit py-8 px-20 ">
-      <div className="bg-[#f2f2f2] h-full rounded-xl px-8 py-4 flex gap-5">
-        <ConversationFlow answer={answer} setAnswer={setAnswer} />
-        <div className="flex flex-col gap-4 w-[33%]  h-[86vh] ">
-          <div className="h-full bg-[#ffffff] rounded-3xl p-8  gap-6 flex flex-col overflow-y-auto">
-            <p className="text-2xl">Sample Queries</p>
-            {questions.map((question, index) => (
-              <SampleQuery question={question} setAnswer={setAnswer} />
-            ))}
+    <>
+      <Navbar />
+      <div className="bg-white  min-h-screen max-h-fit py-8 px-20 ">
+        <div className="bg-[#f2f2f2] h-full rounded-xl px-8 py-4 flex gap-5">
+          <ConversationFlow answer={answer} setAnswer={setAnswer} />
+          <div className="flex flex-col gap-4 w-[33%]  h-[86vh] ">
+            <div className="h-full bg-[#ffffff] rounded-3xl p-8  gap-6 flex flex-col overflow-y-auto">
+              <p className="text-2xl">Sample Queries</p>
+              {questions.map((question, index) => (
+                <SampleQuery question={question} setAnswer={setAnswer} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

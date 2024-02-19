@@ -1,0 +1,67 @@
+[
+  {
+    "Ranking": 1,
+    "University": "Aga Khan University",
+    "Score": 100.0
+  },
+  {
+    "Ranking": 2,
+    "University": "National University of Medical Sciences",
+    "Score": 83.54
+  },
+  {
+    "Ranking": 3,
+    "University": "Dow University of Health Sciences",
+    "Score": 64.53
+  },
+  {
+    "Ranking": 4,
+    "University": "University of Health Sciences (Lahore)",
+    "Score": 61.62
+  },
+  {
+    "Ranking": 5,
+    "University": "Khyber Medical University",
+    "Score": 57.28
+  },
+  {
+    "Ranking": 6,
+    "University": "Jinnah Sindh Medical University",
+    "Score": 53.62
+  },
+  {
+    "Ranking": 7,
+    "University": "Bahria Medical and Dental University",
+    "Score": 51.99
+  },
+  {
+    "Ranking": 8,
+    "University": "Ziauddin University",
+    "Score": 50.56
+  },
+  {
+    "Ranking": 9,
+    "University": "Sindh Institute of Medical Sciences",
+    "Score": 43.64
+  },
+  {
+    "Ranking": 10,
+    "University": "Baqai Medical University",
+    "Score": 41.58
+  },
+  {
+    "Ranking": 11,
+    "University": "Shaheed Mohtarma Benazir Bhutto Medical University",
+    "Score": 37.03
+  },
+  {
+    "Ranking": 12,
+    "University": "Hamdard University",
+    "Score": 36.45
+  },
+  {
+    "Ranking": 13,
+    "University": "King Edward Medical University",
+    "Score": 32.25
+  }
+]
