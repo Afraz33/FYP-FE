@@ -8,7 +8,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
+import Steps from "../steps/steps";
 const style = {
   position: "absolute",
   top: "50%",
@@ -350,6 +351,7 @@ function ConversationFlow({ setPersonality, setViewCareers, Personality }) {
   ];
 
   // Recursive function to handle message display
+
   const displayNextMessage = (index) => {
     if (index < processingMessages.length) {
       setProcessingMessage(processingMessages[index]);
@@ -368,12 +370,24 @@ function ConversationFlow({ setPersonality, setViewCareers, Personality }) {
     displayNextMessage(0);
   };
 
-  const [chatHistory, setChatHistory] = useState([
-    {
-      text: "How do you feel like testing the quality of parts before shipment? ",
-      type: "question",
-    },
-  ]);
+  const getChatHistoryFromLocalStorage = () => {
+    const storedChatHistory = JSON.parse(localStorage.getItem("chatHistory"));
+    if (storedChatHistory) return storedChatHistory;
+    else return null;
+  };
+
+  // Initial state using localStorage or a default value
+  const [chatHistory, setChatHistory] = useState(
+    getChatHistoryFromLocalStorage() || [
+      {
+        text: "How do you feel like testing the quality of parts before shipment? ",
+        type: "question",
+      },
+    ]
+  );
+  useEffect(() => {
+    localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
+  }, [chatHistory]);
   const [questions, setQuestions] = useState(initialQuestions);
   const [isFollowUp, setIsFollowUp] = useState(-1);
   console.log(questions);
@@ -387,6 +401,7 @@ function ConversationFlow({ setPersonality, setViewCareers, Personality }) {
         type: "answer",
       },
     ]);
+    // localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
     const postData = {
       text: answer,
       sequence_number: index,
@@ -418,6 +433,7 @@ function ConversationFlow({ setPersonality, setViewCareers, Personality }) {
             type: "question",
           },
         ]);
+        // localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
         setResponding(false);
         setIsFollowUp(index);
       } else {
@@ -449,7 +465,7 @@ function ConversationFlow({ setPersonality, setViewCareers, Personality }) {
   console.log(chatHistory);
   return (
     <>
-      <div className="w-2/3 mx-auto h-fit flex flex-col gap-y-12 content-between py-24">
+      <div className="w-[50%] mx-auto h-fit flex  flex-col gap-y-12 content-between py-24">
         {/* Render chat history */}
         {chatHistory.map((item, idx) => (
           <div key={idx} className="flex w-full flex-col justify-between">

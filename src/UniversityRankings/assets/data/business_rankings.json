@@ -1,0 +1,52 @@
+[
+  {
+    "Ranking": 1,
+    "University": "Institute of Business Management, Karachi",
+    "Score": 100.0
+  },
+  {
+    "Ranking": 2,
+    "University": "Lahore University of Management Sciences",
+    "Score": 98.7
+  },
+  {
+    "Ranking": 3,
+    "University": "University of The Punjab",
+    "Score": 96.0
+  },
+  {
+    "Ranking": 4,
+    "University": "Institute of Management Sciences (Peshawar)",
+    "Score": 80.32
+  },
+  {
+    "Ranking": 5,
+    "University": "Sukkur Institute of Business Administration",
+    "Score": 75.83
+  },
+  {
+    "Ranking": 6,
+    "University": "Shaheed Zulfikar Ali Bhutto Institute of Science and Technology",
+    "Score": 75.7
+  },
+  {
+    "Ranking": 7,
+    "University": "The Superior College",
+    "Score": 0.3
+  },
+  {
+    "Ranking": 8,
+    "University": "Lahore School of Economics",
+    "Score": 72.91
+  },
+  {
+    "Ranking": 9,
+    "University": "University of Central Punjab",
+    "Score": 67.34
+  },
+  {
+    "Ranking": 10,
+    "University": "Greenwich University",
+    "Score": 58.75
+  }
+]

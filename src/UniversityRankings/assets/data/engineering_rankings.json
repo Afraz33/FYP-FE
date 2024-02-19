@@ -1,0 +1,52 @@
+[
+  {
+    "Ranking": 1,
+    "University": "National University of Sciences & Technology (NUST)",
+    "Score": 100.0
+  },
+  {
+    "Ranking": 2,
+    "University": "Ghulam Ishaq Khan Institute of Engineering Sciences and Technology",
+    "Score": 96.67
+  },
+  {
+    "Ranking": 3,
+    "University": "NED University of Engineering and Technology",
+    "Score": 75.34
+  },
+  {
+    "Ranking": 4,
+    "University": "Pakistan Institute of Engineering and Applied Sciences",
+    "Score": 72.46
+  },
+  {
+    "Ranking": 5,
+    "University": "Air University",
+    "Score": 63.97
+  },
+  {
+    "Ranking": 6,
+    "University": "Institute of Space Technology",
+    "Score": 58.88
+  },
+  {
+    "Ranking": 7,
+    "University": "University of Engineering and Technology (Lahore)",
+    "Score": 57.74
+  },
+  {
+    "Ranking": 8,
+    "University": "University of Engineering and Technology (Peshawar)",
+    "Score": 57.22
+  },
+  {
+    "Ranking": 9,
+    "University": "University of Engineering and Technology, Taxila",
+    "Score": 55.32
+  },
+  {
+    "Ranking": 10,
+    "University": "Textile Institute of Pakistan",
+    "Score": 52.3
+  }
+]

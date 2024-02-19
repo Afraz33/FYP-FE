@@ -12,7 +12,7 @@ function UserDialougeBox({ handleUserAnswer }) {
       <input
         value={answer}
         onChange={(e) => setAnswer(e.target.value)}
-        className="max-w-full break-all bg-[#d7d5d3] text-black rounded-xl p-6 shadow w-[90%] mx-auto h-12    "
+        className="max-w-full break-all bg-[white] text-black rounded-xl p-6 shadow w-[90%] mx-auto h-12    "
       ></input>
       <InputIcon
         onClick={() => handleInput(answer)}
