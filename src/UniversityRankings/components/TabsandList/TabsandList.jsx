@@ -16,22 +16,29 @@ import engineering from "../../assets/data/engineering_rankings.json";
 import medical from "../../assets/data/medical_rankings.json";
 
 const UniversityList = ({ universities }) => (
-  <ul className="university-list">
+  <div className="university-list">
+    <div className="headings">
+      <h2 className="list-heading">Ranking</h2>
+      <h2 className="list-heading">University</h2>
+    </div>
     {universities.map((university, index) => (
-      <li key={index}>{university.University}</li>
+      <div key={index} className="university-item">
+        <span>{index + 1}</span>
+        <span>{university.University}</span>
+      </div>
     ))}
-  </ul>
+  </div>
 );
 
 const TabsandList = () => {
   const [activeTab, setActiveTab] = useState(0);
   const categories = [
     { title: "Agriculture", data: agriculture },
-    { title: "Arts", data: arts },
+    { title: "Arts and Design", data: arts },
     { title: "Business", data: business },
     { title: "Computer Science", data: CS },
     { title: "Engineering", data: engineering },
-    { title: "Medical", data: medical },
+    { title: "Medicine", data: medical },
   ];
 
   return (
