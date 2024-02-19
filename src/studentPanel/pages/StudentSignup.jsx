@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { Dropdown } from "antd";
 const StudentSignUp = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -10,38 +11,82 @@ const StudentSignUp = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [usernameError, setUsernameError] = useState(""); 
   const navigate = useNavigate();
-  const handleSignup = async () => {
-    const userData = {
-      firstName: firstName,
-      lastName: lastName,
-      userName: userName,
-      phoneNo: phoneNo,
-      gender: gender,
-      password: password,
-      email: email,
-    };
 
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/users/signup",
-        userData
-      );
-      if (response.data.token) {
-        localStorage.setItem("jwt", response.data.token);
-        navigate("/student-login"); // Navigate to the landing page
-      } else {
-        navigate("/student-login");
-        console.log(response.data.Message);
-      }
-    } catch (error) {
-      // In your axios catch block
-      console.error("Error:", error.response.data);
-      setError(error.response.data.Message); // Set the error state with the error message from the backend
-    }
+
+ // In your frontend code
+ const handleSignup = async () => {
+  const userData = {
+    firstName: firstName,
+    lastName: lastName,
+    userName: userName,
+    phoneNo: phoneNo,
+    gender: gender,
+    password: password,
+    email: email,
   };
 
-  return (
+  console.log("Sending data to backend:", userData);
+  try {
+    // Check if email already exists
+    const emailExistsResponse = await axios.post(
+      "http://localhost:5000/api/users/check-email",
+      { email: email }
+    );
+
+    if (emailExistsResponse.data.exists) {
+      setEmailError("Email already registered.");
+      setUsernameError(""); // Clear username error
+      return;
+    } else {
+      setEmailError(""); // Clear previous email error if any
+    }
+
+    // Check if username already exists
+    const usernameExistsResponse = await axios.post(
+      "http://localhost:5000/api/users/check-username",
+      { username: userName }
+    );
+
+    if (usernameExistsResponse.data.exists) {
+      setUsernameError("Username already exists. ");
+      setEmailError(""); // Clear email error
+      return;
+    } else {
+      setUsernameError(""); // Clear previous username error if any
+    }
+
+    // If email and username are unique, proceed with signup
+
+    const signupResponse = await axios.post(
+      "http://localhost:5000/api/users/signup",
+      userData
+    );
+
+    if (signupResponse.data.token) {
+      localStorage.setItem("jwt", signupResponse.data.token);
+      navigate("/student-login");
+    } else {
+      navigate("/student-login");
+      console.log("Backend Message:", signupResponse.data.Message);
+    }
+  } catch (error) {
+    // Handle other errors
+    console.error("Error in frontend:", error);
+
+    if (error.response && error.response.status === 500) {
+      setError("Internal Server Error. Please try again later.");
+    } else {
+      setError("An error occurred during signup. Please try again.");
+    }
+  }
+};
+
+
+return (
+  <div className={`bg-gray-200 font-Onest ${error ? 'error-height' : ''}`}>
     <div className="bg-gray-200 font-Onest">
       <header className="flex h-screen">
         <div className="mt-10 my-auto w-[50%] h-[90%] mx-auto bg-white flex flex-row rounded-lg shadow-2xl shadow-green-950">
@@ -112,13 +157,20 @@ const StudentSignUp = () => {
             <hr className="w-[50%] ml-4  border-4 border-[#1ab69d] rounded-lg" />
             <div className="pb-10">
               <p className="text-xl font-normal ml-4 text-white">
-                Get reigestered today, and get personalized recommendations for
+                Get registered today, and get personalized recommendations for
                 your career, and univerisity programs.
               </p>
             </div>
           </div>
           <div className="w-[60%] flex flex-col gap-2">
-            <div className="pt-10 flex flex-col items-center justify-center w-full max-w-lg">
+          <form
+          onSubmit={(e)=>{
+            e.preventDefault();
+            handleSignup()
+          }
+            
+            }>
+            <div className="pt-5 flex flex-col items-center justify-center w-full max-w-lg">
               <div className="w-[70%] mx-auto flex flex-col justify-center">
                 <label
                   className="block text-gray-700 font-bold mb-2"
@@ -168,7 +220,14 @@ const StudentSignUp = () => {
                   placeholder="john_doe"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
+                  pattern="^\S+$"  // Ensures no spaces in the username
+                  title="Username cannot have spaces"
                 />
+                  {usernameError && (
+              <span style={{ color: 'red', marginTop: '0.25rem', fontSize: '0.875rem' }}>
+                {usernameError}
+              </span>
+                  )}
               </div>
 
               {/* Phone Number */}
@@ -198,6 +257,7 @@ const StudentSignUp = () => {
                 >
                   Gender
                 </label>
+               
                 <input
                   id="gender"
                   required
@@ -206,6 +266,8 @@ const StudentSignUp = () => {
                   placeholder="Male/Female/Other"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
+                  pattern="^(Male|Female|other)$"  // Matches only specified genders
+                  title="Gender can only be Male, Female, or Other"
                 />
               </div>
 
@@ -225,8 +287,15 @@ const StudentSignUp = () => {
                   placeholder="john.doe@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"  // Simple email pattern
+                  title="Email needs to be in the correct format (e.g., john.doe@example.com)"
                 />
-              </div>
+                  {emailError && (
+              <span style={{ color: 'red', marginTop: '0.25rem', fontSize: '0.875rem' }}>
+                {emailError}
+              </span>
+            )}
+          </div>
               {/* Password */}
               <div className="w-[70%] mx-auto flex flex-col justify-center">
                 <label
@@ -243,6 +312,8 @@ const StudentSignUp = () => {
                   placeholder="********"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  minLength="8"  // Minimum length of 8 characters
+                  title="Password needs to be at least 8 characters"
                 />
               </div>
 
@@ -254,7 +325,7 @@ const StudentSignUp = () => {
                   Cancel
                 </button>
                 <button
-                  onClick={handleSignup}
+                  type="submit"
                   className="ml-4 hover:bg-white bg-[#1ab69d] text-white hover:text-green-600 font-semibold py-2 px-4 border border-[#1ab69d] rounded shadow w-70"
                 >
                   Sign Up
@@ -262,12 +333,16 @@ const StudentSignUp = () => {
               </div>
               <button className="mt-4 underline underline-offset-2 ... inline-block mx-auto  hover:text-[#1ab69d] text-black  hover:bg-white">
                 <Link to="/student-login">Already have an account? Log in</Link>
-              </button>
+                
+            </button>
             </div>
-          </div>
+          </form>
         </div>
-      </header>
+        </div>
+        </header>
+      </div>
     </div>
+    
   );
 };
 

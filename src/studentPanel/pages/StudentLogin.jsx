@@ -2,38 +2,50 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 function StudentLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loginSuccess, setLoginSuccess] = useState(false);
   const navigate = useNavigate();
-  const handleLogin = async () => {
+
+  const handleLogin = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
     if (!email || !password) {
       setError("Please provide both email and password");
     } else {
-      console.log(`Email: ${email}, Password: ${password}`);
-
       try {
         const response = await axios.post(
           "http://localhost:5000/api/users/login",
           { email, password }
         );
-        if (response.data.token) {
-          localStorage.setItem("jwt", response.data.token); // Store JWT token
-          console.log("move");
-          navigate("/userLandingPage"); // Navigate to the landing page
+  
+        if (response.status === 200 && response.data.token) {
+          localStorage.setItem('token', response.data.token);
+          setLoginSuccess(true);
+          setError("");
+          navigate("/userLandingPage");
         } else {
-          console.error(response.data.Message);
+          // Handle wrong email or password
+          setLoginSuccess(false);
+          setError("Wrong email or password. Please re-enter.");
         }
       } catch (error) {
         console.error("Error during login:", error);
+        // Handle other errors (network issues, server errors, etc.)
+        setLoginSuccess(false);
+        setError("Wrong Email or Password, Try again.");
       }
     }
   };
+
+  
   return (
     <div className="bg-gray-200">
       <header className="flex h-screen">
-        <div className="shadow-2xl ... shadow-green-950 rounded-lg ... my-auto w-[30%] h-5/6 mx-auto bg-slate-900 flex flex-col rounded-lg">
+        <div className="shadow-2xl ... shadow-green-950 rounded-lg ... my-auto w-[30%] h-6/6 mx-auto bg-slate-900 flex flex-col rounded-lg">
           <div className="mt-10 h-40 w-40 self-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -100,74 +112,77 @@ function StudentLogin() {
             <h1 className="font-bold text-white text-3xl font-Onest">Login to PaiSHA</h1>
           </div>
           <div className="w-[70%] mx-auto flex flex-col justify-center">
-            <h1 id="error" className="text-red-500 text-center">
-              {error}
-            </h1>
-          </div>
-
-          <div className="mb-2 w-[70%] mx-auto flex flex-col justify-center font-Onest">
-            <label className="block text-white font-bold mb-2 " htmlFor="email">
-              Email
-            </label>
-            <input
-              id="email"
-              required
-              className="appearance-none border border-black rounded-lg py-2 px-3 mb-3 leading-tight focus:outline-none focus:border-green-600"
-              type="email"
-              placeholder="johndoe@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-
-          <div className="w-[70%] mx-auto flex flex-col justify-center font-Onest">
-            <label
-              className="block text-white font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              id="password"
-              required
-              className="appearance-none border border-black rounded-lg py-2 px-3 leading-tight focus:outline-none focus:border-green-600"
-              type="password"
-              placeholder="********"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-
-          {/* ... Other form elements ... */}
-
-          <div className="flex flex-col w-[70%] mx-auto flex items-center font-Onest">
-            <button
-              onClick={handleLogin}
-              className="mt-6 hover:bg-white bg-[#1ab69d] text-white hover:text-green-600 font-semibold py-2 px-4 border border-green-600 rounded shadow w-70"
-            >
-              Log in
-            </button>
-          </div>
-
-          <div className="mt-6 w-[70%] mx-auto flex flex-col items-center font-Onest">
-            <h1 className="text-white">Don't have an account?</h1>
-            <button
-              id="create-account"
-              className="my-button inline-flex w-26 h-6 text-[#1ab69d] border-transparent ml-1 inline-block hover:text-green-500"
-            >
-              <Link
-                to="/student-signup"
-                className="w-full h-full inline-block"
-                href="adminSignup.html"
-              >
-                Create Account
-              </Link>
-            </button>
-          </div>
+          <h1 id="error" className={`text-${loginSuccess ? "green" : "red"}-500 text-center`}>
+            {loginSuccess ? "Login successful!" : error}
+          </h1>
+        </div>
+        
+      <form onSubmit={handleLogin} className="w-[70%] mx-auto">
+        <div className="mb-2 flex flex-col justify-center font-Onest">
+          <label className="block text-white font-bold mb-2" htmlFor="email">
+            Email
+          </label>
+          <input
+            id="email"
+            required
+            className="appearance-none border border-black rounded-lg py-2 px-3 mb-3 leading-tight focus:outline-none focus:border-green-600"
+            type="email"
+            placeholder="johndoe@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"  // Simple email pattern
+            title="Email needs to be in the correct format (e.g., john.doe@example.com)"
+          />
+        </div>
+      
+        <div className="flex flex-col justify-center font-Onest">
+          <label className="block text-white font-bold mb-2" htmlFor="password">
+            Password
+          </label>
+          <input
+            id="password"
+            required
+            className="appearance-none border border-black rounded-lg py-2 px-3 leading-tight focus:outline-none focus:border-green-600"
+            type="password"
+            placeholder="********"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            minLength="8"  // Minimum length of 8 characters
+            title="Password needs to be at least 8 characters"
+          />                                                                                                                                                                                                                                                      
         </div>
 
-        {/* Include your script if needed */}
-        {/* <script src="adminLogin.js"></script> */}
+        <div className="flex flex-col items-center font-Onest">
+          <button
+            type="submit"
+            className="mt-6 hover:bg-white bg-[#1ab69d] text-white hover:text-green-600 font-semibold py-2 px-4 border border-green-600 rounded shadow w-70"
+          >
+            Log in
+          </button>
+        </div>
+      </form>
+
+      <div className="mt-6 w-[70%] mx-auto flex flex-col items-center font-Onest">
+        <div className="text-white">
+          <Link to="/forgot-password" className="underline">
+            Forgot Password?
+          </Link>
+        </div>
+      </div>
+
+      <div className="mt-6 w-[70%] mx-auto flex flex-col items-center font-Onest">
+        <h1 className="text-white">Don't have an account?</h1>
+        <button
+          id="create-account"
+          className="my-button inline-flex w-26 h-6 text-[#1ab69d] border-transparent ml-1 inline-block hover:text-green-500"
+        >
+          <Link to="/student-signup" className="w-full h-full inline-block">
+            Create Account
+          </Link>
+        </button>
+      </div>
+
+        </div>
       </header>
     </div>
   );

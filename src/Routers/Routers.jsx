@@ -13,17 +13,26 @@ import MeetingPage from "../expertPanel/pages/MeetingPage/MeetingPage";
 import ChatbotPage from "../CareerchatbotPanel/pages/ChatbotPage";
 import RecommendedUniversities from "../CareerchatbotPanel/pages/RecommendedUniversitiesPage";
 import StudentLogin from "../studentPanel/pages/StudentLogin";
+import ForgotPasswordForm from '../studentPanel/pages/ForgotPasswordForm';
+import ResetPasswordForm from '../studentPanel/pages/ResetPasswordForm';
 import StudentLandingPage from "../studentPanel/pages/StudentLandingPage";
 import StudentSignUp from "../studentPanel/pages/StudentSignup";
 import SearchExperts from "../studentPanel/pages/SearchExpert";
 import PersonalityPage from "../CareerchatbotPanel/pages/PersonalityPage";
 import UniChatbotPage from "../UniChatbotPanel/pages/UniChatbotPage";
+
+import UserProfile from "../studentPanel/pages/UserProfile";
 import UniRanking from "../UniversityRankings/pages/UniRanking";
+
+
 function Routers() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage2 />}></Route>
       <Route path="/student-login" element={<StudentLogin />}></Route>
+      <Route path="/forgot-password" element={<ForgotPasswordForm />} />
+      <Route path="/reset-password/:token" element={<ResetPasswordForm />} />
+      <Route path="/user-profile" element={<UserProfile />}/>
 
       <Route path="/signup" element={<SignUpPage />}></Route>
       <Route path="/userLandingPage" element={<StudentLandingPage />} />
