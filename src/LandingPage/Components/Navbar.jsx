@@ -214,7 +214,7 @@ function Navbar() {
             to="/student-login"
             className=" font-semibold text-white w-24 h-10  border-2 flex items-center justify-center bg-[#1ab69d] px-4 font-Onest hover:border-white  rounded-lg hover:bg-[#ee4a62]"
           >
-            Login 
+            Login
           </Link>
           {/* <button
             type="button"
@@ -327,16 +327,16 @@ function Navbar() {
                 </a>
               </li>
               <li>
-              <Link to="/chatbot">
-                <a
-                  
-                  className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <div className="font-Onest font-semibold">Personality Analysis</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
-                    Analyze your personality and find your interests with the help of Artificial Intelligence
-                  </span>
-                </a>
+                <Link to="/chatbot">
+                  <a className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <div className="font-Onest font-semibold">
+                      Personality Analysis
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                      Analyze your personality and find your interests with the
+                      help of Artificial Intelligence
+                    </span>
+                  </a>
                 </Link>
               </li>
               <li>
@@ -344,7 +344,9 @@ function Navbar() {
                   href="#"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <div className="font-Onest font-semibold">Career Prediction</div>
+                  <div className="font-Onest font-semibold">
+                    Career Prediction
+                  </div>
                   <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
                     Get to know what career best suits you
                   </span>
@@ -357,26 +359,30 @@ function Navbar() {
                   href="#"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <div className="font-Onest font-semibold">Universities for you</div>
+                  <div className="font-Onest font-semibold">
+                    Universities for you
+                  </div>
                   <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
                     Get universities in Pakistan that match your interests
                   </span>
                 </a>
               </li>
               <li>
-              <Link to="/university-chatbot">
-                <a
-                  href="#"
-                  className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <div className="font-Onest font-semibold">University Information</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
-                    Find the answers to your questions about universities
-                  </span>
-                </a>
+                <Link to="/university-chatbot">
+                  <a
+                    href="#"
+                    className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <div className="font-Onest font-semibold">
+                      University Information
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                      Find the answers to your questions about universities
+                    </span>
+                  </a>
                 </Link>
               </li>
-              
+
               {/* <li>
                 <a
                   href="#"
