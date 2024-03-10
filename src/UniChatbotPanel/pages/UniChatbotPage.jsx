@@ -25,7 +25,6 @@ function UniChatbotPage() {
       <Navbar />
       <div className="bg-white  min-h-screen max-h-fit py-8 px-20 ">
         <div className="bg-[#f2f2f2] h-full rounded-xl px-8 py-4 flex gap-5">
-          <ConversationFlow answer={answer} setAnswer={setAnswer} />
           <div className="flex flex-col gap-4 w-[33%]  h-[86vh] ">
             <div className="h-full bg-[#ffffff] rounded-3xl p-8  gap-6 flex flex-col overflow-y-auto">
               <p className="text-2xl">Sample Queries</p>
@@ -34,6 +33,7 @@ function UniChatbotPage() {
               ))}
             </div>
           </div>
+          <ConversationFlow answer={answer} setAnswer={setAnswer} />
         </div>
       </div>
     </>
