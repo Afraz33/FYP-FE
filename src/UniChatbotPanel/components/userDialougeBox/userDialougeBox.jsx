@@ -8,7 +8,7 @@ function UserDialougeBox({ handleUserAnswer, answer, setAnswer }) {
     setAnswer("");
   };
   return (
-    <div className="flex items-center w-[50%] fixed bottom-16 left-40 gap-4">
+    <div className="flex items-center w-[50%] fixed bottom-16 right-40 gap-4">
       <input
         value={answer}
         onChange={(e) => setAnswer(e.target.value)}

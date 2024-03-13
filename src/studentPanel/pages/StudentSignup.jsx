@@ -230,7 +230,6 @@ return (
                   )}
               </div>
 
-              {/* Phone Number */}
               <div className="w-[70%] mx-auto flex flex-col justify-center">
                 <label
                   className="block text-gray-700 font-bold mb-2"
@@ -243,9 +242,11 @@ return (
                   required
                   className="appearance-none border border-black rounded-lg py-2 px-3 leading-tight focus:outline-none focus:border-green-600"
                   type="tel"
-                  placeholder="123-456-7890"
+                  placeholder="030083428"
                   value={phoneNo}
                   onChange={(e) => setPhoneNo(e.target.value)}
+                  pattern="^030\d{7}$"
+                  title="Phone number must be in the format 030083428"
                 />
               </div>
 
@@ -266,7 +267,7 @@ return (
                   placeholder="Male/Female/Other"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
-                  pattern="^(Male|Female|other)$"  // Matches only specified genders
+                  pattern="^(Male|Female|Other)$"  // Matches only specified genders
                   title="Gender can only be Male, Female, or Other"
                 />
               </div>
