@@ -377,6 +377,19 @@ function Navbar() {
                 </Link>
               </li>
               
+              <li>
+              <Link to="/university-rankings">
+                <a
+                  href="#"
+                  className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <div className="font-Onest font-semibold">University Ranking</div>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                    Find the best universities according to your interests
+                  </span>
+                </a>
+                </Link>
+              </li>
               {/* <li>
                 <a
                   href="#"
