@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./meritcalc.css";
 import MeritModal from "../MeritModal/MeritModal";
+import { Alert } from "antd";
 const TabsandList = () => {
   const [openModal, setOpenModal] = React.useState(false);
 
@@ -17,22 +18,22 @@ const TabsandList = () => {
     { title: "MDCAT" },
   ];
 
-  const [ssc1Obtained, setSsc1Obtained] = useState("");
-  const [ssc1Total, setSsc1Total] = useState("");
-  const [ssc2Obtained, setSsc2Obtained] = useState("");
-  const [ssc2Total, setSsc2Total] = useState("");
-  const [hssc1Obtained, setHssc1Obtained] = useState("");
-  const [hssc1Total, setHssc1Total] = useState("");
-  const [hssc2Obtained, setHssc2Obtained] = useState("");
-  const [hssc2Total, setHssc2Total] = useState("");
-  const [testObtained, setTestObtained] = useState("");
-  const [testTotal, setTestTotal] = useState("");
-  const [totalMerit, setTotalMerit] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [ssc1Obtained, setSsc1Obtained] = useState();
+  const [ssc1Total, setSsc1Total] = useState();
+  const [ssc2Obtained, setSsc2Obtained] = useState();
+  const [ssc2Total, setSsc2Total] = useState();
+  const [hssc1Obtained, setHssc1Obtained] = useState();
+  const [hssc1Total, setHssc1Total] = useState();
+  const [hssc2Obtained, setHssc2Obtained] = useState();
+  const [hssc2Total, setHssc2Total] = useState();
+  const [testObtained, setTestObtained] = useState();
+  const [testTotal, setTestTotal] = useState();
+  const [totalMerit, setTotalMerit] = useState();
+  const [errorMessage, setErrorMessage] = useState();
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
 
-  const handleMeritCalculation = () => {
+  const handleMeritCalculation = useCallback(() => {
     setErrorMessage("");
     if (
       !ssc1Obtained ||
@@ -50,34 +51,42 @@ const TabsandList = () => {
 
       handleOpen();
     }
-    // if (ssc1Obtained > ssc1Total) {
-    //   setErrorMessage(
-    //     "Your SSC part 1 obtained marks cannot be greater than total marks!"
-    //   );
 
-    //   handleOpen();
-    // }
-    // if (ssc2Obtained > ssc2Total) {
-    //   setErrorMessage(
-    //     "Your SSC part 2 obtained marks cannot be greater than total marks!"
-    //   );
+    if (parseFloat(ssc1Obtained) > parseFloat(ssc1Total)) {
+      setErrorMessage(
+        "Your SSC part 1 obtained marks cannot be greater than total marks!"
+      );
 
-    //   handleOpen();
-    // }
-    // if (hssc1Obtained > hssc1Total) {
-    //   setErrorMessage(
-    //     "Your HSSC part 1 obtained marks cannot be greater than total marks!"
-    //   );
+      handleOpen();
+    }
+    if (parseFloat(ssc2Obtained) > parseFloat(ssc2Total)) {
+      setErrorMessage(
+        "Your SSC part 2 obtained marks cannot be greater than total marks!"
+      );
 
-    //   handleOpen();
-    // }
-    // if (hssc2Obtained > hssc2Total) {
-    //   setErrorMessage(
-    //     "Your HSSC part 2 obtained marks cannot be greater than total marks!"
-    //   );
+      handleOpen();
+    }
+    if (parseFloat(hssc1Obtained) > parseFloat(hssc1Total)) {
+      setErrorMessage(
+        "Your HSSC part 1 obtained marks cannot be greater than total marks!"
+      );
 
-    //   handleOpen();
-    // }
+      handleOpen();
+    }
+    if (parseFloat(hssc2Obtained) > parseFloat(hssc1Total)) {
+      setErrorMessage(
+        "Your HSSC part 2 obtained marks cannot be greater than total marks!"
+      );
+
+      handleOpen();
+    }
+    if (parseFloat(testObtained) > parseFloat(testTotal)) {
+      setErrorMessage(
+        "Your Entrance test obtained marks cannot be greater than total marks!"
+      );
+
+      handleOpen();
+    }
     const sscTotalMarks = parseFloat(ssc1Total) + parseFloat(ssc2Total);
     const sscObtainedMarks =
       parseFloat(ssc1Obtained) + parseFloat(ssc2Obtained);
@@ -157,7 +166,20 @@ const TabsandList = () => {
         break;
     }
     handleOpen();
-  };
+  }, [
+    activeTab,
+    categories,
+    ssc1Obtained,
+    ssc1Total,
+    ssc2Obtained,
+    ssc2Total,
+    hssc1Obtained,
+    hssc1Total,
+    hssc2Obtained,
+    hssc2Total,
+    testObtained,
+    testTotal,
+  ]);
 
   const handleInputChange = (setValue, value) => {
     // Validate input to allow only positive numbers that do not start with zero
