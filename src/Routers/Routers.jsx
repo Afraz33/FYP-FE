@@ -13,8 +13,8 @@ import MeetingPage from "../expertPanel/pages/MeetingPage/MeetingPage";
 import ChatbotPage from "../CareerchatbotPanel/pages/ChatbotPage";
 import RecommendedUniversities from "../CareerchatbotPanel/pages/RecommendedUniversitiesPage";
 import StudentLogin from "../studentPanel/pages/StudentLogin";
-import ForgotPasswordForm from '../studentPanel/pages/ForgotPasswordForm';
-import ResetPasswordForm from '../studentPanel/pages/ResetPasswordForm';
+import ForgotPasswordForm from "../studentPanel/pages/ForgotPasswordForm";
+import ResetPasswordForm from "../studentPanel/pages/ResetPasswordForm";
 import StudentLandingPage from "../studentPanel/pages/StudentLandingPage";
 import StudentSignUp from "../studentPanel/pages/StudentSignup";
 import SearchExperts from "../studentPanel/pages/SearchExpert";
@@ -24,6 +24,7 @@ import UniChatbotPage from "../UniChatbotPanel/pages/UniChatbotPage";
 import UserProfile from "../studentPanel/pages/UserProfile";
 import UniRanking from "../UniversityRankings/pages/UniRanking";
 
+import MeritCalculator from "../studentPanel/pages/MeritCalculator";
 
 function Routers() {
   return (
@@ -32,7 +33,7 @@ function Routers() {
       <Route path="/student-login" element={<StudentLogin />}></Route>
       <Route path="/forgot-password" element={<ForgotPasswordForm />} />
       <Route path="/reset-password/:token" element={<ResetPasswordForm />} />
-      <Route path="/user-profile" element={<UserProfile />}/>
+      <Route path="/user-profile" element={<UserProfile />} />
 
       <Route path="/signup" element={<SignUpPage />}></Route>
       <Route path="/userLandingPage" element={<StudentLandingPage />} />
@@ -54,6 +55,7 @@ function Routers() {
       <Route path="/search-experts" element={<SearchExperts />}></Route>
       <Route path="university-chatbot" element={<UniChatbotPage />}></Route>
       <Route path="university-rankings" element={<UniRanking />}></Route>
+      <Route path="merit-calculator" element={<MeritCalculator />}></Route>
     </Routes>
   );
 }
