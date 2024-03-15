@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../AuthContext";
 import axios from "axios";
 
 function StudentLogin() {
@@ -9,7 +10,7 @@ function StudentLogin() {
   const [error, setError] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
   const navigate = useNavigate();
-
+  const { login } = useAuth();
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
 
@@ -21,9 +22,10 @@ function StudentLogin() {
           "http://localhost:5000/api/users/login",
           { email, password }
         );
-  
+
         if (response.status === 200 && response.data.token) {
-          localStorage.setItem('token', response.data.token);
+          localStorage.setItem("token", response.data.token);
+          login();
           setLoginSuccess(true);
           setError("");
           navigate("/userLandingPage");
@@ -41,7 +43,6 @@ function StudentLogin() {
     }
   };
 
-  
   return (
     <div className="bg-gray-200">
       <header className="flex h-screen">
@@ -59,7 +60,7 @@ function StudentLogin() {
                   cy="28.409"
                   r="12.5"
                   // fill="#50b748"
-                  fill='#1ab69d'
+                  fill="#1ab69d"
                   fillRule="evenodd"
                   transform="matrix(1.92 0 0 1.92 -47.127 973.817)"
                 ></circle>
@@ -77,7 +78,7 @@ function StudentLogin() {
                     mixBlendMode: "normal",
                   }}
                   // fill="#10a711"
-                  fill='#1ab69d'
+                  fill="#1ab69d"
                   d="M18.547 47.342a24 24 0 0 0 1.373.308 24 24 0 0 0 2.383.29A24 24 0 0 0 24 48a24 24 0 0 0 2.396-.12 24 24 0 0 0 2.372-.359 24 24 0 0 0 2.324-.593 24 24 0 0 0 2.254-.823 24 24 0 0 0 2.16-1.042 24 24 0 0 0 2.045-1.254 24 24 0 0 0 1.91-1.454 24 24 0 0 0 1.756-1.634 24 24 0 0 0 1.584-1.803 24 24 0 0 0 1.394-1.951 24 24 0 0 0 1.194-2.08 24 24 0 0 0 .98-2.19 24 24 0 0 0 .756-2.277 24 24 0 0 0 .525-2.34 24 24 0 0 0 .02-.158L28.682 8.934c-.02-.02-.043-.037-.063-.057-.03-.03-.063-.055-.094-.084a6.601 6.601 0 0 0-.662-.545 6.657 6.657 0 0 0-.488-.318c-.059-.035-.116-.073-.176-.106a6.642 6.642 0 0 0-.681-.33c-.032-.013-.064-.023-.096-.035a6.538 6.538 0 0 0-.647-.217c-.064-.018-.128-.033-.193-.049a6.398 6.398 0 0 0-.553-.109c-.08-.013-.16-.028-.242-.037a6.247 6.247 0 0 0-.76-.045h-.002V7c-3.006-.052-5.78 2.166-6.412 5.1-.065.27-.11.543-.138.818v.002a6.408 6.408 0 0 0-.032.826c.002.056.013.11.016.166.012.22.027.44.06.658.042.27.1.535.174.797.058.204.134.402.211.6.024.06.04.122.065.181a6.593 6.593 0 0 0 .367.732c.073.126.161.242.242.362.075.112.143.228.225.334.037.049.084.091.123.139.133.163.265.325.414.474l.014.014c1.086 1.276 2.233 2.492 3.285 3.74a.5.5 0 0 0 .013.02c.248.268.51.581.793.887.058.062.102.12.162.181l.096.094 1.121 1.123c-.109-.027-.217-.058-.328-.074a3.51 3.51 0 0 0-.715-.033h-.002v-.002a3.288 3.288 0 0 0-1.99.804c-.624.495-.995 1.176-1.164 1.899a4.317 4.317 0 0 0-.094 1.113c.002.06-.008.12-.004.18l-.002-.002c.015.777-.002 1.585.022 2.406l-2.24-2.24a2.741 2.741 0 0 0-1.942-.809v.006c-1.554 0-2.469 1.182-2.695 2.3a2.754 2.754 0 0 0-.057.464v2.39c0 .608.319 1.072.639 1.49v.022c-.405.202-1.639.814-2.602 1.338-.549.299-.964.579-1.267.912-.23.252-.384.551-.447.865-.02.102-.034.204-.034.307v.895c0 .03.012.053.016.082.006.042.007.087.021.123.023.06.06.108.1.15.013.013.023.026.037.037l8.47 8.47zm5.394-24.088a.5.5 0 0 0 .008 0l1.031 1.031-.007-.002-1.032-1.03z"
                   color="#000"
                   fontFamily="sans-serif"
@@ -109,79 +110,91 @@ function StudentLogin() {
             </svg>
           </div>
           <div className="flex justify-center mb-6">
-            <h1 className="font-bold text-white text-3xl font-Onest">Login to PaiSHA</h1>
+            <h1 className="font-bold text-white text-3xl font-Onest">
+              Login to PaiSHA
+            </h1>
           </div>
           <div className="w-[70%] mx-auto flex flex-col justify-center">
-          <h1 id="error" className={`text-${loginSuccess ? "green" : "red"}-500 text-center`}>
-            {loginSuccess ? "Login successful!" : error}
-          </h1>
-        </div>
-        
-      <form onSubmit={handleLogin} className="w-[70%] mx-auto">
-        <div className="mb-2 flex flex-col justify-center font-Onest">
-          <label className="block text-white font-bold mb-2" htmlFor="email">
-            Email
-          </label>
-          <input
-            id="email"
-            required
-            className="appearance-none border border-black rounded-lg py-2 px-3 mb-3 leading-tight focus:outline-none focus:border-green-600"
-            type="email"
-            placeholder="johndoe@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"  // Simple email pattern
-            title="Email needs to be in the correct format (e.g., john.doe@example.com)"
-          />
-        </div>
-      
-        <div className="flex flex-col justify-center font-Onest">
-          <label className="block text-white font-bold mb-2" htmlFor="password">
-            Password
-          </label>
-          <input
-            id="password"
-            required
-            className="appearance-none border border-black rounded-lg py-2 px-3 leading-tight focus:outline-none focus:border-green-600"
-            type="password"
-            placeholder="********"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            minLength="8"  // Minimum length of 8 characters
-            title="Password needs to be at least 8 characters"
-          />                                                                                                                                                                                                                                                      
-        </div>
+            <h1
+              id="error"
+              className={`text-${
+                loginSuccess ? "green" : "red"
+              }-500 text-center`}
+            >
+              {loginSuccess ? "Login successful!" : error}
+            </h1>
+          </div>
 
-        <div className="flex flex-col items-center font-Onest">
-          <button
-            type="submit"
-            className="mt-6 hover:bg-white bg-[#1ab69d] text-white hover:text-green-600 font-semibold py-2 px-4 border border-green-600 rounded shadow w-70"
-          >
-            Log in
-          </button>
-        </div>
-      </form>
+          <form onSubmit={handleLogin} className="w-[70%] mx-auto">
+            <div className="mb-2 flex flex-col justify-center font-Onest">
+              <label
+                className="block text-white font-bold mb-2"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                required
+                className="appearance-none border border-black rounded-lg py-2 px-3 mb-3 leading-tight focus:outline-none focus:border-green-600"
+                type="email"
+                placeholder="johndoe@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" // Simple email pattern
+                title="Email needs to be in the correct format (e.g., john.doe@example.com)"
+              />
+            </div>
 
-      <div className="mt-6 w-[70%] mx-auto flex flex-col items-center font-Onest">
-        <div className="text-white">
-          <Link to="/forgot-password" className="underline">
-            Forgot Password?
-          </Link>
-        </div>
-      </div>
+            <div className="flex flex-col justify-center font-Onest">
+              <label
+                className="block text-white font-bold mb-2"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                id="password"
+                required
+                className="appearance-none border border-black rounded-lg py-2 px-3 leading-tight focus:outline-none focus:border-green-600"
+                type="password"
+                placeholder="********"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                minLength="8" // Minimum length of 8 characters
+                title="Password needs to be at least 8 characters"
+              />
+            </div>
 
-      <div className="mt-6 w-[70%] mx-auto flex flex-col items-center font-Onest">
-        <h1 className="text-white">Don't have an account?</h1>
-        <button
-          id="create-account"
-          className="my-button inline-flex w-26 h-6 text-[#1ab69d] border-transparent ml-1 inline-block hover:text-green-500"
-        >
-          <Link to="/student-signup" className="w-full h-full inline-block">
-            Create Account
-          </Link>
-        </button>
-      </div>
+            <div className="flex flex-col items-center font-Onest">
+              <button
+                type="submit"
+                className="mt-6 hover:bg-white bg-[#1ab69d] text-white hover:text-green-600 font-semibold py-2 px-4 border border-green-600 rounded shadow w-70"
+              >
+                Log in
+              </button>
+            </div>
+          </form>
 
+          <div className="mt-6 w-[70%] mx-auto flex flex-col items-center font-Onest">
+            <div className="text-white">
+              <Link to="/forgot-password" className="underline">
+                Forgot Password?
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-6 w-[70%] mx-auto flex flex-col items-center font-Onest">
+            <h1 className="text-white">Don't have an account?</h1>
+            <button
+              id="create-account"
+              className="my-button inline-flex w-26 h-6 text-[#1ab69d] border-transparent ml-1 inline-block hover:text-green-500"
+            >
+              <Link to="/student-signup" className="w-full h-full inline-block">
+                Create Account
+              </Link>
+            </button>
+          </div>
         </div>
       </header>
     </div>

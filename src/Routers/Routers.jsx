@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import LandingPage from "../expertPanel/pages/LandingPage/LandingPage";
 import SignUpPage from "../expertPanel/pages/signup/SignUpPage";
 import Login from "../expertPanel/pages/login/LoginPage";
@@ -25,37 +25,78 @@ import UserProfile from "../studentPanel/pages/UserProfile";
 import UniRanking from "../UniversityRankings/pages/UniRanking";
 
 import MeritCalculator from "../studentPanel/pages/MeritCalculator";
-
+import { useAuth } from "../AuthContext";
 function Routers() {
+  const { isLoggedIn } = useAuth();
   return (
     <Routes>
       <Route path="/" element={<LandingPage2 />}></Route>
       <Route path="/student-login" element={<StudentLogin />}></Route>
+      <Route path="/signup" element={<SignUpPage />}></Route>
+      <Route path="/student-signup" element={<StudentSignUp />}></Route>
       <Route path="/forgot-password" element={<ForgotPasswordForm />} />
       <Route path="/reset-password/:token" element={<ResetPasswordForm />} />
       <Route path="/user-profile" element={<UserProfile />} />
 
-      <Route path="/signup" element={<SignUpPage />}></Route>
-      <Route path="/userLandingPage" element={<StudentLandingPage />} />
+      <Route
+        path="/userLandingPage"
+        element={isLoggedIn ? <StudentLandingPage /> : <Navigate to="/" />}
+      />
 
-      <Route path="/search" element={<SearchPage />} />
-      <Route path="/profile/:id" element={<ExpertDetails />} />
-      <Route path="/review/:expertEmail" element={<ReviewPage />} />
+      <Route
+        path="/search"
+        element={isLoggedIn ? <SearchPage /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/profile/:id"
+        element={isLoggedIn ? <ExpertDetails /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/review/:expertEmail"
+        element={isLoggedIn ? <ReviewPage /> : <Navigate to="/" />}
+      />
 
-      <Route path="/expert-panel" element={<ExpertLandingPage />}></Route>
-      <Route path="/expert-panel/calendar" element={<Calendar />}></Route>
-      <Route path="/meeting/:userName" element={<MeetingPage />} />
-      <Route path="/chatbot" element={<ChatbotPage />} />
+      <Route
+        path="/expert-panel"
+        element={isLoggedIn ? <ExpertLandingPage /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/expert-panel/calendar"
+        element={isLoggedIn ? <Calendar /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/meeting/:userName"
+        element={isLoggedIn ? <MeetingPage /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/chatbot"
+        element={isLoggedIn ? <ChatbotPage /> : <Navigate to="/" />}
+      />
       <Route
         path="/recommendedUniversities/:career"
-        element={<RecommendedUniversities />}
+        element={isLoggedIn ? <RecommendedUniversities /> : <Navigate to="/" />}
       />
-      <Route path="/personality/:Personality" element={<PersonalityPage />} />
-      <Route path="/student-signup" element={<StudentSignUp />}></Route>
-      <Route path="/search-experts" element={<SearchExperts />}></Route>
-      <Route path="university-chatbot" element={<UniChatbotPage />}></Route>
-      <Route path="university-rankings" element={<UniRanking />}></Route>
-      <Route path="merit-calculator" element={<MeritCalculator />}></Route>
+      <Route
+        path="/personality/:Personality"
+        element={isLoggedIn ? <PersonalityPage /> : <Navigate to="/" />}
+      />
+
+      <Route
+        path="/search-experts"
+        element={isLoggedIn ? <SearchExperts /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/university-chatbot"
+        element={isLoggedIn ? <UniChatbotPage /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/university-rankings"
+        element={isLoggedIn ? <UniRanking /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/merit-calculator"
+        element={isLoggedIn ? <MeritCalculator /> : <Navigate to="/" />}
+      />
     </Routes>
   );
 }
