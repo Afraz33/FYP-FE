@@ -48,7 +48,7 @@ function MeritCalculator() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col h-full w-screen ">
+      <div className="flex flex-col h-full w-screen  ">
         <MeritTabsandForm />
       </div>
     </>

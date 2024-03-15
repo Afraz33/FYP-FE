@@ -1,22 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./meritcalc.css";
-
-const UniversityList = ({ universities }) => (
-  <div className="university-list">
-    <div className="headings">
-      <h2 className="list-heading">Ranking</h2>
-      <h2 className="list-heading">University</h2>
-    </div>
-    {universities.map((university, index) => (
-      <div key={index} className="university-item">
-        <span>{index + 1}</span>
-        <span>{university.University}</span>
-      </div>
-    ))}
-  </div>
-);
-
+import MeritModal from "../MeritModal/MeritModal";
 const TabsandList = () => {
+  const [openModal, setOpenModal] = React.useState(false);
+
   const [activeTab, setActiveTab] = useState(0);
   const categories = [
     { title: "FAST-CompSci" },
@@ -40,8 +27,57 @@ const TabsandList = () => {
   const [hssc2Total, setHssc2Total] = useState("");
   const [testObtained, setTestObtained] = useState("");
   const [testTotal, setTestTotal] = useState("");
+  const [totalMerit, setTotalMerit] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const handleOpen = () => setOpenModal(true);
+  const handleClose = () => setOpenModal(false);
 
   const handleMeritCalculation = () => {
+    setErrorMessage("");
+    if (
+      !ssc1Obtained ||
+      !ssc1Total ||
+      !hssc1Obtained ||
+      !hssc1Total ||
+      !ssc2Obtained ||
+      !ssc2Total ||
+      !hssc2Obtained ||
+      !hssc2Total ||
+      !testTotal ||
+      !testObtained
+    ) {
+      setErrorMessage("Please fill in all fields with valid numbers!");
+
+      handleOpen();
+    }
+    // if (ssc1Obtained > ssc1Total) {
+    //   setErrorMessage(
+    //     "Your SSC part 1 obtained marks cannot be greater than total marks!"
+    //   );
+
+    //   handleOpen();
+    // }
+    // if (ssc2Obtained > ssc2Total) {
+    //   setErrorMessage(
+    //     "Your SSC part 2 obtained marks cannot be greater than total marks!"
+    //   );
+
+    //   handleOpen();
+    // }
+    // if (hssc1Obtained > hssc1Total) {
+    //   setErrorMessage(
+    //     "Your HSSC part 1 obtained marks cannot be greater than total marks!"
+    //   );
+
+    //   handleOpen();
+    // }
+    // if (hssc2Obtained > hssc2Total) {
+    //   setErrorMessage(
+    //     "Your HSSC part 2 obtained marks cannot be greater than total marks!"
+    //   );
+
+    //   handleOpen();
+    // }
     const sscTotalMarks = parseFloat(ssc1Total) + parseFloat(ssc2Total);
     const sscObtainedMarks =
       parseFloat(ssc1Obtained) + parseFloat(ssc2Obtained);
@@ -50,73 +86,99 @@ const TabsandList = () => {
     const hsscTotalMarks = parseFloat(hssc1Total) + parseFloat(hssc2Total);
     const testTotalMarks = parseFloat(testTotal);
 
-    let totalMerit = 0;
-
     switch (categories[activeTab].title) {
       case "FAST-CompSci":
-        totalMerit =
+        setTotalMerit(
           (parseFloat(testObtained) / testTotalMarks) * 50 +
-          (sscObtainedMarks / sscTotalMarks) * 10 +
-          (HsscObtainedMarks / hsscTotalMarks) * 40;
+            (sscObtainedMarks / sscTotalMarks) * 10 +
+            (HsscObtainedMarks / hsscTotalMarks) * 40
+        );
 
         break;
       case "FAST-Eng":
-        totalMerit =
+        setTotalMerit(
           (parseFloat(testObtained) / testTotalMarks) * 33 +
-          (sscObtainedMarks / sscTotalMarks) * 17 +
-          (HsscObtainedMarks / hsscTotalMarks) * 50;
+            (sscObtainedMarks / sscTotalMarks) * 17 +
+            (HsscObtainedMarks / hsscTotalMarks) * 50
+        );
 
         break;
       case "FAST-Business":
-        totalMerit =
+        setTotalMerit(
           (parseFloat(testObtained) / testTotalMarks) * 50 +
-          (sscObtainedMarks / sscTotalMarks) * 10 +
-          (HsscObtainedMarks / hsscTotalMarks) * 40;
+            (sscObtainedMarks / sscTotalMarks) * 10 +
+            (HsscObtainedMarks / hsscTotalMarks) * 40
+        );
         break;
       case "COMSATS":
-        totalMerit =
+        setTotalMerit(
           (parseFloat(testObtained) / testTotalMarks) * 50 +
-          (sscObtainedMarks / sscTotalMarks) * 10 +
-          (HsscObtainedMarks / hsscTotalMarks) * 40;
+            (sscObtainedMarks / sscTotalMarks) * 10 +
+            (HsscObtainedMarks / hsscTotalMarks) * 40
+        );
         break;
       case "NUST":
-        totalMerit =
+        setTotalMerit(
           (parseFloat(testObtained) / testTotalMarks) * 75 +
-          (sscObtainedMarks / sscTotalMarks) * 10 +
-          (HsscObtainedMarks / hsscTotalMarks) * 15;
+            (sscObtainedMarks / sscTotalMarks) * 10 +
+            (HsscObtainedMarks / hsscTotalMarks) * 15
+        );
         break;
       case "UET":
-        totalMerit =
+        setTotalMerit(
           (parseFloat(testObtained) / testTotalMarks) * 33 +
-          (sscObtainedMarks / sscTotalMarks) * 17 +
-          (HsscObtainedMarks / hsscTotalMarks) * 50;
+            (sscObtainedMarks / sscTotalMarks) * 17 +
+            (HsscObtainedMarks / hsscTotalMarks) * 50
+        );
         break;
       case "AIR":
-        totalMerit =
+        setTotalMerit(
           (parseFloat(testObtained) / testTotalMarks) * 40 +
-          (sscObtainedMarks / sscTotalMarks) * 10 +
-          (HsscObtainedMarks / hsscTotalMarks) * 50;
+            (sscObtainedMarks / sscTotalMarks) * 10 +
+            (HsscObtainedMarks / hsscTotalMarks) * 50
+        );
         break;
       case "GIKI":
-        totalMerit =
+        setTotalMerit(
           (parseFloat(testObtained) / testTotalMarks) * 85 +
-          (sscObtainedMarks / sscTotalMarks) * 5 +
-          (HsscObtainedMarks / hsscTotalMarks) * 10;
+            (sscObtainedMarks / sscTotalMarks) * 5 +
+            (HsscObtainedMarks / hsscTotalMarks) * 10
+        );
         break;
       case "MDCAT":
-        totalMerit =
+        setTotalMerit(
           (parseFloat(testObtained) / testTotalMarks) * 50 +
-          (sscTotalMarks / sscTotalMarks) * 10 +
-          (HsscObtainedMarks / hsscTotalMarks) * 40;
+            (sscTotalMarks / sscTotalMarks) * 10 +
+            (HsscObtainedMarks / hsscTotalMarks) * 40
+        );
         break;
       default:
         console.log("Invalid University Selection");
         break;
     }
-
-    console.log("Total Merit:", totalMerit);
+    handleOpen();
   };
 
+  const handleInputChange = (setValue, value) => {
+    // Validate input to allow only positive numbers that do not start with zero
+    const isValidInput = /^(?!0)\d*\.?\d*$/.test(value);
+    if (isValidInput) {
+      setValue(value);
+    }
+  };
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter") {
+        handleMeritCalculation();
+      }
+    };
+
+    document.addEventListener("keypress", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keypress", handleKeyPress);
+    };
+  }, [handleMeritCalculation]);
   return (
     <div className="merit-tab-component flex flex-col justify-center items-center p-9 p-y-10 w-[100%]">
       <div className="tabs">
@@ -130,7 +192,7 @@ const TabsandList = () => {
           </button>
         ))}
       </div>
-      <div className=" mt-5 rounded-xl flex flex-col gap-10  justify-center items-center w-[90%] m-auto border border-[#1ab69d] p-3">
+      <div className=" mt-5 rounded-xl flex flex-col gap-10  justify-center items-center w-[85%] m-auto border border-[#1ab69d] p-3">
         <div className="flex flex-row gap-24">
           <div className="flex flex-row gap-5">
             <div className="flex flex-col gap-1 items-center">
@@ -139,16 +201,20 @@ const TabsandList = () => {
                 <input
                   type="text"
                   placeholder="SSC1 Obtained Marks"
-                  className="input-field border border-black  p-4 px-8 "
+                  className="input-field border border-black  p-4 px-8 rounded-lg"
                   value={ssc1Obtained}
-                  onChange={(e) => setSsc1Obtained(e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(setSsc1Obtained, e.target.value)
+                  }
                 />
                 <input
                   type="text"
                   placeholder="SSC 1 Total Marks"
-                  className="input-field border border-black  p-4 px-8 "
+                  className="input-field border border-black  p-4 px-8 rounded-lg "
                   value={ssc1Total}
-                  onChange={(e) => setSsc1Total(e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(setSsc1Total, e.target.value)
+                  }
                 />
               </div>
             </div>
@@ -160,16 +226,20 @@ const TabsandList = () => {
                 <input
                   type="text"
                   placeholder="SSC2 Obtained Marks"
-                  className="input-field border border-black  p-4 px-8 "
+                  className="input-field border border-black  p-4 px-8 rounded-lg"
                   value={ssc2Obtained}
-                  onChange={(e) => setSsc2Obtained(e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(setSsc2Obtained, e.target.value)
+                  }
                 />
                 <input
                   type="text"
                   placeholder="SSC 2 Total Marks"
-                  className="input-field border border-black  p-4 px-8 "
+                  className="input-field border border-black  p-4 px-8 rounded-lg"
                   value={ssc2Total}
-                  onChange={(e) => setSsc2Total(e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(setSsc2Total, e.target.value)
+                  }
                 />
               </div>
             </div>
@@ -183,16 +253,20 @@ const TabsandList = () => {
                 <input
                   type="text"
                   placeholder="HSSC1 Obtained Marks"
-                  className="input-field border border-black  p-4 px-8 "
+                  className="input-field border border-black  p-4 px-8 rounded-lg "
                   value={hssc1Obtained}
-                  onChange={(e) => setHssc1Obtained(e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(setHssc1Obtained, e.target.value)
+                  }
                 />
                 <input
                   type="text"
                   placeholder="HSSC1 Total Marks"
-                  className="input-field border border-black  p-4 px-8 "
+                  className="input-field border border-black  p-4 px-8 rounded-lg"
                   value={hssc1Total}
-                  onChange={(e) => setHssc1Total(e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(setHssc1Total, e.target.value)
+                  }
                 />
               </div>
             </div>
@@ -204,16 +278,20 @@ const TabsandList = () => {
                 <input
                   type="text"
                   placeholder="HSSC2 Obtained Marks"
-                  className="input-field border border-black  p-4 px-8 "
+                  className="input-field border border-black  p-4 px-8 rounded-lg"
                   value={hssc2Obtained}
-                  onChange={(e) => setHssc2Obtained(e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(setHssc2Obtained, e.target.value)
+                  }
                 />
                 <input
                   type="text"
                   placeholder="HSSC 2 Total Marks"
-                  className="input-field border border-black  p-4 px-8 "
+                  className="input-field border border-black  p-4 px-8 rounded-lg"
                   value={hssc2Total}
-                  onChange={(e) => setHssc2Total(e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(setHssc2Total, e.target.value)
+                  }
                 />
               </div>
             </div>
@@ -226,16 +304,18 @@ const TabsandList = () => {
             <input
               type="text"
               placeholder="Entrance Test Obtained Marks"
-              className="input-field border border-black  p-4 px-8 "
+              className="input-field border border-black  p-4 px-8 rounded-lg"
               value={testObtained}
-              onChange={(e) => setTestObtained(e.target.value)}
+              onChange={(e) =>
+                handleInputChange(setTestObtained, e.target.value)
+              }
             />
             <input
               type="text"
               placeholder="Entrance Test Total Marks"
-              className="input-field border border-black  p-4 px-8 "
+              className="input-field border border-black  p-4 px-8 rounded-lg"
               value={testTotal}
-              onChange={(e) => setTestTotal(e.target.value)}
+              onChange={(e) => handleInputChange(setTestTotal, e.target.value)}
             />
           </div>
         </div>
@@ -246,6 +326,13 @@ const TabsandList = () => {
           Calculate Merit
         </button>
       </div>
+      <MeritModal
+        open={openModal}
+        handleClose={handleClose}
+        totalMerit={totalMerit}
+        university={categories[activeTab].title}
+        errorMessage={errorMessage}
+      />
     </div>
   );
 };
