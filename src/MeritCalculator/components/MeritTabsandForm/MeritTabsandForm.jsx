@@ -2,21 +2,22 @@ import React, { useState, useEffect, useCallback } from "react";
 import "./meritcalc.css";
 import MeritModal from "../MeritModal/MeritModal";
 import { Alert } from "antd";
+const categories = [
+  { title: "FAST-CompSci" },
+  { title: "FAST-Eng" },
+  { title: "FAST-Business" },
+  { title: "COMSATS" },
+  { title: "NUST" },
+  { title: "UET" },
+  { title: "AIR" },
+  { title: "GIKI" },
+  { title: "MDCAT" },
+];
 const TabsandList = () => {
   const [openModal, setOpenModal] = React.useState(false);
 
   const [activeTab, setActiveTab] = useState(0);
-  const categories = [
-    { title: "FAST-CompSci" },
-    { title: "FAST-Eng" },
-    { title: "FAST-Business" },
-    { title: "COMSATS" },
-    { title: "NUST" },
-    { title: "UET" },
-    { title: "AIR" },
-    { title: "GIKI" },
-    { title: "MDCAT" },
-  ];
+ 
 
   const [ssc1Obtained, setSsc1Obtained] = useState();
   const [ssc1Total, setSsc1Total] = useState();
@@ -42,8 +43,7 @@ const TabsandList = () => {
       !hssc1Total ||
       !ssc2Obtained ||
       !ssc2Total ||
-      !hssc2Obtained ||
-      !hssc2Total ||
+      
       !testTotal ||
       !testObtained
     ) {
@@ -73,7 +73,7 @@ const TabsandList = () => {
 
       handleOpen();
     }
-    if (parseFloat(hssc2Obtained) > parseFloat(hssc1Total)) {
+    if (parseFloat(hssc2Obtained) > parseFloat(hssc2Total)) {
       setErrorMessage(
         "Your HSSC part 2 obtained marks cannot be greater than total marks!"
       );
@@ -90,9 +90,9 @@ const TabsandList = () => {
     const sscTotalMarks = parseFloat(ssc1Total) + parseFloat(ssc2Total);
     const sscObtainedMarks =
       parseFloat(ssc1Obtained) + parseFloat(ssc2Obtained);
-    const HsscObtainedMarks =
-      parseFloat(hssc1Obtained) + parseFloat(hssc2Obtained);
-    const hsscTotalMarks = parseFloat(hssc1Total) + parseFloat(hssc2Total);
+    const HsscObtainedMarks = hssc2Obtained?
+      parseFloat(hssc1Obtained) + parseFloat(hssc2Obtained) : parseFloat(hssc1Obtained);
+    const hsscTotalMarks = hssc2Total? parseFloat(hssc1Total) + parseFloat(hssc2Total):  parseFloat(hssc1Total);
     const testTotalMarks = parseFloat(testTotal);
 
     switch (categories[activeTab].title) {
@@ -168,7 +168,7 @@ const TabsandList = () => {
     handleOpen();
   }, [
     activeTab,
-    categories,
+    
     ssc1Obtained,
     ssc1Total,
     ssc2Obtained,

@@ -112,7 +112,7 @@ function Navbar() {
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-cta"
         >
-          <ul className="flex font-Onest font-semibold flex-col  p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-300 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex font-Onest font-semibold flex-col items-center  p-4 md:p-0  border border-gray-100 rounded-lg bg-gray-300 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 m-0">
             <li>
               <Link to="/userLandingPage">
                 <a // href="#"
@@ -219,6 +219,7 @@ function Navbar() {
                   </a>
                 </Link>
               </li>
+             
             </ul>
             <ul>
               <li>
@@ -247,6 +248,21 @@ function Navbar() {
                     </div>
                     <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
                       Find the answers to your questions about universities
+                    </span>
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/merit-calculator">
+                  <a
+                    href="#"
+                    className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <div className="font-Onest font-semibold">
+                      Merit Calculation
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                      Calculate your merit for various univerities offering different entrance tests
                     </span>
                   </a>
                 </Link>
