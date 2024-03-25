@@ -51,8 +51,8 @@ function ConversationFlow({ answer, setAnswer }) {
       >
         {conversationFlow.length === 0 && (
           <div className="flex gap-4 h-20 w-[100%] mt-24 ">
-            <img className="w-16 h-16" src={university} alt="university"></img>
-            <p className="text-black font-DelaGothicOne text-2xl">
+            <img className="w-14 h-14" src={university} alt="university"></img>
+            <p className="text-black font-Onest text-2xl font-bold">
               Get started with your university hunt with over 70+ universities
               data
             </p>
@@ -72,6 +72,7 @@ function ConversationFlow({ answer, setAnswer }) {
       </div>
       {conversationFlow.length === 0 && (
         <div className="  flex flex-row flex-wrap  w-[80%]   m-auto mb-40  justify-center gap-x-4 gap-y-2">
+
           <div onClick={()=>{navigate('/chatbot')}} className="bg-gray-300 rounded-lg p-2 w-[43%]  hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center  border border-black border-solid">
             <p className="font-DelaGothicOne text-sm  text-center">
               Didn't try our personality assessment? Try now
@@ -79,10 +80,12 @@ function ConversationFlow({ answer, setAnswer }) {
           </div>
           <div onClick={()=>{navigate('/search-experts')}} className="bg-gray-300 hover:bg-[#f0faf9] rounded-lg p-2 w-[43%] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
             <p className="font-DelaGothicOne text-sm  text-center">
+
               Interested in talking to experts of your field? Book Consultation
               now
             </p>
           </div>
+
           <div onClick={()=>{navigate('/university-rankings')}} className="bg-gray-300 rounded-lg p-2 w-[43%] hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
             <p className="font-DelaGothicOne text-sm  text-center">
               Want to view university rankings? Click here
@@ -90,6 +93,7 @@ function ConversationFlow({ answer, setAnswer }) {
           </div>
           <div onClick={()=>{navigate('/merit-calculator')}} className="bg-gray-300 rounded-lg p-2 w-[43%] hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
             <p className="font-DelaGothicOne text-sm  text-center">
+
               Find out what your merit is? Calculate now !
             </p>
           </div>
