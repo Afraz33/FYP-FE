@@ -182,7 +182,7 @@ function Navbar() {
             <ul>
               <li>
                 <a
-                  href="afraz"
+                  href="student-login"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <div className="font-Onest font-semibold">Login Sign Up</div>
@@ -204,39 +204,9 @@ function Navbar() {
                   </a>
                 </Link>
               </li>
-              <li>
-                <Link to="/chatbot">
-                  <a
-                    href="#"
-                    className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    <div className="font-Onest font-semibold">
-                      Career Prediction
-                    </div>
-                    <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
-                      Get to know what career best suits you
-                    </span>
-                  </a>
-                </Link>
-              </li>
              
             </ul>
             <ul>
-              <li>
-                <Link to="/university-chatbot">
-                  <a
-                    href="#"
-                    className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    <div className="font-Onest font-semibold">
-                      Universities for you
-                    </div>
-                    <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
-                      Get universities in Pakistan that match your interests
-                    </span>
-                  </a>
-                </Link>
-              </li>
               <li>
                 <Link to="/university-chatbot">
                   <a

@@ -74,12 +74,12 @@ function ConversationFlow({ answer, setAnswer }) {
         <div className="  flex flex-row flex-wrap  w-[80%]   m-auto mb-40  justify-center gap-x-4 gap-y-2">
 
           <div onClick={()=>{navigate('/chatbot')}} className="bg-gray-300 rounded-lg p-2 w-[43%]  hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center  border border-black border-solid">
-            <p className="font-DelaGothicOne text-sm  text-center">
+            <p className="font-Onest text-sm font-semibold  text-center ">
               Didn't try our personality assessment? Try now
             </p>
           </div>
           <div onClick={()=>{navigate('/search-experts')}} className="bg-gray-300 hover:bg-[#f0faf9] rounded-lg p-2 w-[43%] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
-            <p className="font-DelaGothicOne text-sm  text-center">
+            <p className="font-Onest font-semibold text-sm  text-center">
 
               Interested in talking to experts of your field? Book Consultation
               now
@@ -87,12 +87,12 @@ function ConversationFlow({ answer, setAnswer }) {
           </div>
 
           <div onClick={()=>{navigate('/university-rankings')}} className="bg-gray-300 rounded-lg p-2 w-[43%] hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
-            <p className="font-DelaGothicOne text-sm  text-center">
+            <p className="font-Onest font-semibold text-sm  text-center">
               Want to view university rankings? Click here
             </p>
           </div>
           <div onClick={()=>{navigate('/merit-calculator')}} className="bg-gray-300 rounded-lg p-2 w-[43%] hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
-            <p className="font-DelaGothicOne text-sm  text-center">
+            <p className="font-Onest font-semibold text-sm  text-center">
 
               Find out what your merit is? Calculate now !
             </p>
