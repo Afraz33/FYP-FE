@@ -4,10 +4,12 @@ import ChatbotResponse from "../chatbotResponse/ChatbotResponse";
 import UserAnswer from "../userAnswer/userAnswer";
 import Styles from "./ConversationFlow.module.css";
 import university from "../../assets/university.png";
+import { useNavigate } from "react-router-dom";
 function ConversationFlow({ answer, setAnswer }) {
   // Define conversation flow as an array of objects
   const [conversationFlow, setConversationFlow] = useState([]);
   const [responding, setResponding] = useState(false);
+  const navigate = useNavigate();
 
   const handleUserAnswer = (answer) => {
     const updatedFlow = [
@@ -70,24 +72,28 @@ function ConversationFlow({ answer, setAnswer }) {
       </div>
       {conversationFlow.length === 0 && (
         <div className="  flex flex-row flex-wrap  w-[80%]   m-auto mb-40  justify-center gap-x-4 gap-y-2">
-          <div className="bg-gray-100 rounded-lg p-2 w-[43%]  hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center  border border-black border-solid">
-            <p className="font-Onest text-sm font-semibold text-center">
+
+          <div onClick={()=>{navigate('/chatbot')}} className="bg-gray-300 rounded-lg p-2 w-[43%]  hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center  border border-black border-solid">
+            <p className="font-Onest text-sm font-semibold  text-center ">
               Didn't try our personality assessment? Try now
             </p>
           </div>
-          <div className="bg-gray-100 hover:bg-[#f0faf9] rounded-lg p-2 w-[43%] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
+          <div onClick={()=>{navigate('/search-experts')}} className="bg-gray-300 hover:bg-[#f0faf9] rounded-lg p-2 w-[43%] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
             <p className="font-Onest font-semibold text-sm  text-center">
+
               Interested in talking to experts of your field? Book Consultation
               now
             </p>
           </div>
-          <div className="bg-gray-100 rounded-lg p-2 w-[43%] hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
+
+          <div onClick={()=>{navigate('/university-rankings')}} className="bg-gray-300 rounded-lg p-2 w-[43%] hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
             <p className="font-Onest font-semibold text-sm  text-center">
               Want to view university rankings? Click here
             </p>
           </div>
-          <div className="bg-gray-100 rounded-lg p-2 w-[43%] hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
+          <div onClick={()=>{navigate('/merit-calculator')}} className="bg-gray-300 rounded-lg p-2 w-[43%] hover:bg-[#f0faf9] cursor-pointer h-20 text flex items-center justify-center border border-black border-solid">
             <p className="font-Onest font-semibold text-sm  text-center">
+
               Find out what your merit is? Calculate now !
             </p>
           </div>

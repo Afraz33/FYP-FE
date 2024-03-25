@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Dropdown, Menu } from "antd";
 import axios from "axios"; // Add this line to import axios
-import "antd/dist/reset.css";  // Make sure to import the Ant Design styles
+import "antd/dist/reset.css"; // Make sure to import the Ant Design styles
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,28 +12,31 @@ function Navbar() {
 
   const fetchUserProfile = async () => {
     try {
-      const token = localStorage.getItem('token');
-      console.log('Token:', token);
+      const token = localStorage.getItem("token");
+      console.log("Token:", token);
 
       if (!token) {
-        console.error('Token is missing in localStorage');
+        console.error("Token is missing in localStorage");
         // Handle the missing token case, possibly redirect the user to the login page.
         return;
       }
 
-      const response = await axios.get('http://localhost:5000/api/users/user-profile', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "http://localhost:5000/api/users/user-profile",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setUserData(response.data);
     } catch (error) {
       if (error.response && error.response.status === 403) {
         // Handle 403 Forbidden error
-        console.error('Access to user profile is forbidden.');
+        console.error("Access to user profile is forbidden.");
       } else {
         // Handle other errors
-        console.error('Error fetching user profile:', error.message);
+        console.error("Error fetching user profile:", error.message);
       }
     }
   };
@@ -46,13 +49,14 @@ function Navbar() {
     setUsername(userData.userName || ""); // Set the username state
   }, [userData]); // Make sure to include userData as a dependency
 
-
   const handleMenuClick = ({ key }) => {
     if (key === "profile") {
       // Redirect to the user profile page (replace with the actual route)
       navigate("/user-profile");
     } else if (key === "logout") {
-      
+      localStorage.removeItem("token");
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("chatHistory");
       navigate("/");
     }
   };
@@ -64,20 +68,17 @@ function Navbar() {
     </Menu>
   );
 
-
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 shadow-2xl">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
+        <a className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center text-2xl font-semibold font-Onest whitespace-nowrap dark:text-white">
             PaiSHA
           </span>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-10 rtl:space-x-reverse">
           <Dropdown overlay={menu} placement="bottomRight" arrow>
-          <div className="font-semibold text-white w-auto h-10 border-2 flex items-center justify-center bg-[#1ab69d] px-4 font-Onest border-[#1ab69d] rounded-lg hover:border-transparent hover:text-[#1ab69d] hover:bg-transparent hover:underline">
+            <div className="font-semibold text-white w-auto h-10 border-2 flex items-center justify-center bg-[#1ab69d] px-4 font-Onest border-[#1ab69d] rounded-lg hover:border-transparent hover:text-[#1ab69d] hover:bg-transparent hover:underline">
               {username}
             </div>
           </Dropdown>
@@ -111,16 +112,15 @@ function Navbar() {
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-cta"
         >
-          <ul className="flex font-Onest font-semibold flex-col  p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-300 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex font-Onest font-semibold flex-col items-center  p-4 md:p-0  border border-gray-100 rounded-lg bg-gray-300 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 m-0">
             <li>
-            <Link
-            to="/userLandingPage">
-              <a  // href="#"
-                className="block py-2 px-3 md:p-0  rounded md:bg-transparent text-gray-900  md:hover:text-[#1ab69d] md:dark:hover:text-[#1ab69d]"
-                aria-current="page"
-              >
-                Home
-              </a>
+              <Link to="/userLandingPage">
+                <a // href="#"
+                  className="block py-2 px-3 md:p-0  rounded md:bg-transparent text-gray-900  md:hover:text-[#1ab69d] md:dark:hover:text-[#1ab69d]"
+                  aria-current="page"
+                >
+                  Home
+                </a>
               </Link>
             </li>
             <li>
@@ -159,17 +159,12 @@ function Navbar() {
               </button>
             </li>
             <li>
-            
-              <a
-               
-               
-                className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-[#1ab69d] dark:text-white dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
-              >
+              <a className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-[#1ab69d] dark:text-white dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700">
                 Contact
               </a>
-              
             </li>
             <li>
+
             <Link to="/announcement-cards">
               <a
                 
@@ -187,6 +182,7 @@ function Navbar() {
               >
                 View Experts
               </a>
+
               </Link>
             </li>
           </ul>
@@ -201,7 +197,7 @@ function Navbar() {
             <ul>
               <li>
                 <a
-                  href="afraz"
+                  href="student-login"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <div className="font-Onest font-semibold">Login Sign Up</div>
@@ -212,57 +208,48 @@ function Navbar() {
               </li>
               <li>
                 <Link to="/chatbot">
-                <a
-                  
-                  className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <div className="font-Onest font-semibold">Personality Analysis</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
-                    Analyze your personality and find your interests with the help of Artificial Intelligence
-                  </span>
-                </a>
+                  <a className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <div className="font-Onest font-semibold">
+                      Personality Analysis
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                      Analyze your personality and find your interests with the
+                      help of Artificial Intelligence
+                    </span>
+                  </a>
                 </Link>
               </li>
-              <li>
-              <Link to="/chatbot">
-                <a
-                  href="#"
-                  className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <div className="font-Onest font-semibold">Career Prediction</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
-                    Get to know what career best suits you
-                  </span>
-                </a>
-                </Link>
-              </li>
+             
             </ul>
             <ul>
               <li>
-              <Link to="/university-chatbot">
-                <a
-                  href="#"
-                  className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <div className="font-Onest font-semibold">Universities for you</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
-                    Get universities in Pakistan that match your interests
-                  </span>
-                </a>
+                <Link to="/university-chatbot">
+                  <a
+                    href="#"
+                    className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <div className="font-Onest font-semibold">
+                      University Information
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                      Find the answers to your questions about universities
+                    </span>
+                  </a>
                 </Link>
               </li>
               <li>
-              <Link to="/university-chatbot">
-                <a
-                  href="#"
-                  className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-
-                  <div className="font-Onest font-semibold">University Information</div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
-                    Find the answers to your questions about universities
-                  </span>
-                </a>
+                <Link to="/merit-calculator">
+                  <a
+                    href="#"
+                    className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <div className="font-Onest font-semibold">
+                      Merit Calculation
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
+                      Calculate your merit for various univerities offering different entrance tests
+                    </span>
+                  </a>
                 </Link>
               </li>
 
