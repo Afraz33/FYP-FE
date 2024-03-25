@@ -164,10 +164,25 @@ function Navbar() {
               </a>
             </li>
             <li>
-              <Link to="/search">
-                <a className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-[#1ab69d] dark:text-white dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700">
-                  View Experts
-                </a>
+
+            <Link to="/announcement-cards">
+              <a
+                
+                className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-[#1ab69d] dark:text-white dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
+              >
+                Announcements
+              </a>
+              </Link>
+            </li>
+            <li>
+            <Link to="/search">
+              <a
+                
+                className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-[#1ab69d] dark:text-white dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
+              >
+                View Experts
+              </a>
+
               </Link>
             </li>
           </ul>
