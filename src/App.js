@@ -1,9 +1,11 @@
-import testing from "../src/expertPanel/assets/images/testing.png";
+import { AuthProvider } from "./AuthContext";
 import Routers from "./Routers/Routers";
 export default function App() {
   return (
     <>
-      <Routers />
+      <AuthProvider>
+        <Routers />
+      </AuthProvider>
     </>
   );
 }
