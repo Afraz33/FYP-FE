@@ -18,8 +18,7 @@ import AnnoucementPage from "../studentPanel/pages/Annoucement";
 import ForgotPasswordForm from '../studentPanel/pages/ForgotPasswordForm';
 import ResetPasswordForm from '../studentPanel/pages/ResetPasswordForm';
 
-import ForgotPasswordForm from "../studentPanel/pages/ForgotPasswordForm";
-import ResetPasswordForm from "../studentPanel/pages/ResetPasswordForm";
+
 
 import StudentLandingPage from "../studentPanel/pages/StudentLandingPage";
 import StudentSignUp from "../studentPanel/pages/StudentSignup";

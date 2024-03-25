@@ -345,14 +345,14 @@ function Navbar() {
             <ul>
               <li>
                 <a
-                  href="#"
+                  href="merit-calculator"
                   className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <div className="font-Onest font-semibold">
-                    Universities for you
+                   Merit Calculation
                   </div>
                   <span className="text-sm text-gray-500 dark:text-gray-400 font-Onest">
-                    Get universities in Pakistan that match your interests
+                    Calculate merit for top universities
                   </span>
                 </a>
               </li>
