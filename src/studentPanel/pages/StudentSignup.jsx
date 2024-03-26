@@ -245,9 +245,10 @@ return (
                   placeholder="030083428"
                   value={phoneNo}
                   onChange={(e) => setPhoneNo(e.target.value)}
-                  pattern="^030\d{7}$"
-                  title="Phone number must be in the format 030083428"
+                  pattern="^03\d{9}$"
+                  title="Phone number must be in the format 030xxxxxxxxx"
                 />
+
               </div>
 
               {/* Gender */}
@@ -305,7 +306,7 @@ return (
                 >
                   Password
                 </label>
-                <input
+                  <input
                   id="password"
                   required
                   className="appearance-none border border-black rounded-lg py-2 px-3 leading-tight focus:outline-none focus:border-green-600"
@@ -313,7 +314,7 @@ return (
                   placeholder="********"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  minLength="8"  // Minimum length of 8 characters
+                  minLength="8" // Minimum length of 8 characters
                   title="Password needs to be at least 8 characters"
                 />
               </div>

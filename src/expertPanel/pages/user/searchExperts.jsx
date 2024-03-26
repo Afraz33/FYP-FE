@@ -27,11 +27,11 @@ const Header = () => {
 };
 
 const HeroSection = () => {
-  return (
-    <div className="bg-[#81cdc6] w-full shadow-md text-center py-10">
-      <h1 className="text-5xl font-bold font-Onest">Experts</h1>
-    </div>
-  );
+  // return (
+  //   <div className="bg-[#81cdc6] w-full shadow-md text-center py-10">
+  //     <h1 className="text-5xl font-bold font-Onest">Experts</h1>
+  //   </div>
+  // );
 };
 
 

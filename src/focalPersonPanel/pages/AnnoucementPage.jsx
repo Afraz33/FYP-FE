@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 function AnnouncementPage() {
@@ -46,9 +47,10 @@ function AnnouncementPage() {
     maxWidth: '200px', // Set the max-width as you prefer
     width: '100%' // Use 100% to make it responsive within the max-width
   };
+  // style={{ backgroundColor: 'gray-100' }}
   return (
     <>
-    <div className="min-h-screen" style={{ backgroundColor: '#fdfdf9' }}> {/* Set the background color for the whole page here */}
+    <div className="min-h-screen bg-gray-100" > 
       <Navbar />
       
       <div className="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-md font-Onest" style={{ maxWidth: '768px' }}>
@@ -87,6 +89,11 @@ function AnnouncementPage() {
           >
             Create Announcement
           </button>
+          <button >
+          <Link to="/focalPersonLandingPage" className="flex justify-center">
+          <a className="block py-2 px-3 md:p-0 rounded md:bg-transparent font-Onest text-gray-900 text-center items-center md:hover:text-[#1ab69d] md:dark:hover:text-[#1ab69d] underline" style={{ marginLeft: '30px' }}>Back to Home</a>
+        </Link>
+            </button>
         </form>
       </div>
       </div>

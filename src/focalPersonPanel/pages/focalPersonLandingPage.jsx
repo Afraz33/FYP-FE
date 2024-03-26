@@ -119,6 +119,14 @@ const UpdateCard = ({ update, onUpdate, onDelete }) => {
 
 const AnnouncementList = () => {
   const [announcements, setAnnouncements] = useState([]);
+  const [updates, setUpdates] = useState([]);
+
+  const handleUpdate = (updatedData) => {
+    const updatedUpdates = updates.map((update) =>
+      update._id === updatedData._id ? updatedData : update
+    );
+    setUpdates(updatedUpdates);
+  };
 
   useEffect(() => {
     const fetchAnnouncements = async () => {
@@ -158,8 +166,13 @@ const AnnouncementList = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {announcements.map((announcement) => (
-        <UpdateCard key={announcement._id} update={announcement} onDelete={handleDelete} />
-      ))}
+// Pass handleUpdate to the UpdateCard component
+    <UpdateCard
+      key={announcement._id}
+      update={announcement}
+      onUpdate={handleUpdate} // <-- Here's the new prop
+      onDelete={handleDelete}
+    />      ))}
     </div>
   );
 };
@@ -195,13 +208,13 @@ const LandingPage = () => {
 
   return (
     <>
-         <Navbar />
-         <div className="bg-gray-100 min-h-screen font-Onest">
-        <header className="text-center p-8">
-          <h1 className="text-4xl font-bold">Welcome, {focalPersonName || 'Focal Person'}</h1>
-        </header>
+    <Navbar />
+    <div className="bg-gray-100 min-h-screen font-Onest">
+    <header className="text-center p-8">
+      <h1 className="text-4xl font-bold">Welcome, {focalPersonName || 'Focal Person'}</h1>
+    </header>
 
-      <main className="container mx-auto px-4">
+      <main className="container mx-auto px-4 font-Onest">
         <section className="mb-8 w-full">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-semibold">Announcements</h2>

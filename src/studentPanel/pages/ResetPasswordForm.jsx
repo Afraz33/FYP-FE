@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function ResetPasswordForm() {
   const { token } = useParams();
@@ -45,6 +46,11 @@ function ResetPasswordForm() {
           >
             Set New Password
           </button>
+        </div>
+        <div className="text-center mt-4">
+          <Link to="/student-login" className="text-[#1ab69d] hover:underline">
+            Go to Login
+          </Link>
         </div>
         <p className="mt-4">{message}</p>
       </div>
