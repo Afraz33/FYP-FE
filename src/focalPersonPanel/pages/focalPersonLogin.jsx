@@ -44,9 +44,9 @@ function FocalPersonLogin() {
 
   
   return (
-    <div className="bg-gray-200">
+    <div className="bg-gray-200 font-Onest">
       <header className="flex h-screen">
-        <div className="shadow-2xl ... shadow-green-950 rounded-lg ... my-auto w-[30%] h-6/6 mx-auto bg-slate-900 flex flex-col rounded-lg">
+        <div className="shadow-2xl ...  rounded-lg ... border-2 border-[#052e16] my-auto w-[30%] h-6/6 mx-auto bg-white flex flex-col rounded-lg">
           <div className="mt-10 h-40 w-40 self-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +110,7 @@ function FocalPersonLogin() {
             </svg>
           </div>
           <div className="flex justify-center mb-6">
-            <h1 className="font-bold text-white text-3xl font-Onest">Login to PaiSHA</h1>
+            <h1 className="font-bold text-black text-3xl font-Onest">Login to PaiSHA</h1>
           </div>
           <div className="w-[70%] mx-auto flex flex-col justify-center">
           <h1 id="error" className={`text-${loginSuccess ? "green" : "red"}-500 text-center`}>
@@ -120,7 +120,7 @@ function FocalPersonLogin() {
         
       <form onSubmit={handleLogin} className="w-[70%] mx-auto">
         <div className="mb-2 flex flex-col justify-center font-Onest">
-          <label className="block text-white font-bold mb-2" htmlFor="universityEmail">
+          <label className="block text-black font-bold mb-2" htmlFor="universityEmail">
             University Email
           </label>
           <input
@@ -137,7 +137,7 @@ function FocalPersonLogin() {
         </div>
       
         <div className="flex flex-col justify-center font-Onest">
-          <label className="block text-white font-bold mb-2" htmlFor="password">
+          <label className="block text-black font-bold mb-2" htmlFor="password">
             Password
           </label>
           <input
@@ -164,7 +164,7 @@ function FocalPersonLogin() {
       </form>
 
       <div className="mt-6 w-[70%] mx-auto flex flex-col items-center font-Onest">
-        <div className="text-white">
+        <div className="text-black">
           <Link to="/forgot-password-focal" className="underline">
             Forgot Password?
           </Link>
@@ -172,7 +172,7 @@ function FocalPersonLogin() {
       </div>
 
       <div className="mt-6 w-[70%] mx-auto flex flex-col items-center font-Onest">
-        <h1 className="text-white">Don't have an account?</h1>
+        <h1 className="text-black">Don't have an account?</h1>
         <button
           id="create-account"
           className="my-button inline-flex w-26 h-6 text-[#1ab69d] border-transparent ml-1 inline-block hover:text-green-500"
