@@ -232,7 +232,7 @@ return (
 
               <div className="w-[70%] mx-auto flex flex-col justify-center">
                 <label
-                  className="block text-gray-700 font-bold mb-2"
+                  className="block text-gray-700 font-bold mb-2 mt-2"
                   htmlFor="phoneNo"
                 >
                   Phone Number
@@ -254,7 +254,7 @@ return (
               {/* Gender */}
               <div className="w-[70%] mx-auto flex flex-col justify-center">
                 <label
-                  className="block text-gray-700 font-bold mb-2"
+                  className="block text-gray-700 font-bold mb-2 mt-2"
                   htmlFor="gender"
                 >
                   Gender
@@ -276,7 +276,7 @@ return (
               {/* Email */}
               <div className="w-[70%] mx-auto flex flex-col justify-center">
                 <label
-                  className="block text-gray-700 font-bold mb-2"
+                  className="block text-gray-700 font-bold mb-2 mt-2"
                   htmlFor="email"
                 >
                   Email
@@ -301,7 +301,7 @@ return (
               {/* Password */}
               <div className="w-[70%] mx-auto flex flex-col justify-center">
                 <label
-                  className="block text-gray-700 font-bold mb-2"
+                  className="block text-gray-700 font-bold mb-2 mt-2"
                   htmlFor="password"
                 >
                   Password

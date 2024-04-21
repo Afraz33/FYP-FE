@@ -91,20 +91,7 @@ const StudentLandingPage = () => {
 
   return (
     <div className=" min-h-screen ">
-      {/* <header className="flex justify-between items-center mb-10">
-        <div className="bg-[#F1F0F4] p-4 px-10 shadow-md rounded-full flex justify-between items-center w-[95%] mx-auto">
-          <span className="font-semibold text-3xl font-Onest">PaiSHA</span>
 
-          <div className="flex gap-4">
-            <button className="bg-black text-white rounded-full px-4 text-lg py-2 w-20 hover:bg-white hover:text-black font-Onest hover:border hover:border-black">
-              <Link to="/login">Login</Link>
-            </button>
-            <button className="bg-black text-white rounded-full px-4 text-lg py-2 w-20 hover:bg-white hover:text-black font-Onest hover:border hover:border-black">
-              <Link to="/signup">Signup</Link>
-            </button>
-          </div>
-        </div>
-      </header> */}
       <Navbar />
 
       <main className="text-center">
@@ -119,21 +106,21 @@ const StudentLandingPage = () => {
                 className="mt-40 font-semibold text-left font-Onest h-fit reveal-effect"
                 style={{ fontSize: "50px", lineHeight: "55px" }}
               >
-                Find your dream
+                Find your dream {""}
                 <span
                   className=" font-bold reveal-delay-1"
                   style={{ color: "#ee4a62" }}
                 >
                   Careers
                 </span>
-                , suitable
+                , suitable {""}
                 <span
                   className=" font-bold reveal-delay-2"
                   style={{ color: "#ee4a62" }}
                 >
                   Universities
                 </span>{" "}
-                through our
+                through our {""}
                 <span className="reveal-delay-3" style={{ color: "#1ab69d" }}>
                   Personalized Recommendations
                 </span>
@@ -144,14 +131,16 @@ const StudentLandingPage = () => {
                 recommendation according to their needs and personality when it
                 comes to choosing your academic life.
               </p>
-              <div className="flex gap-x-4">
+              {/* <div className="flex gap-x-4">
                 <button className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-16 text-white px-4 py-0 font-Onest ">
+                <Link to="/student-login">
                   Explore More
+                  </Link>
                   <ArrowForwardIcon
                     sx={{ color: "white", marginLeft: "6px" }}
                   />
                 </button>
-              </div>
+              </div> */}
             </div>
             <img className="mt-20" src={MainHeader} alt="mainImage"></img>
           </div>
@@ -163,7 +152,7 @@ const StudentLandingPage = () => {
               Talk to our AI chat bot Sarah to know about the career that suits
               your personality
             </h1>
-            <p className="mb-4 leading-4 w-[62%] mx-auto py-10">
+            <p className="mb-4 leading-6 w-[62%] mx-auto py-10 text-xl">
               Get deep analysis of your personality by talking to our chat bot
               and get to know about the best career that suits your personality.
               Our system is specifically designed to help you making a decision
