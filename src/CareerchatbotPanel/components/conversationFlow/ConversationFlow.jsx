@@ -332,7 +332,7 @@ const initialQuestions = [
 function ConversationFlow({ setPersonality, setViewCareers, Personality }) {
 
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(46);
 
   const [responding, setResponding] = useState(false);
   const [processing, setProcessing] = useState(false);

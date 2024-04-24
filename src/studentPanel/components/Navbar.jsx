@@ -123,14 +123,14 @@ function Navbar() {
                 </a>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <a
                 href="#"
                 className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:[bg-gray-100] md:hover:bg-transparent md:hover:text-[#1ab69d] md:dark:hover:text-[#1ab69d] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 About
               </a>
-            </li>
+            </li> */}
             <li>
               <button
                 onClick={() => {
@@ -158,11 +158,11 @@ function Navbar() {
                 </svg>
               </button>
             </li>
-            <li>
+            {/* <li>
               <a className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-[#1ab69d] dark:text-white dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700">
                 Contact
               </a>
-            </li>
+            </li> */}
             <li>
 
             <Link to="/announcement-cards">
@@ -252,7 +252,8 @@ function Navbar() {
                   </a>
                 </Link>
               </li>
-
+              </ul>
+              <ul>
               <li>
               <Link to="/university-rankings">
                 <a
