@@ -23,11 +23,13 @@ function UniChatbotPage() {
   return (
     <>
       <Navbar />
-      <div className="bg-white  min-h-screen max-h-fit py-8 px-20 ">
-        <div className="bg-[#f2f2f2] h-full rounded-xl px-8 py-4 flex gap-5">
-          <div className="flex flex-col gap-4 w-[33%]  h-[86vh] ">
-            <div className="h-full bg-[#ffffff] rounded-3xl p-8  gap-6 flex flex-col overflow-y-auto">
-              <p className="text-2xl font-Onest">Sample Queries</p>
+      <div className="bg-[#f0faf9]   max-h-fit  px-20 ">
+        <div className="bg-[#f0faf9] h-full rounded-xl px-8 py-3.5 flex gap-5 ">
+          <div className="flex flex-col gap-4 w-[33%] rounded-3xl rounded-tl-[3xl] rounded-bl-[3xl] h-[86vh] shadow-2xl ring-blue-500 ring-opacity-100 border-2 border-gray-300">
+            <div className="h-full bg-[#ffffff]  p-8  gap-6 flex flex-col overflow-y-auto rounded-3xl  rounded-tl-[3xl] rounded-bl-[3xl]">
+              <p className="text-2xl font-Onest font-bold">
+                Try these queries...
+              </p>
               {questions.map((question, index) => (
                 <SampleQuery question={question} setAnswer={setAnswer} />
               ))}

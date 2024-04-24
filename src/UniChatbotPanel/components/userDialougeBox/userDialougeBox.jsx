@@ -1,14 +1,31 @@
 import { IoSendSharp } from "react-icons/io5";
-import { useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 
 function UserDialougeBox({ handleUserAnswer, answer, setAnswer }) {
-  const handleInput = (answer) => {
-    handleUserAnswer(answer);
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === "Enter" && answer.trim() !== "") {
+        handleInput();
+      }
+    };
 
-    setAnswer("");
+    // Add event listener when component mounts
+    window.addEventListener("keypress", handleKeyPress);
+
+    // Clean up event listener when component unmounts
+    return () => {
+      window.removeEventListener("keypress", handleKeyPress);
+    };
+  }, [answer]); // Depend on answer and handleInput function
+
+  const handleInput = () => {
+    if (answer.trim() !== "") {
+      handleUserAnswer(answer);
+      setAnswer("");
+    }
   };
   return (
-    <div className="flex items-center w-[50%] fixed bottom-16 right-40 gap-4">
+    <div className="flex items-center w-[70%] absolute bottom-2 right-32 gap-4">
       <input
         value={answer}
         onChange={(e) => setAnswer(e.target.value)}

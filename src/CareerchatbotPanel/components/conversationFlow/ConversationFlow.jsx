@@ -331,8 +331,11 @@ const initialQuestions = [
 ];
 function ConversationFlow({ setPersonality, setViewCareers, Personality }) {
 
+  const [index, setIndex] = useState(0);
 
-  const [index, setIndex] = useState(46);
+
+
+
 
   const [responding, setResponding] = useState(false);
   const [processing, setProcessing] = useState(false);
@@ -465,7 +468,7 @@ function ConversationFlow({ setPersonality, setViewCareers, Personality }) {
   console.log(chatHistory);
   return (
     <>
-      <div className="w-[50%] mx-auto h-fit flex  flex-col gap-y-12 content-between py-24">
+      <div className=" w-[60%] bg-[#f0faf9] mx-auto   overflow-auto h-[65vh]  flex  flex-col gap-y-12 content-between p-12 shadow-xl rounded-xl border border-1-[#1ab69d]">
         {/* Render chat history */}
         {chatHistory.map((item, idx) => (
           <div key={idx} className="flex w-full flex-col justify-between">

@@ -5,6 +5,7 @@ import Career from "../components/career/Career";
 import ChatbotModal from "../components/Modal/Modal";
 import Navbar from "../../studentPanel/components/Navbar";
 import Footer from "../../studentPanel/components/Footer";
+import BasicTimeline from "../components/progressBar/ProgressBar";
 function ChatbotPage() {
   const [Personality, setPersonality] = useState("");
   const [viewCareers, setViewCareers] = useState(false);
@@ -22,14 +23,22 @@ function ChatbotPage() {
       <div>
         <Navbar />
       </div>
+
       <ChatbotModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
+      {/* <div className="fixed  w-[25%] bg-[white] p-4 ">
+        <BasicTimeline />
+      </div> */}
       {!modalVisible && (
-        <div className="bg-white min-h-screen max-h-fit ">
+        <div className="bg-white min-h-[90vh] max-h-fit ">
           {viewCareers === false ? (
-            <div className="bg-slate-200 min-h-screen h-max">
+            <div className="bg-[#f0faf9] min-h-[90vh] h-max py-6">
+              <h2 className=" font-Onest text-4xl text-bold mx-auto w-fit">
+                {" "}
+                Analyse Your Personality
+              </h2>
               <ConversationFlow
                 Personality={Personality}
                 setPersonality={setPersonality}
