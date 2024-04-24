@@ -103,29 +103,16 @@ const AnnouncementProfile = () => {
       <Navbar />
       <HeroSection />
       <div className="container mx-auto p-4 font-Onest">
-      <div className="flex justify-center items-center mb-4">
+      <div className="flex justify-center items-center mt-9 mb-14 ">
         <input
           type="text"
           placeholder="Search for announcements..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-4 pr-4 py-3 w-1/2 focus:outline-none border-2 rounded-lg text-lg" // Increased padding for height, adjusted width to 3/4 of parent, and rounded-lg for a more rounded look
+          className="pl-4 pr-4 py-3 w-96 focus:outline-none border-2 rounded-lg text-lg" // Increased padding for height, adjusted width to 3/4 of parent, and rounded-lg for a more rounded look
         />
         <button className="ml-2 p-5"> {/* Increased padding for a larger button */}
-          <svg
-            className="h-6 w-6 text-gray-600" // Increased size of the SVG icon
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15.5 14.5L19 18M8.5 4a6.5 6.5 0 100 13 6.5 6.5 0 000-13z"
-            />
-          </svg>
+         
         </button>
       </div>
 

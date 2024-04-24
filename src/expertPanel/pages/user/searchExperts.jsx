@@ -35,44 +35,98 @@ const HeroSection = () => {
 };
 
 
-// ProfileCard component
-const ProfileCard = ({ name, description, reviews, expertise, hourlyRate }) => {
-  // Animation settings
+const ProfileCard = ({ name, description, languages, reviews, profile,expertise, experience, hourlyRate }) => {
   const cardVariants = {
-    initial: { scale: 0.9, opacity: 0 },
-    enter: { scale: 1, opacity: 1, transition: { duration: 0.5 } },
-    hover: { scale: 1.05, transition: { duration: 0.2 } },
+    offscreen: {
+      opacity: 0,
+      y: 50
+    },
+    onscreen: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    },
+    hover: {
+      scale: 1.03, // Scale the card to 103% of its size on hover
+      transition: {
+        duration: 0.2 // Transition duration for a smooth effect
+      }
+    }
+  };
+  
+
+    const buttonStyle = {
+    padding: '8px 16px',
+    borderRadius: '4px',
+    color: 'white',
+    cursor: 'pointer',
+    marginLeft: '8px',
   };
 
+  const videoCallButtonStyle = {
+    ...buttonStyle,
+    backgroundColor: '#38b2ac',
+  };
+
+  const viewTimingButtonStyle = {
+    ...buttonStyle,
+    backgroundColor: '#4299e1',
+  };
   return (
     <motion.div
-      className="bg-white rounded-lg overflow-hidden shadow-md w-96 "
-      style={{ height: '25rem' }}
-      variants={cardVariants}
-      initial="initial"
-      animate="enter"
-      whileHover="hover"
-    >
-    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration- items-center transform hover:scale-105 w-96 h-full" >
-      {/* Header with pattern */}
-      <div className="bg-teal-500 p-4 relative w-96" style={{ height: '7rem' }}> 
-        {/* Include the background pattern here */}
-        {/* Profile image */}
-        <div className="absolute -bottom-12 left-0 right-0 flex justify-center w-96">
-          <img className="rounded-full border-4 border-white bg-white h-24 w-24" src={defaultProfileImage} alt={name} />
+    className="bg-white shadow overflow-hidden rounded-lg font-Onest"
+    variants={cardVariants}
+    initial="offscreen"
+    whileInView="onscreen"
+    viewport={{ once: true }}
+    whileHover="hover"
+  >
+    <div className="bg-white shadow overflow-hidden rounded-lg font-Onest">
+      <div className="px-4 py-5 sm:px-6 flex justify-between">
+        <div className="flex items-center">
+          <img className="h-12 w-12 rounded-full" src={defaultProfileImage} alt="" />
+          <div className="ml-4">
+            <h3 className="text-2xl leading-6 font-medium text-gray-900">{name}</h3>
+            <p className="text-lg text-gray-500">{expertise}</p>
+            <p className="text-lg text-gray-500">{description}</p>
+          </div>
+        </div>
+        <div className="flex items-center">
+          <div className="text-right">
+            <p className="text-xs text-gray-500">Reviews: {reviews}</p>
+            <p className="text-xs text-gray-500">Languages: {languages}</p>
+          </div>
         </div>
       </div>
-      
-      {/* Text content */}
-      <div className="pt-16 pb-4 px-4 text-center"> {/* Add padding top here to push the content down */}
-        <h3 className="text-xl font-semibold mb-2">{name}</h3>
-        <p className="text-sm text-gray-600 mb-1">{expertise}</p>
-        <p className="text-xs text-gray-500 mb-1">{description}</p>
-        <p className="text-xs text-gray-500 mb-1">{`Reviews: ${reviews}`}</p>
-        <p className="text-xs text-gray-500">{`Hourly Rate: ${hourlyRate}/hr`}</p>
+      <div className="border-t border-gray-200">
+        <dl>
+          <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-lg font-medium text-gray-500">Experience</dt>
+            <dd className="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">
+              {profile.experience.join(', ')}
+            </dd>
+          </div>
+          <div className="border-t border-gray-200">
+
+          <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-lg font-medium text-gray-500">Skills</dt>
+            <dd className="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">
+              {profile.skills.join(', ')}
+            </dd>
+          </div>
+          </div>
+        </dl>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '16px' }}>
+        <button style={videoCallButtonStyle}>Video Call</button>
       </div>
     </div>
+    </div>
     </motion.div>
+
   );
 };
 
@@ -138,8 +192,8 @@ function Profile() {
       <Navbar />
       <HeroSection />
       <div className="container mx-auto p-4 font-Onest">
-       <form onSubmit={handleSearch} className="flex justify-center mb-6">
-       <div className="flex items-center border-2 border-gray-300 rounded-full overflow-hidden">
+       <form onSubmit={handleSearch} className="flex justify-center mt-8 mb-12 ">
+       <div className="flex items-left border-2 border-gray-300 w-96 rounded-full overflow-hidden">
          <input
           type="text"
           placeholder="Search experts..."
@@ -167,13 +221,31 @@ function Profile() {
         </button>
       </div>
     </form>
-        {isLoading ? (
-          <div>Loading...</div>
+    {isLoading ? (
+          <motion.div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100vh'
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ rotate: 360, scale: 1, opacity: 1 }}
+            transition={{
+              type: 'spring',
+              stiffness: 260,
+              damping: 20,
+              repeat: Infinity,
+              duration: 1
+            }}
+          >
+            Loading...
+          </motion.div>
         ) : error ? (
           <div>Error: {error}</div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
-            {experts.map((expert, index) => (
+          <div className="grid grid-cols-1 gap-4 md:gap-6">
+          {experts.map((expert, index) => (
               <Link to={`/profile/${expert._id}`} key={index} className="text-decoration-none">
                 <ProfileCard
                   name={expert.firstName}
@@ -181,7 +253,14 @@ function Profile() {
                   reviews={expert.reviews?.length || 0}
                   expertise={expert.currentRole}
                   hourlyRate={expert.hourlyRate}
+                  languages={expert.languages.join(', ')} // Assuming languages is an array of strings
+                
+                  profile={{
+                    experience: expert.experience.map((exp) => exp),
+                    skills: expert.skills.map((skill) => skill)
+                  }}
                 />
+               
               </Link>
             ))}
           </div>
