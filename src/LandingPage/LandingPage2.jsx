@@ -1,44 +1,71 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 // import Navbar from "../expertPanel/layout/Navbar/Navbar";
 import Navbar from "./Components/Navbar";
 import { FaUniversity } from "react-icons/fa";
 import { FaRocketchat, FaChessKing, FaCircleInfo } from "react-icons/fa6";
 import "./animations.css";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 import expertImage from "../expertPanel/assets/images/expertNew.png";
 import mission from "../expertPanel/assets/images/mission.jpg";
 import MainHeader from "../LandingPage/assets/hero-section-main.png";
 
 import header_bg from "../LandingPage/assets/header_bg.webp";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
 const CourseCard = ({ title, content, icon }) => {
+  const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true, // Trigger the animation only once
-    threshold: 0.1, // Percentage of the element that needs to be visible
+    threshold: 0.2, // Percentage of the element that needs to be visible
   });
 
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   return (
-    <div
+    <motion.div
       ref={ref}
-      className={`flex flex-col  p-6 rounded-2xl shadow-4xl bg-[#1ab69d] hover:bg-gray-200 cursor-pointer  space-y-4 border-black border-2
-                  ${inView ? "animate-slideUp" : "opacity-0"}`}
+      initial="hidden"
+      animate={controls}
+      variants={sectionVariants}
+      className="flex flex-col p-6 rounded-2xl shadow-4xl bg-[#1ab69d] hover:bg-gray-200 cursor-pointer space-y-4 border-black border-2"
     >
       <div className="flex items-center space-x-3">
         <div className="bg-gray-300 p-3 rounded-full">
           <span className="text-xl font-bold">{icon}</span>
         </div>
-        <h2 className="text-xl font-bold text-black font-Onest hover:text-black">
-          {title}
-        </h2>
+        <h2 className="text-xl font-bold text-black font-Onest">{title}</h2>
       </div>
       <p className="font-Onest text-black">{content}</p>
-    </div>
+    </motion.div>
   );
 };
 
 const LandingPage = () => {
   const [openQuestion, setOpenQuestion] = useState(null);
+  const controls = useAnimation();
+  const [headerRef, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
 
   const cardData = [
     {
@@ -92,20 +119,6 @@ const LandingPage = () => {
 
   return (
     <div className=" min-h-screen ">
-      {/* <header className="flex justify-between items-center mb-10">
-        <div className="bg-[#F1F0F4] p-4 px-10 shadow-md rounded-full flex justify-between items-center w-[95%] mx-auto">
-          <span className="font-semibold text-3xl font-Onest">PaiSHA</span>
-
-          <div className="flex gap-4">
-            <button className="bg-black text-white rounded-full px-4 text-lg py-2 w-20 hover:bg-white hover:text-black font-Onest hover:border hover:border-black">
-              <Link to="/login">Login</Link>
-            </button>
-            <button className="bg-black text-white rounded-full px-4 text-lg py-2 w-20 hover:bg-white hover:text-black font-Onest hover:border hover:border-black">
-              <Link to="/signup">Signup</Link>
-            </button>
-          </div>
-        </div>
-      </header> */}
       <Navbar />
 
       <main className="text-center">
@@ -119,21 +132,21 @@ const LandingPage = () => {
                 className="mt-40 font-semibold text-left font-Onest h-fit reveal-effect"
                 style={{ fontSize: "50px", lineHeight: "55px" }}
               >
-                Find your dream
+                Find your dream {""}
                 <span
                   className=" font-bold reveal-delay-1"
                   style={{ color: "#ee4a62" }}
                 >
                   Careers
                 </span>
-                , suitable
+                , suitable {""}
                 <span
                   className=" font-bold reveal-delay-2"
                   style={{ color: "#ee4a62" }}
                 >
                   Universities
                 </span>{" "}
-                through our
+                through our {""}
                 <span className="reveal-delay-3" style={{ color: "#1ab69d" }}>
                   Personalized Recommendations
                 </span>
@@ -146,10 +159,12 @@ const LandingPage = () => {
               </p>
               <div className="flex gap-x-4">
                 <button className="bg-[#1ab69d] hover:bg-[#ee4a62] rounded-lg w-40 h-16 text-white px-4 py-0 font-Onest ">
+                <Link to="/student-login">
                   Explore More
                   <ArrowForwardIcon
                     sx={{ color: "white", marginLeft: "6px" }}
                   />
+                  </Link>
                 </button>
               </div>
             </div>
@@ -157,16 +172,20 @@ const LandingPage = () => {
           </div>
         </div>
         <section className="Features py-8 ">
-          <div className=" p-8  ">
-            <h1 className="text-4xl font-bold font-Onest mb-10 w-[60%] mx-auto ">
+          <div className="p-8">
+            <motion.h1
+              ref={headerRef}
+              initial="hidden"
+              animate={controls}
+              variants={sectionVariants}
+              className="text-4xl font-bold font-Onest mb-10 w-[60%] mx-auto text-center"
+            >
               We offer various innovative features to help you make the right
               decision
-            </h1>
+            </motion.h1>
             <div className="flex flex-wrap justify-center items-stretch gap-4">
               {cardData.map((card, index) => (
                 <div className="w-full md:w-1/2" key={index}>
-                  {" "}
-                  {/* This ensures that on medium devices and larger, only two cards will be 50% width each, thus making two per row */}
                   <CourseCard
                     title={card.title}
                     content={card.content}
@@ -178,8 +197,13 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section className="3rdSection  mt-10 ">
-          <div className="flex flex-col items-center justify-center py-8  ">
+        <section
+          className={`3rdSection mt-10 ${
+            inView ? "reveal-effect reveal-delay-1" : ""
+          }`}
+          ref={headerRef} 
+        >
+          <div className="flex flex-col items-center justify-center py-8">
             <h1 className="text-5xl font-bold mb-4 font-Onest">
               We believe <span className="text-purple-500">🌼💛</span> that
               everyone
@@ -190,7 +214,7 @@ const LandingPage = () => {
             </h2>
             <h3 className="text-5xl font-bold font-Onest">
               for
-              <span className="text-[#1ab69d]"> quality education </span>{" "}
+              <span className="text-[#1ab69d]"> quality education </span>
               without any doubts.
             </h3>
           </div>
@@ -227,7 +251,7 @@ const LandingPage = () => {
               </h2>
               <p className="text-lg mb-6 text-left font-Onest">
                 PaiSHA is on a mission to help students make informed decisions.
-                Many high school graduates in Pakistan are consult with their
+                Many high school graduates in Pakistan consult with their
                 friends and Families for career advice. This is not the right
                 way to make decisions about your professional life. We are here
                 to help you make the right decision.

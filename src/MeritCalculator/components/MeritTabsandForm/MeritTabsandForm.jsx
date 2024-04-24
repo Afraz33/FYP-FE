@@ -214,7 +214,7 @@ const TabsandList = () => {
           </button>
         ))}
       </div>
-      <div className=" mt-5 rounded-xl flex flex-col gap-10  justify-center items-center w-[85%] m-auto border border-[#1ab69d] p-3">
+      <div className=" mt-15 rounded-xl flex flex-col gap-10  justify-center items-center w-[100%] m-auto border border-[#1ab69d] p-3">
         <div className="flex flex-row gap-24">
           <div className="flex flex-row gap-5">
             <div className="flex flex-col gap-1 items-center">
@@ -343,7 +343,7 @@ const TabsandList = () => {
         </div>
         <button
           onClick={handleMeritCalculation}
-          className="mt-0 bg-[#1ab69d] hover:bg-[#f2f2f2] hover:text-black border hover:border-black text-white font-bold  py-2 px-4 rounded-xl "
+          className="mt-0 bg-[#1ab69d] hover:bg-[#f2f2f2] hover:text-black border hover:border-black text-white font-bold  py-2 px-4 rounded-xl font-Onest"
         >
           Calculate Merit
         </button>
